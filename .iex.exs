@@ -2,22 +2,7 @@
 import Skitter.Component
 import Skitter.Workflow.DSL
 
-component Average, in: val, out: current_average do
-  fields total, counter
-  effect state_change
-
-  init _ do
-    total <~ 0
-    counter <~ 0
-  end
-
-  react val do
-    total <~ total + val
-    counter <~ counter + 1
-
-    total / counter ~> current_average
-  end
-end
+import Skitter.Runtime.WorkflowInstance
 
 # Debugging tools
 defmodule SkDebug do
@@ -42,5 +27,50 @@ defmodule SkDebug do
 
   defmacro test_macro(times \\ 1, do: body) do
     body |> expand_n_times(times) |> Macro.to_string() |> IO.puts()
+  end
+end
+
+# Test Components
+
+component Average, in: val, out: current_average do
+  fields total, counter
+  effect state_change
+
+  init _ do
+    total <~ 0
+    counter <~ 0
+  end
+
+  react val do
+    total <~ total + val
+    counter <~ counter + 1
+
+    total / counter ~> current_average
+  end
+end
+
+component Print, in: val do
+  react val do
+    IO.puts "~~~ Print ~~~ #{val}"
+  end
+end
+
+component Identity, in: val, out: val do
+  react val do
+    val ~> val
+  end
+end
+
+
+defmodule WF do
+  require Identity
+
+  def t do
+    workflow do
+      _ = {Skitter.Workflow.Source, _, data ~> id1.val, data ~> id2.val}
+      id1 = {Identity, _}
+      id2 = {Identity, _, val ~> pri.val}
+      pri = {Print, _}
+    end
   end
 end

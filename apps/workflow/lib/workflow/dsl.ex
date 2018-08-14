@@ -231,7 +231,7 @@ defmodule Skitter.Workflow.DSL do
     diff = MapSet.difference(MapSet.new(usable), MapSet.new(links))
 
     unless MapSet.size(diff) == 0 do
-      throw {:error, :unused_port, MapSet.to_list(diff)}
+      # throw {:error, :unused_port, MapSet.to_list(diff)}
     end
   end
 end

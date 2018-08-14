@@ -67,7 +67,7 @@ defmodule WF do
 
   def t do
     workflow do
-      _ = {Skitter.Workflow.Source, _, data ~> id1.val, data ~> id2.val}
+      _ = {Skitter.Source, _, data ~> id1.val, data ~> id2.val}
       id1 = {Identity, _}
       id2 = {Identity, _, val ~> pri.val}
       pri = {Print, _}

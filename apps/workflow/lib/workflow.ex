@@ -3,16 +3,12 @@ defmodule Workflow do
   Documentation for Workflow.
   """
 
-  @doc """
-  Hello world.
+  def get_module(workflow, id), do: elem(workflow[id], 0)
+  def get_links(workflow, id), do: elem(workflow[id], 2)
+  def get_init(workflow, id), do: elem(workflow[id], 1)
 
-  ## Examples
-
-      iex> Workflow.hello
-      :world
-
-  """
-  def hello do
-    :world
+  def init_id(workflow, id) do
+    {cmp, init, _} = workflow[id]
+    Skitter.Component.init(cmp, init)
   end
 end

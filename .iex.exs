@@ -51,7 +51,7 @@ end
 
 component Print, in: val do
   react val do
-    IO.puts "~~~ Print ~~~ #{val}"
+    IO.puts "#{val} on #{Node.self()}"
   end
 end
 

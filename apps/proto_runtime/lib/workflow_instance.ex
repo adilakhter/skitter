@@ -1,6 +1,5 @@
 defmodule Skitter.Runtime.WorkflowInstance do
   use GenServer
-
   require Logger
 
   alias Skitter.Runtime.Matcher, as: Matcher
@@ -10,7 +9,7 @@ defmodule Skitter.Runtime.WorkflowInstance do
   # API #
   # --- #
 
-  def start(workflow) do
+  def start_link(workflow) do
     GenServer.start_link(__MODULE__, workflow)
   end
 

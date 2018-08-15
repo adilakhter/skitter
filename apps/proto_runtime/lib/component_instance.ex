@@ -1,5 +1,6 @@
 defmodule Skitter.Runtime.ComponentInstance do
   use GenServer
+  require Logger
 
   alias Skitter.Component
 
@@ -8,7 +9,7 @@ defmodule Skitter.Runtime.ComponentInstance do
   # --- #
 
   def start_remote_link(remote, comp, init) do
-    Node.spawn(remote, __MODULE__, :start_and_notify, [comp, init, self()])
+    Node.spawn_link(remote, __MODULE__, :start_and_notify, [comp, init, self()])
 
     pid =
       receive do
@@ -21,7 +22,7 @@ defmodule Skitter.Runtime.ComponentInstance do
 
   @doc false
   def start_and_notify(comp, init, owner) do
-    {:ok, pid} = GenServer.start(__MODULE__, {comp, init})
+    {:ok, pid} = GenServer.start_link(__MODULE__, {comp, init})
     send(owner, {:start_ok, pid})
   end
 

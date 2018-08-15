@@ -50,8 +50,14 @@ component Average, in: val, out: current_average do
 end
 
 component Print, in: val do
+  fields opts
+
+  init options do
+    opts <~ options
+  end
+
   react val do
-    IO.puts "#{val} on #{Node.self()}"
+    IO.inspect val, opts
   end
 end
 
@@ -67,10 +73,11 @@ defmodule WF do
 
   def t do
     workflow do
-      _ = {Skitter.Source, _, data ~> id1.val, data ~> id2.val}
-      id1 = {Identity, _}
-      id2 = {Identity, _, val ~> pri.val}
-      pri = {Print, _}
+      _ = {Skitter.Source, _, data ~> avg.val, data ~> id.val}
+      id = {Identity, _, val ~> print_id.val}
+      avg = {Average, _, current_average ~> print_avg.val}
+      print_id = {Print, [pretty: true, label: "id"]}
+      print_avg = {Print, [pretty: true, label: "avg"]}
     end
   end
 end

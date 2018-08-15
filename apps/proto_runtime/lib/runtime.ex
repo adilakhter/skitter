@@ -1,7 +1,8 @@
 defmodule Runtime do
   use GenServer
 
-  alias Skitter.Runtime.WorkflowManager, as: WorkflowManager
+  alias Skitter.Runtime.WorkflowManager
+  alias Skitter.Runtime.Orchestration
 
   # --- #
   # API #
@@ -22,10 +23,12 @@ defmodule Runtime do
   # ------ #
 
   def init({workflow, slaves}) do
-    {:ok, {workflow, []}, {:continue, slaves}}
+    {:ok, {nil, nil}, {:continue, {slaves, workflow}}}
   end
 
-  def handle_continue(slave_nodes, {workflow, []}) do
+  def handle_continue({slave_nodes, workflow}, {nil, nil}) do
+    workflow = Orchestration.create_workflow_template(slave_nodes, workflow)
+
     pids =
       Enum.map(slave_nodes, fn node ->
         {:ok, pid} = WorkflowManager.start_remote_link(node, workflow)

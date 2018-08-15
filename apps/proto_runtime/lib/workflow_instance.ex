@@ -22,7 +22,6 @@ defmodule Skitter.Runtime.WorkflowInstance do
   # ------ #
 
   def init(workflow) do
-    Logger.debug("Creating new workflow instance")
     {:ok, {workflow, Matcher.new(), 0}}
   end
 
@@ -50,10 +49,6 @@ defmodule Skitter.Runtime.WorkflowInstance do
         {matcher, 0}
 
       {:trigger, matcher, id, args} ->
-        Logger.debug(
-          "Invoking react of instance #{id}, with args #{inspect(args, charlists: :as_lists)}"
-        )
-
         Invocation.invoke_react_async(workflow, id, args)
         {matcher, 1}
     end

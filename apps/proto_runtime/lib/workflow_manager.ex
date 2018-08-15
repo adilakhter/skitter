@@ -1,8 +1,7 @@
 defmodule Skitter.Runtime.WorkflowManager do
   use GenServer
-  require Logger
 
-  alias Skitter.Runtime.WorkflowInstance, as: WorkflowInstance
+  alias Skitter.Runtime.WorkflowInstance
 
   # --- #
   # API #
@@ -39,7 +38,6 @@ defmodule Skitter.Runtime.WorkflowManager do
   # ------ #
 
   def init(workflow) do
-    Logger.info("Workflow manager on `#{Node.self()}` started")
     {:ok, workflow}
   end
 

@@ -1,4 +1,4 @@
-defmodule Runtime do
+defmodule Skitter.Runtime do
   use GenServer
 
   alias Skitter.Runtime.WorkflowManager
@@ -8,9 +8,7 @@ defmodule Runtime do
   # API #
   # --- #
 
-  @slaves [:slave_1@Nimrodel, :slave_2@Nimrodel]
-
-  def start_link(workflow, slaves \\ @slaves) do
+  def start_link(workflow, slaves) do
     GenServer.start_link(__MODULE__, {workflow, slaves})
   end
 

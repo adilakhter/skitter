@@ -27,7 +27,7 @@ defmodule Skitter.Runtime.ComponentInstance do
   end
 
   def react(inst, args) do
-    GenServer.call(inst, {:react, args})
+    GenServer.call(inst, {:react, args}, :infinity)
   end
 
   # ------ #

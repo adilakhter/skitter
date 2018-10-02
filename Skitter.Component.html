@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.19.1">
+    <title>Skitter.Component – Skitter v0.1.0</title>
+    <link rel="stylesheet" href="dist/app-240d7fc7e5.css" />
+    <script src="dist/sidebar_items-8b0cf169b1.js"></script>
+    
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
+    <div class="main">
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Sidebar</span>
+</button>
+<button class="sidebar-button night-mode-toggle">
+  <span class="icon-theme" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Theme</span>
+</button>
+<section class="sidebar">
+
+  <a href="api-reference.html" class="sidebar-projectLink">
+    <div class="sidebar-projectDetails">
+      <h1 class="sidebar-projectName">
+Skitter      </h1>
+      <h2 class="sidebar-projectVersion">
+        v0.1.0
+      </h2>
+    </div>
+  </a>
+
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <input name="q" type="text" id="search-list" class="search-input" placeholder="Search" aria-label="Search" autocomplete="off" />
+  </form>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+      <li><a id="exceptions-list" href="#full-list">Exceptions</a></li>
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+
+      <h1>
+        <small class="visible-xs">Skitter v0.1.0</small>
+Skitter.Component              </h1>
+
+
+        <section id="moduledoc">
+<p>Tools to interact with skitter components.</p>
+<p>A component is a collection of function implementations and metadata.
+Components can be <em>instantiated</em> by embedding them inside a workflow.
+When this is done, the component instance is responsible for <em>reacting</em> to
+any data it receives from the skitter runtime. The functions which are a
+part of the component definition define how the component instance responds
+to the incoming data. The metadata that makes up the other part of the
+component definition defines how a component can be embedded inside a
+workflow, how the skitter runtime should handle this component and provides
+documentation about the component. Various instances of the same component
+share the same metadata and function implementations, but cannot share any
+state.</p>
+<p>This module defines an interface that can be used to access the metadata and
+functionality offered by a component and its instances. Besides this, this
+modules defines the <a href="#component/3"><code class="inline">component/3</code></a> macro which can be used to define a
+component.</p>
+<h2 id="module-functions" class="section-heading">
+  <a href="#module-functions" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Functions
+</h2>
+
+<p>This module defines two types of functions: functions which access the
+metadata of a component and functions which activate a function of a
+component. All metadata functions work on both components and instances,
+the other functions only work on the component or its instance. The following
+table provides a short overview of the functions in this module and the
+arguments they accept.</p>
+<table>
+<colgroup>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left">Function</th><th style="text-align: left">Component / Instance</th>
+</tr>
+</thead>
+<tr>
+<td style="text-align: left"><a href="#is_component?/1"><code class="inline">is_component?/1</code></a></td><td style="text-align: left"><em>both</em></td>
+</tr>
+<tr>
+<td style="text-align: left"><a href="#is_instance?/1"><code class="inline">is_instance?/1</code></a></td><td style="text-align: left"><em>both</em></td>
+</tr>
+<tr>
+<td style="text-align: left"><a href="#name/1"><code class="inline">name/1</code></a></td><td style="text-align: left"><em>both</em></td>
+</tr>
+<tr>
+<td style="text-align: left"><a href="#description/1"><code class="inline">description/1</code></a></td><td style="text-align: left"><em>both</em></td>
+</tr>
+<tr>
+<td style="text-align: left"><a href="#in_ports/1"><code class="inline">in_ports/1</code></a></td><td style="text-align: left"><em>both</em></td>
+</tr>
+<tr>
+<td style="text-align: left"><a href="#out_ports/1"><code class="inline">out_ports/1</code></a></td><td style="text-align: left"><em>both</em></td>
+</tr>
+<tr>
+<td style="text-align: left"><a href="#effects/1"><code class="inline">effects/1</code></a></td><td style="text-align: left"><em>both</em></td>
+</tr>
+<tr>
+<td style="text-align: left"><a href="#state_change?/1"><code class="inline">state_change?/1</code></a></td><td style="text-align: left"><em>both</em></td>
+</tr>
+<tr>
+<td style="text-align: left"><a href="#hidden_state_change?/1"><code class="inline">hidden_state_change?/1</code></a></td><td style="text-align: left"><em>both</em></td>
+</tr>
+<tr>
+<td style="text-align: left"><a href="#external_effect?/1"><code class="inline">external_effect?/1</code></a></td><td style="text-align: left"><em>both</em></td>
+</tr>
+<tr>
+<td style="text-align: left"><a href="#init/2"><code class="inline">init/2</code></a></td><td style="text-align: left">component</td>
+</tr>
+<tr>
+<td style="text-align: left"><a href="#terminate/1"><code class="inline">terminate/1</code></a></td><td style="text-align: left">instance</td>
+</tr>
+<tr>
+<td style="text-align: left"><a href="#react/2"><code class="inline">react/2</code></a></td><td style="text-align: left">instance</td>
+</tr>
+<tr>
+<td style="text-align: left"><a href="#react_after_failure/2"><code class="inline">react_after_failure/2</code></a></td><td style="text-align: left">instance</td>
+</tr>
+<tr>
+<td style="text-align: left"><a href="#create_checkpoint/1"><code class="inline">create_checkpoint/1</code></a></td><td style="text-align: left">instance</td>
+</tr>
+<tr>
+<td style="text-align: left"><a href="#clean_checkpoint/2"><code class="inline">clean_checkpoint/2</code></a></td><td style="text-align: left">instance</td>
+</tr>
+<tr>
+<td style="text-align: left"><a href="#restore_checkpoint/2"><code class="inline">restore_checkpoint/2</code></a></td><td style="text-align: left">component</td>
+</tr>
+</table>
+<h2 id="module-a-note-on-doctests" class="section-heading">
+  <a href="#module-a-note-on-doctests" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  A note on doctests
+</h2>
+
+<p>Since this module works on components and their instances, all code examples
+in the docs of this module assume the following components have been defined.
+More information about these definitions can be found in the
+<a href="Skitter.Component.DSL.html"><code class="inline">Skitter.Component.DSL</code></a> docs.</p>
+<pre><code class="nohighlight makeup elixir"><span class="n">component</span><span class="w"> </span><span class="nc">Identity</span><span class="p">,</span><span class="w"> </span><span class="ss">in</span><span class="p">:</span><span class="w"> </span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="ss">out</span><span class="p">:</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="k" data-group-id="3574104829-1">do</span><span class="w">
+  </span><span class="n">react</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="k" data-group-id="3574104829-2">do</span><span class="w">
+    </span><span class="n">value</span><span class="w"> </span><span class="o">~&gt;</span><span class="w"> </span><span class="n">value</span><span class="w">
+  </span><span class="k" data-group-id="3574104829-2">end</span><span class="w">
+</span><span class="k" data-group-id="3574104829-1">end</span><span class="w">
+
+</span><span class="n">component</span><span class="w"> </span><span class="nc">Features</span><span class="p">,</span><span class="w"> </span><span class="ss">in</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="3574104829-3">[</span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p" data-group-id="3574104829-3">]</span><span class="w"> </span><span class="k" data-group-id="3574104829-4">do</span><span class="w">
+  </span><span class="s">&quot;Doesn&#39; t do anything useful, but allows us to show all component aspects.&quot;</span><span class="w">
+
+  </span><span class="n">effect</span><span class="w"> </span><span class="n">state_change</span><span class="w"> </span><span class="n">hidden</span><span class="w">
+  </span><span class="n">effect</span><span class="w"> </span><span class="n">external_effect</span><span class="w">
+
+  </span><span class="n">fields</span><span class="w"> </span><span class="n">f</span><span class="w">
+
+  </span><span class="n">init</span><span class="w"> </span><span class="p" data-group-id="3574104829-5">{</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p" data-group-id="3574104829-5">}</span><span class="w"> </span><span class="k" data-group-id="3574104829-6">do</span><span class="w">
+    </span><span class="n">f</span><span class="w"> </span><span class="o">&lt;~</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="w">
+  </span><span class="k" data-group-id="3574104829-6">end</span><span class="w">
+
+  </span><span class="n">react</span><span class="w"> </span><span class="c">_foo</span><span class="p">,</span><span class="w"> </span><span class="c">_bar</span><span class="w"> </span><span class="k" data-group-id="3574104829-7">do</span><span class="w">
+  </span><span class="k" data-group-id="3574104829-7">end</span><span class="w">
+
+  </span><span class="n">create_checkpoint</span><span class="w"> </span><span class="k" data-group-id="3574104829-8">do</span><span class="w">
+    </span><span class="n">f</span><span class="w">
+  </span><span class="k" data-group-id="3574104829-8">end</span><span class="w">
+
+  </span><span class="n">restore_checkpoint</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="k" data-group-id="3574104829-9">do</span><span class="w">
+    </span><span class="n">f</span><span class="w"> </span><span class="o">&lt;~</span><span class="w"> </span><span class="n">v</span><span class="w">
+  </span><span class="k" data-group-id="3574104829-9">end</span><span class="w">
+</span><span class="k" data-group-id="3574104829-4">end</span></code></pre>
+<p>Besides this, an example instance is provided by a function:</p>
+<pre><code class="nohighlight makeup elixir"><span class="kd">def</span><span class="w"> </span><span class="nf">example_instance</span><span class="p" data-group-id="8342979939-1">(</span><span class="p" data-group-id="8342979939-1">)</span><span class="w"> </span><span class="k" data-group-id="8342979939-2">do</span><span class="w">
+  </span><span class="p" data-group-id="8342979939-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">inst</span><span class="p" data-group-id="8342979939-3">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">init</span><span class="p" data-group-id="8342979939-4">(</span><span class="nc">Identity</span><span class="p">,</span><span class="w"> </span><span class="no">nil</span><span class="p" data-group-id="8342979939-4">)</span><span class="w">
+  </span><span class="n">inst</span><span class="w">
+</span><span class="k" data-group-id="8342979939-2">end</span></code></pre>
+        </section>
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+          
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#clean_checkpoint/2">clean_checkpoint(inst, checkpoint)</a>
+  </div>
+    <div class="summary-synopsis"><p>Remove an old checkpoint of a component instance</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#component/3">component(name, ports, list)</a>
+  </div>
+    <div class="summary-synopsis"><p>Create a component</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#create_checkpoint/1">create_checkpoint(inst)</a>
+  </div>
+    <div class="summary-synopsis"><p>Ask a component instance to create a checkpoint</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#description/1">description(comp)</a>
+  </div>
+    <div class="summary-synopsis"><p>Get the description of a component (instance)</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#effects/1">effects(comp)</a>
+  </div>
+    <div class="summary-synopsis"><p>Get the effects of a component (instance)</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#external_effect?/1">external_effect?(comp)</a>
+  </div>
+    <div class="summary-synopsis"><p>Verify if a component has external effects</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#hidden_state_change?/1">hidden_state_change?(comp)</a>
+  </div>
+    <div class="summary-synopsis"><p>Verify if a component (instance) can change its state without explicitly
+passing a new state</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#in_ports/1">in_ports(comp)</a>
+  </div>
+    <div class="summary-synopsis"><p>Get the in ports of a component (instance)</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#init/2">init(comp, args)</a>
+  </div>
+    <div class="summary-synopsis"><p>Create a component instance</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_component?/1">is_component?(mod)</a>
+  </div>
+    <div class="summary-synopsis"><p>Verify if something is a component</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#is_instance?/1">is_instance?(arg1)</a>
+  </div>
+    <div class="summary-synopsis"><p>Verify if something is a component instance</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#name/1">name(comp)</a>
+  </div>
+    <div class="summary-synopsis"><p>Get the name of a component (instance)</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#out_ports/1">out_ports(comp)</a>
+  </div>
+    <div class="summary-synopsis"><p>Get the out ports of a component (instance)</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#react/2">react(inst, args)</a>
+  </div>
+    <div class="summary-synopsis"><p>Make the component instance react to data</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#react_after_failure/2">react_after_failure(inst, args)</a>
+  </div>
+    <div class="summary-synopsis"><p>Make the component instance react to incoming data after a previous attempt to
+do so failed</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#restore_checkpoint/2">restore_checkpoint(comp, checkpoint)</a>
+  </div>
+    <div class="summary-synopsis"><p>Restore a component instance based on a checkpoint</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#state_change?/1">state_change?(comp)</a>
+  </div>
+    <div class="summary-synopsis"><p>Verify if a component (instance) can update its state</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#terminate/1">terminate(inst)</a>
+  </div>
+    <div class="summary-synopsis"><p>Ask a component instance to clean up its resources</p>
+</div>
+</div>
+  </div>
+          
+        </section>
+
+
+
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Functions
+          </h1>
+<div class="detail" id="clean_checkpoint/2">
+    <div class="detail-header">
+    <a href="#clean_checkpoint/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">clean_checkpoint(inst, checkpoint)</span>
+          </div>
+  <section class="docstring">
+<p>  Remove an old checkpoint of a component instance.</p>
+<p>  This function calls the <code class="inline">clean_checkpoint</code> function of a component instance.
+  This function is responsible for removing any resources associated with a
+  checkpoint which will not be used anymore.</p>
+<h2 id="clean_checkpoint/2-examples" class="section-heading">
+  <a href="#clean_checkpoint/2-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="p" data-group-id="7893158477-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">inst</span><span class="p" data-group-id="7893158477-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">restore_checkpoint</span><span class="p" data-group-id="7893158477-2">(</span><span class="nc">Features</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p" data-group-id="7893158477-2">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">clean_checkpoint</span><span class="p" data-group-id="7893158477-3">(</span><span class="n">inst</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p" data-group-id="7893158477-3">)</span><span class="w">
+</span><span class="ss">:ok</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">clean_checkpoint</span><span class="p" data-group-id="7893158477-4">(</span><span class="nc">Features</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p" data-group-id="7893158477-4">)</span><span class="w">
+</span><span class="gt">** (FunctionClauseError) no function clause matching in Skitter.Component.clean_checkpoint/2</span></code></pre>
+  </section>
+</div>
+<div class="detail" id="component/3">
+    <div class="detail-header">
+    <a href="#component/3" class="detail-link" title="Link to this macro">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this macro</span>
+    </a>
+    <span class="signature">component(name, ports, list)</span>
+    
+      <span class="note">(macro)</span>
+      </div>
+  <section class="docstring">
+<p>Create a component.</p>
+<p>This macro is a shorthand for accessing the
+<a href="Skitter.Component.DSL.html#component/3"><code class="inline">Skitter.Component.DSL.component/3</code></a> macro, which enables the creation of
+skitter components.</p>
+  </section>
+</div>
+<div class="detail" id="create_checkpoint/1">
+    <div class="detail-header">
+    <a href="#create_checkpoint/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">create_checkpoint(inst)</span>
+          </div>
+  <section class="docstring">
+<p>Ask a component instance to create a checkpoint.</p>
+<p>This will call the checkpoint function of the component instance. This
+function should return a valid checkpoint which can be used to restore the
+component instance if the component fails later.</p>
+<h2 id="create_checkpoint/1-examples" class="section-heading">
+  <a href="#create_checkpoint/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="p" data-group-id="8512826962-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">inst</span><span class="p" data-group-id="8512826962-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">init</span><span class="p" data-group-id="8512826962-2">(</span><span class="nc">Features</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8512826962-3">{</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p" data-group-id="8512826962-3">}</span><span class="p" data-group-id="8512826962-2">)</span><span class="w">
+</span><span class="p" data-group-id="8512826962-4">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8512826962-5">%</span><span class="nc" data-group-id="8512826962-5">Instance</span><span class="p" data-group-id="8512826962-5">{</span><span class="ss">component</span><span class="p">:</span><span class="w"> </span><span class="nc">Features</span><span class="p">,</span><span class="w"> </span><span class="ss">state</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8512826962-6">[</span><span class="ss">f</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p" data-group-id="8512826962-6">]</span><span class="p" data-group-id="8512826962-5">}</span><span class="p" data-group-id="8512826962-4">}</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">create_checkpoint</span><span class="p" data-group-id="8512826962-7">(</span><span class="n">inst</span><span class="p" data-group-id="8512826962-7">)</span><span class="w">
+</span><span class="p" data-group-id="8512826962-8">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p" data-group-id="8512826962-8">}</span></code></pre>
+  </section>
+</div>
+<div class="detail" id="description/1">
+    <div class="detail-header">
+    <a href="#description/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">description(comp)</span>
+          </div>
+  <section class="docstring">
+<p>Get the description of a component (instance)</p>
+<p>An empty string is returned if no documentation is present.</p>
+<h2 id="description/1-examples" class="section-heading">
+  <a href="#description/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">description</span><span class="p" data-group-id="8546788965-1">(</span><span class="nc">Identity</span><span class="p" data-group-id="8546788965-1">)</span><span class="w">
+</span><span class="s">&quot;&quot;</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">description</span><span class="p" data-group-id="8546788965-2">(</span><span class="n">example_instance</span><span class="p" data-group-id="8546788965-3">(</span><span class="p" data-group-id="8546788965-3">)</span><span class="p" data-group-id="8546788965-2">)</span><span class="w">
+</span><span class="s">&quot;&quot;</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">description</span><span class="p" data-group-id="8546788965-4">(</span><span class="nc">Features</span><span class="p" data-group-id="8546788965-4">)</span><span class="w">
+</span><span class="s">&quot;Doesn&#39;t do anything useful, but allows us to show all component aspects.&quot;</span></code></pre>
+  </section>
+</div>
+<div class="detail" id="effects/1">
+    <div class="detail-header">
+    <a href="#effects/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">effects(comp)</span>
+          </div>
+  <section class="docstring">
+<p>Get the effects of a component (instance).</p>
+<p>The effects of a component describe the effects that an instance of this
+component may trigger when it is reacting to incoming data. These effects
+are used by the skitter runtime to determine how to handle distribution and
+fault tolerance.</p>
+<p>Calling this function directly is generally not required, instead, rely on
+more specific functions such as <a href="#state_change?/1"><code class="inline">state_change?/1</code></a>, <a href="#external_effect?/1"><code class="inline">external_effect?/1</code></a>,
+etc.</p>
+<h2 id="effects/1-examples" class="section-heading">
+  <a href="#effects/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">effects</span><span class="p" data-group-id="0552181588-1">(</span><span class="nc">Identity</span><span class="p" data-group-id="0552181588-1">)</span><span class="w">
+</span><span class="p" data-group-id="0552181588-2">[</span><span class="p" data-group-id="0552181588-2">]</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">effects</span><span class="p" data-group-id="0552181588-3">(</span><span class="n">example_instance</span><span class="p" data-group-id="0552181588-4">(</span><span class="p" data-group-id="0552181588-4">)</span><span class="p" data-group-id="0552181588-3">)</span><span class="w">
+</span><span class="p" data-group-id="0552181588-5">[</span><span class="p" data-group-id="0552181588-5">]</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">effects</span><span class="p" data-group-id="0552181588-6">(</span><span class="nc">Features</span><span class="p" data-group-id="0552181588-6">)</span><span class="w">
+</span><span class="p" data-group-id="0552181588-7">[</span><span class="ss">external_effect</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0552181588-8">[</span><span class="p" data-group-id="0552181588-8">]</span><span class="p">,</span><span class="w"> </span><span class="ss">state_change</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0552181588-9">[</span><span class="ss">:hidden</span><span class="p" data-group-id="0552181588-9">]</span><span class="p" data-group-id="0552181588-7">]</span></code></pre>
+  </section>
+</div>
+<div class="detail" id="external_effect?/1">
+    <div class="detail-header">
+    <a href="#external_effect?/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">external_effect?(comp)</span>
+          </div>
+  <section class="docstring">
+<p>Verify if a component has external effects.</p>
+<p>A component has external effects if it provides the <code class="inline">external_effect</code> effect.
+A component with this effect specifies that the execution of
+<code class="inline">react</code> may lead to side effects (e.g I/O).</p>
+<p>When the execution of a component instance with this effect fails, the
+skitter runtime will re-execute <code class="inline">react</code> including its <code class="inline">after_failure</code> blocks.
+This makes it possible to clean up any external effects a previous, failed
+call to react (or react_after_failure) may have had.</p>
+<h2 id="external_effect?/1-examples" class="section-heading">
+  <a href="#external_effect?/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">external_effect?</span><span class="p" data-group-id="8419787242-1">(</span><span class="nc">Identity</span><span class="p" data-group-id="8419787242-1">)</span><span class="w">
+</span><span class="no">false</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">external_effect?</span><span class="p" data-group-id="8419787242-2">(</span><span class="n">example_instance</span><span class="p" data-group-id="8419787242-3">(</span><span class="p" data-group-id="8419787242-3">)</span><span class="p" data-group-id="8419787242-2">)</span><span class="w">
+</span><span class="no">false</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">external_effect?</span><span class="p" data-group-id="8419787242-4">(</span><span class="nc">Features</span><span class="p" data-group-id="8419787242-4">)</span><span class="w">
+</span><span class="no">true</span></code></pre>
+  </section>
+</div>
+<div class="detail" id="hidden_state_change?/1">
+    <div class="detail-header">
+    <a href="#hidden_state_change?/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">hidden_state_change?(comp)</span>
+          </div>
+  <section class="docstring">
+<p>Verify if a component (instance) can change its state without explicitly
+passing a new state.</p>
+<p>A component has a hidden state if it has the <code class="inline">state_change</code> effect with the
+<code class="inline">hidden</code> property. Components with a hidden state change manage their own
+state and do not hand it over to skitter every time <code class="inline">react</code> is called. To
+ensure that this hidden state is recoverable in the case of failure, these
+components are required to implement the <code class="inline">create_checkpoint</code> and
+<code class="inline">restore_checkpoint</code> callbacks.</p>
+<h2 id="hidden_state_change?/1-examples" class="section-heading">
+  <a href="#hidden_state_change?/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">hidden_state_change?</span><span class="p" data-group-id="1536682404-1">(</span><span class="nc">Identity</span><span class="p" data-group-id="1536682404-1">)</span><span class="w">
+</span><span class="no">false</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">hidden_state_change?</span><span class="p" data-group-id="1536682404-2">(</span><span class="n">example_instance</span><span class="p" data-group-id="1536682404-3">(</span><span class="p" data-group-id="1536682404-3">)</span><span class="p" data-group-id="1536682404-2">)</span><span class="w">
+</span><span class="no">false</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">hidden_state_change?</span><span class="p" data-group-id="1536682404-4">(</span><span class="nc">Features</span><span class="p" data-group-id="1536682404-4">)</span><span class="w">
+</span><span class="no">true</span></code></pre>
+  </section>
+</div>
+<div class="detail" id="in_ports/1">
+    <div class="detail-header">
+    <a href="#in_ports/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">in_ports(comp)</span>
+          </div>
+  <section class="docstring">
+<p>Get the in ports of a component (instance)</p>
+<p>The ports of a component are used to connect a component instance to other
+component instances in a given workflow. The skitter runtime use the in ports
+of a component to provide the data that the component instance will react to.</p>
+<p>In other words, data sent to an in port of a component instance will be
+provided as an argument to the <code class="inline">react</code> function of a component.</p>
+<h2 id="in_ports/1-examples" class="section-heading">
+  <a href="#in_ports/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">in_ports</span><span class="p" data-group-id="5539508443-1">(</span><span class="nc">Identity</span><span class="p" data-group-id="5539508443-1">)</span><span class="w">
+</span><span class="p" data-group-id="5539508443-2">[</span><span class="ss">:value</span><span class="p" data-group-id="5539508443-2">]</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">in_ports</span><span class="p" data-group-id="5539508443-3">(</span><span class="n">example_instance</span><span class="p" data-group-id="5539508443-4">(</span><span class="p" data-group-id="5539508443-4">)</span><span class="p" data-group-id="5539508443-3">)</span><span class="w">
+</span><span class="p" data-group-id="5539508443-5">[</span><span class="ss">:value</span><span class="p" data-group-id="5539508443-5">]</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">in_ports</span><span class="p" data-group-id="5539508443-6">(</span><span class="nc">Features</span><span class="p" data-group-id="5539508443-6">)</span><span class="w">
+</span><span class="p" data-group-id="5539508443-7">[</span><span class="ss">:foo</span><span class="p">,</span><span class="w"> </span><span class="ss">:bar</span><span class="p" data-group-id="5539508443-7">]</span></code></pre>
+  </section>
+</div>
+<div class="detail" id="init/2">
+    <div class="detail-header">
+    <a href="#init/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">init(comp, args)</span>
+          </div>
+  <section class="docstring">
+<p>Create a component instance.</p>
+<p>Instantiate a component based on the component definition and initialization
+arguments. The <code class="inline">args</code> value provided to this function will be passed to the
+<code class="inline">init</code> function of the component.</p>
+<h2 id="init/2-examples" class="section-heading">
+  <a href="#init/2-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">init</span><span class="p" data-group-id="0098907773-1">(</span><span class="nc">Identity</span><span class="p">,</span><span class="w"> </span><span class="no">nil</span><span class="p" data-group-id="0098907773-1">)</span><span class="w">
+</span><span class="p" data-group-id="0098907773-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0098907773-3">%</span><span class="nc" data-group-id="0098907773-3">Instance</span><span class="p" data-group-id="0098907773-3">{</span><span class="ss">component</span><span class="p">:</span><span class="w"> </span><span class="nc">Identity</span><span class="p">,</span><span class="w"> </span><span class="ss">state</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0098907773-4">[</span><span class="p" data-group-id="0098907773-4">]</span><span class="p" data-group-id="0098907773-3">}</span><span class="p" data-group-id="0098907773-2">}</span></code></pre>
+  </section>
+</div>
+<div class="detail" id="is_component?/1">
+    <div class="detail-header">
+    <a href="#is_component?/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">is_component?(mod)</span>
+          </div>
+  <section class="docstring">
+<p>Verify if something is a component</p>
+<h2 id="is_component?/1-examples" class="section-heading">
+  <a href="#is_component?/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">is_component?</span><span class="p" data-group-id="5997918199-1">(</span><span class="mi">5</span><span class="p" data-group-id="5997918199-1">)</span><span class="w">
+</span><span class="no">false</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">is_component?</span><span class="p" data-group-id="5997918199-2">(</span><span class="nc">Enum</span><span class="p" data-group-id="5997918199-2">)</span><span class="w">
+</span><span class="no">false</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">is_component?</span><span class="p" data-group-id="5997918199-3">(</span><span class="nc">Identity</span><span class="p" data-group-id="5997918199-3">)</span><span class="w">
+</span><span class="no">true</span></code></pre>
+  </section>
+</div>
+<div class="detail" id="is_instance?/1">
+    <div class="detail-header">
+    <a href="#is_instance?/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">is_instance?(arg1)</span>
+          </div>
+  <section class="docstring">
+<p>Verify if something is a component instance</p>
+<h2 id="is_instance?/1-examples" class="section-heading">
+  <a href="#is_instance?/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">is_instance?</span><span class="p" data-group-id="5490276666-1">(</span><span class="ss">:foo</span><span class="p" data-group-id="5490276666-1">)</span><span class="w">
+</span><span class="no">false</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">is_instance?</span><span class="p" data-group-id="5490276666-2">(</span><span class="n">example_instance</span><span class="p" data-group-id="5490276666-3">(</span><span class="p" data-group-id="5490276666-3">)</span><span class="p" data-group-id="5490276666-2">)</span><span class="w">
+</span><span class="no">true</span></code></pre>
+  </section>
+</div>
+<div class="detail" id="name/1">
+    <div class="detail-header">
+    <a href="#name/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">name(comp)</span>
+          </div>
+  <section class="docstring">
+<p>Get the name of a component (instance)</p>
+<h2 id="name/1-examples" class="section-heading">
+  <a href="#name/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">name</span><span class="p" data-group-id="8055080185-1">(</span><span class="nc">Identity</span><span class="p" data-group-id="8055080185-1">)</span><span class="w">
+</span><span class="s">&quot;Identity&quot;</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">name</span><span class="p" data-group-id="8055080185-2">(</span><span class="n">example_instance</span><span class="p" data-group-id="8055080185-3">(</span><span class="p" data-group-id="8055080185-3">)</span><span class="p" data-group-id="8055080185-2">)</span><span class="w">
+</span><span class="s">&quot;Identity&quot;</span></code></pre>
+  </section>
+</div>
+<div class="detail" id="out_ports/1">
+    <div class="detail-header">
+    <a href="#out_ports/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">out_ports(comp)</span>
+          </div>
+  <section class="docstring">
+<p>Get the out ports of a component (instance)</p>
+<p>The ports of a component are used to connect a component instance to other
+component instances in a given workflow. A component instance can send data
+to its own out ports while it is reacting to data. In turn, the skitter
+runtime will send this data to any ports connected to this out port.</p>
+<h2 id="out_ports/1-examples" class="section-heading">
+  <a href="#out_ports/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">out_ports</span><span class="p" data-group-id="6241630328-1">(</span><span class="nc">Identity</span><span class="p" data-group-id="6241630328-1">)</span><span class="w">
+</span><span class="p" data-group-id="6241630328-2">[</span><span class="ss">:value</span><span class="p" data-group-id="6241630328-2">]</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">out_ports</span><span class="p" data-group-id="6241630328-3">(</span><span class="n">example_instance</span><span class="p" data-group-id="6241630328-4">(</span><span class="p" data-group-id="6241630328-4">)</span><span class="p" data-group-id="6241630328-3">)</span><span class="w">
+</span><span class="p" data-group-id="6241630328-5">[</span><span class="ss">:value</span><span class="p" data-group-id="6241630328-5">]</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">out_ports</span><span class="p" data-group-id="6241630328-6">(</span><span class="nc">Features</span><span class="p" data-group-id="6241630328-6">)</span><span class="w">
+</span><span class="p" data-group-id="6241630328-7">[</span><span class="p" data-group-id="6241630328-7">]</span></code></pre>
+  </section>
+</div>
+<div class="detail" id="react/2">
+    <div class="detail-header">
+    <a href="#react/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">react(inst, args)</span>
+          </div>
+  <section class="docstring">
+<p>Make the component instance react to data.</p>
+<p>This function will cause the react function of the component to be activated.
+The arguments that should be passed to this react function should be wrapped
+inside a list which will be automatically deconstructed by the react function.</p>
+<h2 id="react/2-examples" class="section-heading">
+  <a href="#react/2-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">react</span><span class="p" data-group-id="4921162294-1">(</span><span class="n">example_instance</span><span class="p" data-group-id="4921162294-2">(</span><span class="p" data-group-id="4921162294-2">)</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4921162294-3">[</span><span class="mi">20</span><span class="p" data-group-id="4921162294-3">]</span><span class="p" data-group-id="4921162294-1">)</span><span class="w">
+</span><span class="p" data-group-id="4921162294-4">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4921162294-5">%</span><span class="nc" data-group-id="4921162294-5">Instance</span><span class="p" data-group-id="4921162294-5">{</span><span class="ss">component</span><span class="p">:</span><span class="w"> </span><span class="nc">Identity</span><span class="p">,</span><span class="w"> </span><span class="ss">state</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4921162294-6">[</span><span class="p" data-group-id="4921162294-6">]</span><span class="p" data-group-id="4921162294-5">}</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4921162294-7">[</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p" data-group-id="4921162294-7">]</span><span class="p" data-group-id="4921162294-4">}</span></code></pre>
+  </section>
+</div>
+<div class="detail" id="react_after_failure/2">
+    <div class="detail-header">
+    <a href="#react_after_failure/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">react_after_failure(inst, args)</span>
+          </div>
+  <section class="docstring">
+<p>Make the component instance react to incoming data after a previous attempt to
+do so failed.</p>
+<p>This function performs the same job as <a href="#react/2"><code class="inline">react/2</code></a>. However, it will trigger any
+code defined in an after failure block inside the component instance.</p>
+<h2 id="react_after_failure/2-examples" class="section-heading">
+  <a href="#react_after_failure/2-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">react_after_failure</span><span class="p" data-group-id="3192926468-1">(</span><span class="n">example_instance</span><span class="p" data-group-id="3192926468-2">(</span><span class="p" data-group-id="3192926468-2">)</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3192926468-3">[</span><span class="mi">20</span><span class="p" data-group-id="3192926468-3">]</span><span class="p" data-group-id="3192926468-1">)</span><span class="w">
+</span><span class="p" data-group-id="3192926468-4">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3192926468-5">%</span><span class="nc" data-group-id="3192926468-5">Instance</span><span class="p" data-group-id="3192926468-5">{</span><span class="ss">component</span><span class="p">:</span><span class="w"> </span><span class="nc">Identity</span><span class="p">,</span><span class="w"> </span><span class="ss">state</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="3192926468-6">[</span><span class="p" data-group-id="3192926468-6">]</span><span class="p" data-group-id="3192926468-5">}</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3192926468-7">[</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p" data-group-id="3192926468-7">]</span><span class="p" data-group-id="3192926468-4">}</span></code></pre>
+  </section>
+</div>
+<div class="detail" id="restore_checkpoint/2">
+    <div class="detail-header">
+    <a href="#restore_checkpoint/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">restore_checkpoint(comp, checkpoint)</span>
+          </div>
+  <section class="docstring">
+<p>Restore a component instance based on a checkpoint.</p>
+<p>This function will create a new component instance and use the
+<code class="inline">restore_checkpoint</code> function of that component to restore the state of that
+instance based on a checkpoint.</p>
+<h2 id="restore_checkpoint/2-examples" class="section-heading">
+  <a href="#restore_checkpoint/2-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">restore_checkpoint</span><span class="p" data-group-id="9484141575-1">(</span><span class="nc">Features</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p" data-group-id="9484141575-1">)</span><span class="w">
+</span><span class="p" data-group-id="9484141575-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="9484141575-3">%</span><span class="nc" data-group-id="9484141575-3">Skitter.Component.Instance</span><span class="p" data-group-id="9484141575-3">{</span><span class="ss">component</span><span class="p">:</span><span class="w"> </span><span class="nc">Features</span><span class="p">,</span><span class="w"> </span><span class="ss">state</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="9484141575-4">[</span><span class="ss">f</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p" data-group-id="9484141575-4">]</span><span class="p" data-group-id="9484141575-3">}</span><span class="p" data-group-id="9484141575-2">}</span></code></pre>
+  </section>
+</div>
+<div class="detail" id="state_change?/1">
+    <div class="detail-header">
+    <a href="#state_change?/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">state_change?(comp)</span>
+          </div>
+  <section class="docstring">
+<p>Verify if a component (instance) can update its state.</p>
+<p>A component can update its state if it has the <code class="inline">state_change</code> effect.
+This effect signifies that every call to react needs to access a shared
+state which may be modified.</p>
+<h2 id="state_change?/1-examples" class="section-heading">
+  <a href="#state_change?/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">state_change?</span><span class="p" data-group-id="3469745171-1">(</span><span class="nc">Identity</span><span class="p" data-group-id="3469745171-1">)</span><span class="w">
+</span><span class="no">false</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">state_change?</span><span class="p" data-group-id="3469745171-2">(</span><span class="n">example_instance</span><span class="p" data-group-id="3469745171-3">(</span><span class="p" data-group-id="3469745171-3">)</span><span class="p" data-group-id="3469745171-2">)</span><span class="w">
+</span><span class="no">false</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">state_change?</span><span class="p" data-group-id="3469745171-4">(</span><span class="nc">Features</span><span class="p" data-group-id="3469745171-4">)</span><span class="w">
+</span><span class="no">true</span></code></pre>
+  </section>
+</div>
+<div class="detail" id="terminate/1">
+    <div class="detail-header">
+    <a href="#terminate/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">terminate(inst)</span>
+          </div>
+  <section class="docstring">
+<p>Ask a component instance to clean up its resources.</p>
+<p>This function will call the <code class="inline">terminate</code> function of the component instance.
+The terminate function of the component is used by the component instance to
+clean up any resources it may have opened.</p>
+<h2 id="terminate/1-examples" class="section-heading">
+  <a href="#terminate/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">terminate</span><span class="p" data-group-id="5317000549-1">(</span><span class="n">example_instance</span><span class="p" data-group-id="5317000549-2">(</span><span class="p" data-group-id="5317000549-2">)</span><span class="p" data-group-id="5317000549-1">)</span><span class="w">
+</span><span class="ss">:ok</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">terminate</span><span class="p" data-group-id="5317000549-3">(</span><span class="nc">Identity</span><span class="p" data-group-id="5317000549-3">)</span><span class="w">
+</span><span class="gt">** (FunctionClauseError) no function clause matching in Skitter.Component.terminate/1</span></code></pre>
+  </section>
+</div>
+        </section>
+
+          <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.19.1),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+            </span>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  <script src="dist/app-a0c90688fa.js"></script>
+  
+  </body>
+</html>
+

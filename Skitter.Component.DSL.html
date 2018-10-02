@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.19.1">
+    <title>Skitter.Component.DSL – Skitter v0.1.0</title>
+    <link rel="stylesheet" href="dist/app-240d7fc7e5.css" />
+    <script src="dist/sidebar_items-8b0cf169b1.js"></script>
+    
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
+    <div class="main">
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Sidebar</span>
+</button>
+<button class="sidebar-button night-mode-toggle">
+  <span class="icon-theme" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Theme</span>
+</button>
+<section class="sidebar">
+
+  <a href="api-reference.html" class="sidebar-projectLink">
+    <div class="sidebar-projectDetails">
+      <h1 class="sidebar-projectName">
+Skitter      </h1>
+      <h2 class="sidebar-projectVersion">
+        v0.1.0
+      </h2>
+    </div>
+  </a>
+
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <input name="q" type="text" id="search-list" class="search-input" placeholder="Search" aria-label="Search" autocomplete="off" />
+  </form>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+      <li><a id="exceptions-list" href="#full-list">Exceptions</a></li>
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+
+      <h1>
+        <small class="visible-xs">Skitter v0.1.0</small>
+Skitter.Component.DSL              </h1>
+
+
+        <section id="moduledoc">
+<p>DSL to define skitter components.</p>
+<p>This module offers a DSL to implement components. The entry point of this DSL
+is the <a href="#component/3"><code class="inline">component/3</code></a> macro.  Besides this, this module offers a set of macros
+which can be used inside the body of <a href="#component/3"><code class="inline">component/3</code></a>.  These macros cannot be
+used outside <a href="#component/3"><code class="inline">component/3</code></a>, as they rely on AST transformations to work.</p>
+<p>A component consists of a collection of metadata alongside the implementation
+of a set of functions. Metadata is provided in both the <em>header</em> of the
+component and in its body. Functions are implemented inside the component
+body. When writing a component, a <a href="#react/3"><code class="inline">react/3</code></a> function has to be implemented.
+Besides this, <a href="#init/3"><code class="inline">init/3</code></a> and <a href="#terminate/3"><code class="inline">terminate/3</code></a> can always be implemented (though
+this is not required), <a href="#create_checkpoint/3"><code class="inline">create_checkpoint/3</code></a>, <a href="#restore_checkpoint/3"><code class="inline">restore_checkpoint/3</code></a> have to
+be implemented if certain <em>effects</em> are present, <a href="#clean_checkpoint/3"><code class="inline">clean_checkpoint/3</code></a> may be
+implemented when these effects are present, but this is not required.</p>
+<p>A component which stores a running average is provided here as an example:</p>
+<pre><code class="nohighlight makeup elixir"><span class="n">component</span><span class="w"> </span><span class="nc">Average</span><span class="p">,</span><span class="w"> </span><span class="ss">in</span><span class="p">:</span><span class="w"> </span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="ss">out</span><span class="p">:</span><span class="w"> </span><span class="n">average</span><span class="w"> </span><span class="k" data-group-id="4819522053-1">do</span><span class="w">
+  </span><span class="s">&quot;Track the average of all received values&quot;</span><span class="w">
+
+  </span><span class="n">effect</span><span class="w"> </span><span class="n">state_change</span><span class="w">
+  </span><span class="n">fields</span><span class="w"> </span><span class="n">total</span><span class="p">,</span><span class="w"> </span><span class="n">counter</span><span class="w">
+
+  </span><span class="n">init</span><span class="w"> </span><span class="bp">_</span><span class="w"> </span><span class="k" data-group-id="4819522053-2">do</span><span class="w">
+    </span><span class="n">total</span><span class="w"> </span><span class="o">&lt;~</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="n">counter</span><span class="w"> </span><span class="o">&lt;~</span><span class="w"> </span><span class="mi">0</span><span class="w">
+  </span><span class="k" data-group-id="4819522053-2">end</span><span class="w">
+
+  </span><span class="n">react</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="k" data-group-id="4819522053-3">do</span><span class="w">
+    </span><span class="n">total</span><span class="w"> </span><span class="o">&lt;~</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">value</span><span class="w">
+    </span><span class="n">counter</span><span class="w"> </span><span class="o">&lt;~</span><span class="w"> </span><span class="n">counter</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w">
+
+    </span><span class="n">total</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">counter</span><span class="w"> </span><span class="o">~&gt;</span><span class="w"> </span><span class="n">average</span><span class="w">
+  </span><span class="k" data-group-id="4819522053-3">end</span><span class="w">
+</span><span class="k" data-group-id="4819522053-1">end</span></code></pre>
+<h2 id="module-metadata" class="section-heading">
+  <a href="#module-metadata" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Metadata
+</h2>
+
+<p>The following metadata can be provided when defining a component:</p>
+<table>
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left">Name</th><th style="text-align: left">Required?</th><th style="text-align: left">Location</th><th style="text-align: left">Syntax</th>
+</tr>
+</thead>
+<tr>
+<td style="text-align: left"><em>in_ports</em></td><td style="text-align: left">always</td><td style="text-align: left">header</td><td style="text-align: left"><code class="inline">in: [port, another_port]</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><em>out_ports</em></td><td style="text-align: left">no</td><td style="text-align: left">header</td><td style="text-align: left"><code class="inline">out: [port, another_port]</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><em>description</em></td><td style="text-align: left">no</td><td style="text-align: left">body</td><td style="text-align: left"><code class="inline">&quot;documentation goes here&quot;</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><em>effects</em></td><td style="text-align: left">no</td><td style="text-align: left">body</td><td style="text-align: left"><code class="inline">effect effect_name property</code></td>
+</tr>
+</table>
+<p>Ports define how a component can interact with a workflow.
+<em>in</em> ports provide a way for the component to <em>receive</em> values.
+A component instance automatically <em>reacts</em> to data when it has an input
+value on each of its input ports. <em>out</em> ports allow a component to publish
+data while <em>reacting</em> to incoming data. Any data published on an out port will
+automatically be forwarded to any component instance which is connected to
+this out port. A component must always specify its in ports, out ports do not
+need to be specified in which case the component cannot publish any data.
+As a syntactic convenience, a component can leave out the list notation when
+only one port is present, e.g. <code class="inline">in: foo, out: bar</code> is automatically
+transformed into <code class="inline">in: [foo], out: [bar]</code></p>
+<p>A description can be provided as the first line of a component. It simply
+serves as documentation for the component.</p>
+<p>Effects modify how the skitter runtime will handle the execution of a
+component. Currently, skitter supports the following effects:</p>
+<table>
+<colgroup>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left">Name</th><th style="text-align: left">Properties</th>
+</tr>
+</thead>
+<tr>
+<td style="text-align: left"><em>state_change</em></td><td style="text-align: left"><em>hidden</em></td>
+</tr>
+<tr>
+<td style="text-align: left"><em>external_effect</em></td><td style="text-align: left"></td>
+</tr>
+</table>
+<p>The <code class="inline">state_change</code> effect has to be specified when a component may modify its
+internal state when reacting to incoming data. Setting this effect will allow
+the modification of state in react. Furthermore, the skitter runtime will
+ensure that there are no concurrent modifications to this state when a
+workflow is executed on a distributed system. Finally, the skitter runtime
+will also guarantee that the state can be recovered if failure occurs.
+Skitter may not always be able to “see” the entire state of a component
+instance; this can be the case if the component relies on an external process
+to do most of the processing. In this case, a <code class="inline">state_change</code> effect can be
+annotated with the <code class="inline">hidden</code> property. When this is done, skitter will rely on
+custom implementations of checkpoint functionality to ensure the state remains
+recoverable in the case of partial failure.</p>
+<p>The <code class="inline">external_effect</code> effect has to be specified when a component may trigger
+external effects (i.e. I/O) when reacting. When this effect is specified,
+the <a href="#after_failure/1"><code class="inline">after_failure/1</code></a> macro may be used inside <a href="#react/3"><code class="inline">react/3</code></a>. This block enables
+the component developer to ensure that a side effect occurs only once.</p>
+<h2 id="module-functions" class="section-heading">
+  <a href="#module-functions" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Functions
+</h2>
+
+<p>Various functions can be implemented inside the body of <a href="#component/3"><code class="inline">component/3</code></a>.
+This can be done by using one of the macros defined and documented inside
+this module.</p>
+<h2 id="module-fields" class="section-heading">
+  <a href="#module-fields" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Fields
+</h2>
+
+<p>Fields can be specified inside the body of <a href="#component/3"><code class="inline">component/3</code></a> with the following
+syntax: <code class="inline">fields field1, field2</code>. These fields can be used to store <em>state</em>
+inside a component instance. Values can be assigned to fields inside both
+<a href="#init/3"><code class="inline">init/3</code></a> and <a href="#restore_checkpoint/3"><code class="inline">restore_checkpoint/3</code></a> with the following syntax:
+<code class="inline">field1 &lt;~ value</code>. These values can be obtained from the component instance
+inside every other component function (<a href="#react/3"><code class="inline">react/3</code></a>, <a href="#terminate/3"><code class="inline">terminate/3</code></a>,
+<a href="#create_checkpoint/3"><code class="inline">create_checkpoint/3</code></a> and <a href="#clean_checkpoint/3"><code class="inline">clean_checkpoint/3</code></a>) by using the field name.
+when the <code class="inline">state_change</code> effect is present, fields may be modified inside
+the body of <a href="#react/3"><code class="inline">react/3</code></a>.</p>
+        </section>
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+          
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#after_failure/1">after_failure(list)</a>
+  </div>
+    <div class="summary-synopsis"><p>Code that should only be executed after a failure occurred</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#clean_checkpoint/3">clean_checkpoint(list1, meta, list2)</a>
+  </div>
+    <div class="summary-synopsis"><p>Clean up an existing checkpoint</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#component/3">component(name, ports, list)</a>
+  </div>
+    <div class="summary-synopsis"><p>Create a skitter component</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#create_checkpoint/3">create_checkpoint(list1, meta, list2)</a>
+  </div>
+    <div class="summary-synopsis"><p>Create a checkpoint</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#error/1">error(reason)</a>
+  </div>
+    <div class="summary-synopsis"><p>Stop the current callback and return with an error</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#init/3">init(list1, meta, list2)</a>
+  </div>
+    <div class="summary-synopsis"><p>Instantiate a skitter component</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#react/3">react(args, meta, list)</a>
+  </div>
+    <div class="summary-synopsis"><p>React to incoming data</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#restore_checkpoint/3">restore_checkpoint(list1, meta, list2)</a>
+  </div>
+    <div class="summary-synopsis"><p>Restore a component instance from a checkpoint</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#skip/2">skip(state, output)</a>
+  </div>
+    <div class="summary-synopsis"><p>Stop the execution of react, and return the current instance state and spits</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#terminate/3">terminate(list1, meta, list2)</a>
+  </div>
+    <div class="summary-synopsis"><p>Generate component clean up code</p>
+</div>
+</div>
+  </div>
+          
+        </section>
+
+
+
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Functions
+          </h1>
+<div class="detail" id="after_failure/1">
+    <div class="detail-header">
+    <a href="#after_failure/1" class="detail-link" title="Link to this macro">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this macro</span>
+    </a>
+    <span class="signature">after_failure(list)</span>
+    
+      <span class="note">(macro)</span>
+      </div>
+  <section class="docstring">
+<p>Code that should only be executed after a failure occurred.</p>
+<p><em>Usable inside <a href="#react/3"><code class="inline">react/3</code></a> iff the component has an external state.</em></p>
+<p>The code in this block will only be executed if <a href="#react/3"><code class="inline">react/3</code></a> is triggered
+after a failure occurred. Otherwise, the code in this block will be ignored.</p>
+<p>This block is mainly meant to provide clean up code in case a component
+experiences some form of failure. For instance, if a call to react can
+produce some side effect, this block can check if that side effect already
+occurred before deciding whether or not execution should proceed.</p>
+<h2 id="after_failure/1-example" class="section-heading">
+  <a href="#after_failure/1-example" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Example
+</h2>
+
+<p>For instance, let’s look at the following react function, which writes a
+value to some database after which it sends it to an output port.</p>
+<pre><code class="nohighlight makeup elixir"><span class="n">react</span><span class="w"> </span><span class="n">val</span><span class="w"> </span><span class="k" data-group-id="5675880213-1">do</span><span class="w">
+  </span><span class="n">write_to_db</span><span class="p" data-group-id="5675880213-2">(</span><span class="n">val</span><span class="p" data-group-id="5675880213-2">)</span><span class="w">
+  </span><span class="n">val</span><span class="w"> </span><span class="o">~&gt;</span><span class="w"> </span><span class="n">port</span><span class="w">
+</span><span class="k" data-group-id="5675880213-1">end</span></code></pre>
+<p>The skitter runtime would have no way of knowing whether or not the database
+was updated if this component would fail in the middle of a call to <code class="inline">react</code>.
+However, in order to ensure the remainder of the workflow is still activated
+correctly, the value sent to <code class="inline">port</code> is needed.</p>
+<p>To solve this problem, we can use the <code class="inline">after_failure</code> block:</p>
+<pre><code class="nohighlight makeup elixir"><span class="n">react</span><span class="w"> </span><span class="n">val</span><span class="w"> </span><span class="k" data-group-id="8698318441-1">do</span><span class="w">
+  </span><span class="n">after_failure</span><span class="w"> </span><span class="k" data-group-id="8698318441-2">do</span><span class="w">
+    </span><span class="k">if</span><span class="w"> </span><span class="n">write_to_db_occurred?</span><span class="p" data-group-id="8698318441-3">(</span><span class="n">val</span><span class="p" data-group-id="8698318441-3">)</span><span class="w"> </span><span class="k" data-group-id="8698318441-4">do</span><span class="w">
+      </span><span class="n">val</span><span class="w"> </span><span class="o">~&gt;</span><span class="w"> </span><span class="n">port</span><span class="w">
+      </span><span class="n">skip</span><span class="w">
+    </span><span class="k" data-group-id="8698318441-4">end</span><span class="w">
+  </span><span class="k" data-group-id="8698318441-2">end</span><span class="w">
+
+  </span><span class="n">write_to_db</span><span class="p" data-group-id="8698318441-5">(</span><span class="n">val</span><span class="p" data-group-id="8698318441-5">)</span><span class="w">
+  </span><span class="n">val</span><span class="w"> </span><span class="o">~&gt;</span><span class="w"> </span><span class="n">port</span><span class="w">
+</span><span class="k" data-group-id="8698318441-1">end</span></code></pre>
+<p>The after_failure block will only be executed if a previous call to <code class="inline">react</code>
+failed. In this case, it would check if the database was updated. If this
+is the case, it sends the value to <code class="inline">port</code> and it uses <a href="#skip/2"><code class="inline">skip/2</code></a> to ensure
+the remainder of <code class="inline">react</code> is not carried out.</p>
+  </section>
+</div>
+<div class="detail" id="clean_checkpoint/3">
+    <div class="detail-header">
+    <a href="#clean_checkpoint/3" class="detail-link" title="Link to this macro">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this macro</span>
+    </a>
+    <span class="signature">clean_checkpoint(list1, meta, list2)</span>
+    
+      <span class="note">(macro)</span>
+      </div>
+  <section class="docstring">
+<p>Clean up an existing checkpoint.</p>
+<p>Clean up a checkpoint that will no longer be used by the skitter runtime.
+Do not call this macro manually, as it relies on AST transformations to work;
+use the following syntax instead:</p>
+<pre><code class="nohighlight makeup elixir"><span class="n">clean_checkpoint</span><span class="w"> </span><span class="n">arg</span><span class="w"> </span><span class="k" data-group-id="6003207212-1">do</span><span class="w">
+  </span><span class="c1"># Clean up here</span><span class="w">
+</span><span class="k" data-group-id="6003207212-1">end</span></code></pre>
+<p><a href="#clean_checkpoint/3"><code class="inline">clean_checkpoint/3</code></a> always accepts a single argument, which is the checkpoint
+that should be removed.</p>
+  </section>
+</div>
+<div class="detail" id="component/3">
+    <div class="detail-header">
+    <a href="#component/3" class="detail-link" title="Link to this macro">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this macro</span>
+    </a>
+    <span class="signature">component(name, ports, list)</span>
+    
+      <span class="note">(macro)</span>
+      </div>
+  <section class="docstring">
+<p>Create a skitter component.</p>
+<p>This macro serves as the entry point of the component DSL. <em>Don’t call any
+other macro in this module outside the body of <a href="#component/3"><code class="inline">component/3</code></a></em>; they rely on
+AST transformation to work properly.</p>
+<p>This macro will generate a skitter component, which is implemented as an
+elixir module with a set of predefined functions. The <code class="inline">name</code> argument to this
+function will be used as the name of the module. The <code class="inline">ports</code> argument is used
+to define the ports of the component, the <code class="inline">body</code> should implement the
+functionality of the component.</p>
+<h2 id="component/3-ports" class="section-heading">
+  <a href="#component/3-ports" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Ports
+</h2>
+
+<p>Ports are provided to the component as a keyword list with two valid keys:
+<code class="inline">in:</code>, and <code class="inline">out:</code>, representing the in and out ports respectively. In ports
+should always be provided while out ports may be omitted. Ports are specified
+as a list of Elixir <em>names</em>. As a syntactic convenience, the list notation can
+be omitted if only a single port exists.</p>
+<p>The following are all valid port specifications:</p>
+<ul>
+<li><code class="inline">in: foo, out: bar</code>
+</li>
+<li><code class="inline">in: foo</code>
+</li>
+<li><code class="inline">in: [foo, bar]</code>
+</li>
+<li><code class="inline">in: foo, out: [bar, baz]</code>
+</li>
+</ul>
+<p>The following port specifications will not be accepted by the component:</p>
+<ul>
+<li><code class="inline">out: foo</code>
+</li>
+<li><code class="inline">in: :foo</code>
+</li>
+</ul>
+<h2 id="component/3-body" class="section-heading">
+  <a href="#component/3-body" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Body
+</h2>
+
+<p>The following code is allowed inside the body of <a href="#component/3"><code class="inline">component/3</code></a>:</p>
+<ul>
+<li>An <code class="inline">effect</code> statement, which declares an <em>effect</em> of the component.
+</li>
+<li>A <code class="inline">field</code> statement, which specifies the data layout of the state of the
+component.
+</li>
+<li>A call to the <a href="#react/3"><code class="inline">react/3</code></a> macro, <strong>this is required</strong>.
+</li>
+<li>A call to <a href="#init/3"><code class="inline">init/3</code></a> or <a href="#terminate/3"><code class="inline">terminate/3</code></a>
+</li>
+<li>A call to <a href="#create_checkpoint/3"><code class="inline">create_checkpoint/3</code></a> or <a href="#restore_checkpoint/3"><code class="inline">restore_checkpoint/3</code></a>, <strong>this is
+required if the component has the hidden state_change effect</strong>.
+</li>
+<li>A call to <a href="#clean_checkpoint/3"><code class="inline">clean_checkpoint/3</code></a>; <strong>this is allowed, but not required when
+component has the hidden state_change effect</strong>.
+</li>
+<li>The definition of a <em>helper function</em>.
+</li>
+</ul>
+<p>Besides this, a <em>description</em> may be provided by providing a string as the
+first statement in the component body.</p>
+<h2 id="component/3-example" class="section-heading">
+  <a href="#component/3-example" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Example
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="n">component</span><span class="w"> </span><span class="nc">Average</span><span class="p">,</span><span class="w"> </span><span class="ss">in</span><span class="p">:</span><span class="w"> </span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="ss">out</span><span class="p">:</span><span class="w"> </span><span class="n">average</span><span class="w"> </span><span class="k" data-group-id="4886101829-1">do</span><span class="w">
+  </span><span class="s">&quot;Track the average of all received values&quot;</span><span class="w">
+
+  </span><span class="n">effect</span><span class="w"> </span><span class="n">state_change</span><span class="w">
+  </span><span class="n">fields</span><span class="w"> </span><span class="n">total</span><span class="p">,</span><span class="w"> </span><span class="n">counter</span><span class="w">
+
+  </span><span class="n">init</span><span class="w"> </span><span class="bp">_</span><span class="w"> </span><span class="k" data-group-id="4886101829-2">do</span><span class="w">
+    </span><span class="c1"># implementation goes here...</span><span class="w">
+  </span><span class="k" data-group-id="4886101829-2">end</span><span class="w">
+
+  </span><span class="n">react</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="k" data-group-id="4886101829-3">do</span><span class="w">
+    </span><span class="c1"># implementation goes here...</span><span class="w">
+  </span><span class="k" data-group-id="4886101829-3">end</span><span class="w">
+</span><span class="k" data-group-id="4886101829-1">end</span></code></pre>
+  </section>
+</div>
+<div class="detail" id="create_checkpoint/3">
+    <div class="detail-header">
+    <a href="#create_checkpoint/3" class="detail-link" title="Link to this macro">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this macro</span>
+    </a>
+    <span class="signature">create_checkpoint(list1, meta, list2)</span>
+    
+      <span class="note">(macro)</span>
+      </div>
+  <section class="docstring">
+<p>Create a checkpoint.</p>
+<p>This macro should be used to create a checkpoint based on a component
+instance. Do not call this macro directly as it relies on AST transformations.
+Use the following syntax instead:</p>
+<pre><code class="nohighlight makeup elixir"><span class="n">checkpoint</span><span class="w"> </span><span class="k" data-group-id="1413807908-1">do</span><span class="w">
+</span><span class="c1"># body</span><span class="w">
+</span><span class="k" data-group-id="1413807908-1">end</span></code></pre>
+<p>The return value (i.e. the value of the last statement in the body) is
+returned as the checkpoint to the skitter runtime.</p>
+  </section>
+</div>
+<div class="detail" id="error/1">
+    <div class="detail-header">
+    <a href="#error/1" class="detail-link" title="Link to this macro">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this macro</span>
+    </a>
+    <span class="signature">error(reason)</span>
+    
+      <span class="note">(macro)</span>
+      </div>
+  <section class="docstring">
+<p>Stop the current callback and return with an error.</p>
+<p>A reason should be provided as a string. In certain contexts (e.g. <a href="#init/3"><code class="inline">init/3</code></a>),
+the use of this macro will crash the entire workflow. Any spits or state
+updates that may have occurred prior to the invocation of this macro will be
+lost.</p>
+  </section>
+</div>
+<div class="detail" id="init/3">
+    <div class="detail-header">
+    <a href="#init/3" class="detail-link" title="Link to this macro">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this macro</span>
+    </a>
+    <span class="signature">init(list1, meta, list2)</span>
+    
+      <span class="note">(macro)</span>
+      </div>
+  <section class="docstring">
+<p>Instantiate a skitter component.</p>
+<p>Set up the initial state of the component based on a single argument provided
+by the workflow. Do not call this macro manually, as it relies on AST
+transformations to work. Instead, use the following syntax:</p>
+<pre><code class="nohighlight makeup elixir"><span class="n">init</span><span class="w"> </span><span class="n">arg</span><span class="w"> </span><span class="k" data-group-id="6064573289-1">do</span><span class="w">
+  </span><span class="c1"># Body goes here</span><span class="w">
+</span><span class="k" data-group-id="6064573289-1">end</span></code></pre>
+<p>Init always accepts a single argument, pattern matching can be used to
+deconstruct complex arguments which may be provided. Inside init,
+<code class="inline">field &lt;~ value</code> may be used to set initial values for the state fields.</p>
+  </section>
+</div>
+<div class="detail" id="react/3">
+    <div class="detail-header">
+    <a href="#react/3" class="detail-link" title="Link to this macro">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this macro</span>
+    </a>
+    <span class="signature">react(args, meta, list)</span>
+    
+      <span class="note">(macro)</span>
+      </div>
+  <section class="docstring">
+<p>React to incoming data.</p>
+<p>Implement the behaviour of the component when it receives data from the in
+ports. Do not call this macro manually as it relies on AST transformations
+to work, instead use the macro with the following syntax:</p>
+<pre><code class="nohighlight makeup elixir"><span class="n">react</span><span class="w"> </span><span class="n">arg_1</span><span class="p">,</span><span class="w"> </span><span class="n">arg_2</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p">,</span><span class="w"> </span><span class="n">arg_n</span><span class="w"> </span><span class="k" data-group-id="6841776880-1">do</span><span class="w">
+  </span><span class="c1"># Body goes here</span><span class="w">
+  </span><span class="k" data-group-id="6841776880-1">end</span></code></pre>
+<p>The amount of arguments in the arguments list of react should correspond to
+the amount of in ports of the component. When the component instance needs
+to react, every argument will be bound to the value provided to its
+corresponding in port. While reacting, the <code class="inline">~&gt;</code> operator can be used to <em>spit</em>
+data to any out port; <code class="inline">&lt;~</code> can be used to update the state of the component
+instance <em>if and only if</em> the component has the <code class="inline">state_change</code> effect.
+<a href="#after_failure/1"><code class="inline">after_failure/1</code></a> can be used inside <a href="#react/3"><code class="inline">react/3</code></a> <em>if and only if</em> the component
+has the <code class="inline">external_effect</code> effect.</p>
+<p>The return value of <a href="#react/3"><code class="inline">react/3</code></a> is silently ignored. However, any “spits” or
+state updates performed during the execution of <a href="#react/3"><code class="inline">react/3</code></a> will be provided to
+the skitter runtime.</p>
+<h2 id="react/3-spits" class="section-heading">
+  <a href="#react/3-spits" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Spits
+</h2>
+
+<p>While a component instance is reacting, it may <em>spit</em> a value to an out port
+with the following syntax: <code class="inline">value ~&gt; port</code>. The given value will be sent to
+any in_port that is connected to the out port in question. The values will
+only be sent after the “current” react is finished. Thus, if <a href="#error/1"><code class="inline">error/1</code></a> is
+called after <code class="inline">~&gt;</code>, the value will never be sent to the connected ports.</p>
+<h2 id="react/3-state-updates" class="section-heading">
+  <a href="#react/3-state-updates" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  State Updates
+</h2>
+
+<p>A component with the <em>state_change</em> effect may update any <em>field</em> of the state
+(defined by using <code class="inline">fields</code> inside <a href="#component/3"><code class="inline">component/3</code></a>) with the following syntax:
+<code class="inline">field &lt;~ value</code>. The component instance will immediately be updated to
+reflect these changes. This implies that later uses of <code class="inline">field</code> will contain
+the new state of the modified field. In spite of this, the skitter runtime
+will only see these changes once the “current” react is finished.</p>
+  </section>
+</div>
+<div class="detail" id="restore_checkpoint/3">
+    <div class="detail-header">
+    <a href="#restore_checkpoint/3" class="detail-link" title="Link to this macro">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this macro</span>
+    </a>
+    <span class="signature">restore_checkpoint(list1, meta, list2)</span>
+    
+      <span class="note">(macro)</span>
+      </div>
+  <section class="docstring">
+<p>Restore a component instance from a checkpoint.</p>
+<p>Similar to <a href="#init/3"><code class="inline">init/3</code></a>; set up the initial state of the component based on a
+checkpoint argument. Do not call this macro manually, as it relies on AST
+transformations to work. Instead, use the following syntax:</p>
+<pre><code class="nohighlight makeup elixir"><span class="n">restore_checkpoint</span><span class="w"> </span><span class="n">arg</span><span class="w"> </span><span class="k" data-group-id="4591020023-1">do</span><span class="w">
+  </span><span class="c1"># Recreate state here</span><span class="w">
+</span><span class="k" data-group-id="4591020023-1">end</span></code></pre>
+<p>restore_checkpoint always accepts a single argument, which is a checkpoint as
+returned by <a href="#create_checkpoint/3"><code class="inline">create_checkpoint/3</code></a>. The body of <a href="#restore_checkpoint/3"><code class="inline">restore_checkpoint/3</code></a> is
+responsible for reconstructing the component state (using the
+<code class="inline">field &lt;~ value</code> syntax) to set correct values for the state fields.</p>
+  </section>
+</div>
+<div class="detail" id="skip/2">
+    <div class="detail-header">
+    <a href="#skip/2" class="detail-link" title="Link to this macro">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this macro</span>
+    </a>
+    <span class="signature">skip(state, output)</span>
+    
+      <span class="note">(macro)</span>
+      </div>
+  <section class="docstring">
+<p>Stop the execution of react, and return the current instance state and spits.</p>
+<p>Using this macro will automatically stop the execution of react. Unlike the
+use of <a href="#error/1"><code class="inline">error/1</code></a>, any state changes and spit values will still be provided
+to the skitter runtime.</p>
+<p>This macro is useful when the execution of react should only continue under
+certain conditions. It is especially useful in an <a href="#after_failure/1"><code class="inline">after_failure/1</code></a> block, as
+it can be used to only continue the execution of react if no effect occurred
+in the original call to react.</p>
+<p>Do not provide arguments when using this macro (i.e. just use <code class="inline">skip</code>), the
+<code class="inline">state</code> and <code class="inline">output</code> arguments will automatically be injected by <a href="#react/3"><code class="inline">react/3</code></a>.</p>
+  </section>
+</div>
+<div class="detail" id="terminate/3">
+    <div class="detail-header">
+    <a href="#terminate/3" class="detail-link" title="Link to this macro">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this macro</span>
+    </a>
+    <span class="signature">terminate(list1, meta, list2)</span>
+    
+      <span class="note">(macro)</span>
+      </div>
+  <section class="docstring">
+<p>Generate component clean up code.</p>
+<p>This macro can be used to clean up any resources before a component instance
+is shut down. Do not call this macro manually as it relies on AST
+transformations to work. Use the following syntax:</p>
+<pre><code class="nohighlight makeup elixir"><span class="n">terminate</span><span class="w"> </span><span class="k" data-group-id="6783155458-1">do</span><span class="w">
+  </span><span class="c1"># body</span><span class="w">
+</span><span class="k" data-group-id="6783155458-1">end</span></code></pre>
+  </section>
+</div>
+        </section>
+
+          <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.19.1),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+            </span>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  <script src="dist/app-a0c90688fa.js"></script>
+  
+  </body>
+</html>
+

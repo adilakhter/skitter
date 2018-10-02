@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.19.1">
+    <title>Skitter.Workflow – Skitter v0.1.0</title>
+    <link rel="stylesheet" href="dist/app-240d7fc7e5.css" />
+    <script src="dist/sidebar_items-8b0cf169b1.js"></script>
+    
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
+    <div class="main">
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Sidebar</span>
+</button>
+<button class="sidebar-button night-mode-toggle">
+  <span class="icon-theme" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Theme</span>
+</button>
+<section class="sidebar">
+
+  <a href="api-reference.html" class="sidebar-projectLink">
+    <div class="sidebar-projectDetails">
+      <h1 class="sidebar-projectName">
+Skitter      </h1>
+      <h2 class="sidebar-projectVersion">
+        v0.1.0
+      </h2>
+    </div>
+  </a>
+
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <input name="q" type="text" id="search-list" class="search-input" placeholder="Search" aria-label="Search" autocomplete="off" />
+  </form>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+      <li><a id="exceptions-list" href="#full-list">Exceptions</a></li>
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+
+      <h1>
+        <small class="visible-xs">Skitter v0.1.0</small>
+Skitter.Workflow              </h1>
+
+
+        <section id="moduledoc">
+<p>Documentation for Workflow.</p>
+        </section>
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+          
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#fetch/2">fetch(workflow, key)</a>
+  </div>
+    <div class="summary-synopsis"><p>Invoked in order to access the value stored under <code class="inline">key</code> in the given term <code class="inline">term</code></p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_and_update/3">get_and_update(workflow, key, function)</a>
+  </div>
+    <div class="summary-synopsis"><p>Invoked in order to access the value under <code class="inline">key</code> and update it at the same time</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_component/2">get_component(workflow, key)</a>
+  </div>
+    <div class="summary-synopsis"><h2>Examples</h2>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_init/2">get_init(workflow, key)</a>
+  </div>
+    <div class="summary-synopsis"><h2>Examples</h2>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_links/2">get_links(workflow, key)</a>
+  </div>
+    <div class="summary-synopsis"><h2>Examples</h2>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#pop/2">pop(workflow, key)</a>
+  </div>
+    <div class="summary-synopsis"><p>Invoked to “pop” the value under <code class="inline">key</code> out of the given data structure</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#workflow/1">workflow(list)</a>
+  </div>
+    <div class="summary-synopsis"><p>Create a workflow</p>
+</div>
+</div>
+  </div>
+          
+        </section>
+
+
+
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Functions
+          </h1>
+<div class="detail" id="fetch/2">
+    <div class="detail-header">
+    <a href="#fetch/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">fetch(workflow, key)</span>
+          </div>
+  <section class="docstring">
+<p>Invoked in order to access the value stored under <code class="inline">key</code> in the given term <code class="inline">term</code>.</p>
+<p>This function should return <code class="inline">{:ok, value}</code> where <code class="inline">value</code> is the value under
+<code class="inline">key</code> if the key exists in the term, or <code class="inline">:error</code> if the key does not exist in
+the term.</p>
+<p>Many of the functions defined in the <a href="https://hexdocs.pm/elixir/Access.html"><code class="inline">Access</code></a> module internally call this
+function. This function is also used when the square-brackets access syntax
+(<code class="inline">structure[key]</code>) is used: the <a href="#fetch/2"><code class="inline">fetch/2</code></a> callback implemented by the module
+that defines the <code class="inline">structure</code> struct is invoked and if it returns <code class="inline">{:ok,
+value}</code> then <code class="inline">value</code> is returned, or if it returns <code class="inline">:error</code> then <code class="inline">nil</code> is
+returned.</p>
+<p>See the <a href="https://hexdocs.pm/elixir/Map.html#fetch/2"><code class="inline">Map.fetch/2</code></a> and <a href="https://hexdocs.pm/elixir/Keyword.html#fetch/2"><code class="inline">Keyword.fetch/2</code></a> implementations for examples of
+how to implement this callback.</p>
+<p>Callback implementation for <a href="https://hexdocs.pm/elixir/Access.html#c:fetch/2"><code class="inline">Access.fetch/2</code></a>.</p>
+  </section>
+</div>
+<div class="detail" id="get_and_update/3">
+    <div class="detail-header">
+    <a href="#get_and_update/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">get_and_update(workflow, key, function)</span>
+          </div>
+  <section class="docstring">
+<p>Invoked in order to access the value under <code class="inline">key</code> and update it at the same time.</p>
+<p>The implementation of this callback should invoke <code class="inline">fun</code> with the value under
+<code class="inline">key</code> in the passed structure <code class="inline">data</code>, or with <code class="inline">nil</code> if <code class="inline">key</code> is not present in it.
+This function must return either <code class="inline">{get_value, update_value}</code> or <code class="inline">:pop</code>.</p>
+<p>If the passed function returns <code class="inline">{get_value, update_value}</code>,
+the return value of this callback should be <code class="inline">{get_value, new_data}</code>, where:</p>
+<ul>
+<li><p><code class="inline">get_value</code> is the retrieved value (which can be operated on before being returned)</p>
+</li>
+<li><p><code class="inline">update_value</code> is the new value to be stored under <code class="inline">key</code></p>
+</li>
+<li><p><code class="inline">new_data</code> is <code class="inline">data</code> after updating the value of <code class="inline">key</code> with <code class="inline">update_value</code>.</p>
+</li>
+</ul>
+<p>If the passed function returns <code class="inline">:pop</code>, the return value of this callback
+must be <code class="inline">{value, new_data}</code> where <code class="inline">value</code> is the value under <code class="inline">key</code>
+(or <code class="inline">nil</code> if not present) and <code class="inline">new_data</code> is <code class="inline">data</code> without <code class="inline">key</code>.</p>
+<p>See the implementations of <a href="https://hexdocs.pm/elixir/Map.html#get_and_update/3"><code class="inline">Map.get_and_update/3</code></a> or <a href="https://hexdocs.pm/elixir/Keyword.html#get_and_update/3"><code class="inline">Keyword.get_and_update/3</code></a>
+for more examples.</p>
+<p>Callback implementation for <a href="https://hexdocs.pm/elixir/Access.html#c:get_and_update/3"><code class="inline">Access.get_and_update/3</code></a>.</p>
+  </section>
+</div>
+<div class="detail" id="get_component/2">
+    <div class="detail-header">
+    <a href="#get_component/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">get_component(workflow, key)</span>
+          </div>
+  <section class="docstring">
+<h2 id="get_component/2-examples" class="section-heading">
+  <a href="#get_component/2-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<p>  iex&gt; get_component(example_workflow(), :i)
+  Identity
+  iex&gt; get_component(example_workflow(), :does_not_exist)
+  ** (KeyError) Key <code class="inline">:does_not_exist</code> not found in workflow</p>
+  </section>
+</div>
+<div class="detail" id="get_init/2">
+    <div class="detail-header">
+    <a href="#get_init/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">get_init(workflow, key)</span>
+          </div>
+  <section class="docstring">
+<h2 id="get_init/2-examples" class="section-heading">
+  <a href="#get_init/2-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<p>  iex&gt; get_init(example_workflow(), :i)
+  nil</p>
+  </section>
+</div>
+<div class="detail" id="get_links/2">
+    <div class="detail-header">
+    <a href="#get_links/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">get_links(workflow, key)</span>
+          </div>
+  <section class="docstring">
+<h2 id="get_links/2-examples" class="section-heading">
+  <a href="#get_links/2-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<p>  iex&gt; get_links(example_workflow(), :i)
+  []</p>
+  </section>
+</div>
+<div class="detail" id="pop/2">
+    <div class="detail-header">
+    <a href="#pop/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">pop(workflow, key)</span>
+          </div>
+  <section class="docstring">
+<p>Invoked to “pop” the value under <code class="inline">key</code> out of the given data structure.</p>
+<p>When <code class="inline">key</code> exists in the given structure <code class="inline">data</code>, the implementation should
+return a <code class="inline">{value, new_data}</code> tuple where <code class="inline">value</code> is the value that was under
+<code class="inline">key</code> and <code class="inline">new_data</code> is <code class="inline">term</code> without <code class="inline">key</code>.</p>
+<p>When <code class="inline">key</code> is not present in the given structure, a tuple <code class="inline">{value, data}</code>
+should be returned, where <code class="inline">value</code> is implementation-defined.</p>
+<p>See the implementations for <a href="https://hexdocs.pm/elixir/Map.html#pop/3"><code class="inline">Map.pop/3</code></a> or <a href="https://hexdocs.pm/elixir/Keyword.html#pop/3"><code class="inline">Keyword.pop/3</code></a> for more examples.</p>
+<p>Callback implementation for <a href="https://hexdocs.pm/elixir/Access.html#c:pop/2"><code class="inline">Access.pop/2</code></a>.</p>
+  </section>
+</div>
+<div class="detail" id="workflow/1">
+    <div class="detail-header">
+    <a href="#workflow/1" class="detail-link" title="Link to this macro">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this macro</span>
+    </a>
+    <span class="signature">workflow(list)</span>
+    
+      <span class="note">(macro)</span>
+      </div>
+  <section class="docstring">
+<p>Create a workflow.</p>
+  </section>
+</div>
+        </section>
+
+          <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.19.1),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+            </span>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  <script src="dist/app-a0c90688fa.js"></script>
+  
+  </body>
+</html>
+

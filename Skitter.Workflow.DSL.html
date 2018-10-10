@@ -5,9 +5,9 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.19.1">
-    <title>Skitter.Workflow.DSL – Skitter v0.1.0</title>
+    <title>Skitter.Workflow.DSL – Skitter v0.1.0-dev</title>
     <link rel="stylesheet" href="dist/app-240d7fc7e5.css" />
-    <script src="dist/sidebar_items-09568e5053.js"></script>
+    <script src="dist/sidebar_items-fbb9fd1862.js"></script>
     
   </head>
   <body data-type="modules">
@@ -23,12 +23,12 @@
 </button>
 <section class="sidebar">
 
-  <a href="api-reference.html" class="sidebar-projectLink">
+  <a href="https://soft.vub.ac.be/~mathsaey/skitter/" class="sidebar-projectLink">
     <div class="sidebar-projectDetails">
       <h1 class="sidebar-projectName">
 Skitter      </h1>
       <h2 class="sidebar-projectVersion">
-        v0.1.0
+        v0.1.0-dev
       </h2>
     </div>
   </a>
@@ -58,39 +58,87 @@ Skitter      </h1>
 
 
       <h1>
-        <small class="visible-xs">Skitter v0.1.0</small>
-Skitter.Workflow.DSL              </h1>
+        <small class="visible-xs">Skitter v0.1.0-dev</small>
+Skitter.Workflow.DSL        
+          <a href="https://github.com/mathsaey/skitter/blob/develop/lib/workflow/dsl.ex#L7" title="View Source" class="view-source" rel="help">
+            <span class="icon-code" aria-hidden="true"></span>
+            <span class="sr-only">View Source</span>
+          </a>
+      </h1>
 
 
         <section id="moduledoc">
 <p>DSL to define skitter workflows.</p>
-<p>This module offers the <a href="#workflow/1"><code class="inline">workflow/1</code></a> macro, which should be used if you plan
-to write a workflow by hand. If you want to automatically generate a workflow
-(e.g. based on the input to some graphical tool), you can use this format or
-the layout described in <a href="Skitter.Component.html"><code class="inline">Skitter.Component</code></a>. Internally, the macro will
-compile its input to the same representation. Additionally, this macro will
-ensure that the workflow does not contain some common errors.</p>
-<p>A workflow definition is a list of component instances with a unique name.
-The following syntax is used:
-<code class="inline">instance_name = {component_module, initialization_arguments, links}</code>.
-For instance, if we have a component <code class="inline">Foo</code>, with in ports <code class="inline">a, b, c</code> and out
-ports: <code class="inline">d, e</code> we can define the following workflow:</p>
-<pre><code class="nohighlight makeup elixir"><span class="n">workflow</span><span class="w"> </span><span class="k" data-group-id="4202927500-1">do</span><span class="w">
-  </span><span class="n">instance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="4202927500-2">{</span><span class="w">
-    </span><span class="nc">Foo</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p">,</span><span class="w">
-    </span><span class="n">d</span><span class="w"> </span><span class="o">~&gt;</span><span class="w"> </span><span class="n">other</span><span class="o">.</span><span class="n">a</span><span class="p">,</span><span class="w">
-    </span><span class="n">d</span><span class="w"> </span><span class="o">~&gt;</span><span class="w"> </span><span class="n">other</span><span class="o">.</span><span class="n">b</span><span class="p">,</span><span class="w">
-    </span><span class="n">e</span><span class="w"> </span><span class="o">~&gt;</span><span class="w"> </span><span class="n">other</span><span class="o">.</span><span class="n">c</span><span class="w">
-  </span><span class="p" data-group-id="4202927500-2">}</span><span class="w">
-  </span><span class="n">other</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="4202927500-3">{</span><span class="nc">Foo</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p" data-group-id="4202927500-3">}</span><span class="w">
-</span><span class="k" data-group-id="4202927500-1">end</span></code></pre>
-<p>This workflow consists of multiple instances of the same component (<code class="inline">Foo</code>).
-Foo does not take any initialisation arguments (which is why <code class="inline">_</code> is used).
-The first instance of <code class="inline">Foo</code> (<code class="inline">instance</code>) is linked to the second instance of
-<code class="inline">Foo</code> (<code class="inline">other</code>) through the use of the link syntax:
-<code class="inline">out_port ~&gt; instance.in_port</code>. As shown in the example, multiple links can
-start from the same out port, however, only one incoming link is allowed per
-input port.</p>
+<p>This module defines the <a href="#workflow/1"><code class="inline">workflow/1</code></a> macro, which can be used to create a
+Skitter workflow. This macro is also exported by the <a href="Skitter.Workflow.html"><code class="inline">Skitter.Workflow</code></a>
+module.</p>
+<p>A Skitter workflow is defined by a set of uniquely named <em>proto-instances</em> and
+<em>sources</em>. Proto-instances define the components that will process the data
+flowing through a workflow, while sources determine how data that enters the
+workflow is sent to the proto-instances.</p>
+<p>As an example, let’s look at a workflow which uses the components <code class="inline">Foo</code> and
+<code class="inline">Bar</code>. <code class="inline">Foo</code> has in ports <code class="inline">a</code> and <code class="inline">b</code>, and out ports <code class="inline">x</code> and <code class="inline">y</code>; <code class="inline">Bar</code> only
+has a single in port: <code class="inline">val</code>.</p>
+<pre><code class="nohighlight makeup elixir"><span class="kn">import</span><span class="w"> </span><span class="nc">Skitter.Workflow</span><span class="w">
+
+</span><span class="n">workflow</span><span class="w"> </span><span class="k" data-group-id="2782522774-1">do</span><span class="w">
+  </span><span class="n">source</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">~&gt;</span><span class="w"> </span><span class="p" data-group-id="2782522774-2">{</span><span class="n">f1</span><span class="o">.</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">f1</span><span class="o">.</span><span class="n">b</span><span class="p" data-group-id="2782522774-2">}</span><span class="w">
+
+  </span><span class="n">f1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="2782522774-3">{</span><span class="nc">Foo</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2782522774-4">{</span><span class="ss">:some_atom</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p" data-group-id="2782522774-4">}</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">~&gt;</span><span class="w"> </span><span class="n">f2</span><span class="o">.</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">~&gt;</span><span class="w"> </span><span class="n">f2</span><span class="o">.</span><span class="n">b</span><span class="p" data-group-id="2782522774-3">}</span><span class="w">
+  </span><span class="n">f2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="2782522774-5">{</span><span class="nc">Foo</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2782522774-6">{</span><span class="ss">:some_atom</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p" data-group-id="2782522774-6">}</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">~&gt;</span><span class="w"> </span><span class="n">bar</span><span class="o">.</span><span class="n">val</span><span class="p" data-group-id="2782522774-5">}</span><span class="w">
+
+  </span><span class="n">bar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="2782522774-7">{</span><span class="nc">Bar</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p" data-group-id="2782522774-7">}</span><span class="w">
+</span><span class="k" data-group-id="2782522774-1">end</span></code></pre>
+<p>This workflow consists of two proto-instances of the same component: <code class="inline">Foo</code>,
+a proto-instance of the component <code class="inline">Bar</code> and a single source <code class="inline">s</code> which links to
+<code class="inline">Foo</code>.</p>
+<h2 id="module-sources" class="section-heading">
+  <a href="#module-sources" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Sources
+</h2>
+
+<p>Sources connect a workflow to the external world and are defined with the
+following syntax:</p>
+<pre><code class="nohighlight makeup elixir"><span class="n">source</span><span class="w"> </span><span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span><span class="w"> </span><span class="o">~&gt;</span><span class="w"> </span><span class="p" data-group-id="8560663727-1">{</span><span class="o">&lt;</span><span class="n">instance</span><span class="w"> </span><span class="n">identifier</span><span class="o">&gt;</span><span class="o">.</span><span class="o">&lt;</span><span class="n">port</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="o">&lt;</span><span class="n">instance</span><span class="w"> </span><span class="n">identifier</span><span class="o">&gt;</span><span class="o">.</span><span class="o">&lt;</span><span class="n">port</span><span class="o">&gt;</span><span class="p" data-group-id="8560663727-1">}</span><span class="w">
+</span></code></pre>
+<p>Thus, a source definition consists of two parts: a name and a list of
+destinations. A destination is specified as the combination of a
+proto-instance identifier and the name of a valid in port of this
+proto-instance. When a source only links to a single destination, the curly
+braces may be omitted: <code class="inline">source s ~&gt; foo.bar</code>.</p>
+<p>A workflow may have multiple  sources.</p>
+<p>TODO: Provide additional info when runtime documentation is ready</p>
+<h2 id="module-proto-instances" class="section-heading">
+  <a href="#module-proto-instances" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Proto-instances
+</h2>
+
+<p>A proto-instance is a tuple which contains all the data that is needed to
+initialize a proper component instance. A proto-instance is defined with the
+following syntax:</p>
+<pre><code class="nohighlight makeup elixir"><span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="8634374202-1">{</span><span class="w">
+  </span><span class="o">&lt;</span><span class="nc">Component</span><span class="o">&gt;</span><span class="p">,</span><span class="w">
+  </span><span class="o">&lt;</span><span class="n">init</span><span class="w"> </span><span class="n">argument</span><span class="o">&gt;</span><span class="p">,</span><span class="w">
+  </span><span class="o">&lt;</span><span class="n">out_port</span><span class="o">&gt;</span><span class="w"> </span><span class="o">~&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">instance</span><span class="w"> </span><span class="n">identifier</span><span class="o">&gt;</span><span class="o">.</span><span class="o">&lt;</span><span class="n">port</span><span class="o">&gt;</span><span class="p">,</span><span class="w">
+  </span><span class="o">&lt;</span><span class="n">out_port</span><span class="o">&gt;</span><span class="w"> </span><span class="o">~&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">instance</span><span class="w"> </span><span class="n">identifier</span><span class="o">&gt;</span><span class="o">.</span><span class="o">&lt;</span><span class="n">port</span><span class="o">&gt;</span><span class="w">
+</span><span class="p" data-group-id="8634374202-1">}</span></code></pre>
+<p>A proto-instance is defined by a Skitter component, its initialization
+argument and by its links:</p>
+<ul>
+<li>The component determines the component that will be instantiated inside
+the workflow.
+</li>
+<li>The initialization argument will be passed to the <a href="Skitter.Component.html#init/2"><code class="inline">Skitter.Component.init/2</code></a>
+function alongside the component to initialize the component instance.
+It can be used to configure the component before it is initialized.
+<code class="inline">_</code> can be used when no arguments need to be passed.
+</li>
+<li>The links determine to which proto-instances this proto-instance is
+connected. A link is specified as a combination of an out port on the
+proto-instance that is being defined, a proto-instance identifier and a valid
+in port on this proto-instance.
+</li>
+</ul>
         </section>
 
         <section id="summary" class="details-list">
@@ -134,6 +182,10 @@ input port.</p>
       <span class="sr-only">Link to this macro</span>
     </a>
     <span class="signature">workflow(list)</span>
+      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/workflow/dsl.ex#L101" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
     
       <span class="note">(macro)</span>
       </div>

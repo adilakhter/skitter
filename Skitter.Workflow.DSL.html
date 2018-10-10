@@ -7,7 +7,7 @@
     <meta name="generator" content="ExDoc v0.19.1">
     <title>Skitter.Workflow.DSL – Skitter v0.1.0</title>
     <link rel="stylesheet" href="dist/app-240d7fc7e5.css" />
-    <script src="dist/sidebar_items-8b0cf169b1.js"></script>
+    <script src="dist/sidebar_items-09568e5053.js"></script>
     
   </head>
   <body data-type="modules">
@@ -75,15 +75,15 @@ The following syntax is used:
 <code class="inline">instance_name = {component_module, initialization_arguments, links}</code>.
 For instance, if we have a component <code class="inline">Foo</code>, with in ports <code class="inline">a, b, c</code> and out
 ports: <code class="inline">d, e</code> we can define the following workflow:</p>
-<pre><code class="nohighlight makeup elixir"><span class="n">workflow</span><span class="w"> </span><span class="k" data-group-id="1582848522-1">do</span><span class="w">
-  </span><span class="n">instance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="1582848522-2">{</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="n">workflow</span><span class="w"> </span><span class="k" data-group-id="4202927500-1">do</span><span class="w">
+  </span><span class="n">instance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="4202927500-2">{</span><span class="w">
     </span><span class="nc">Foo</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p">,</span><span class="w">
     </span><span class="n">d</span><span class="w"> </span><span class="o">~&gt;</span><span class="w"> </span><span class="n">other</span><span class="o">.</span><span class="n">a</span><span class="p">,</span><span class="w">
     </span><span class="n">d</span><span class="w"> </span><span class="o">~&gt;</span><span class="w"> </span><span class="n">other</span><span class="o">.</span><span class="n">b</span><span class="p">,</span><span class="w">
     </span><span class="n">e</span><span class="w"> </span><span class="o">~&gt;</span><span class="w"> </span><span class="n">other</span><span class="o">.</span><span class="n">c</span><span class="w">
-  </span><span class="p" data-group-id="1582848522-2">}</span><span class="w">
-  </span><span class="n">other</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="1582848522-3">{</span><span class="nc">Foo</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p" data-group-id="1582848522-3">}</span><span class="w">
-</span><span class="k" data-group-id="1582848522-1">end</span></code></pre>
+  </span><span class="p" data-group-id="4202927500-2">}</span><span class="w">
+  </span><span class="n">other</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="4202927500-3">{</span><span class="nc">Foo</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p" data-group-id="4202927500-3">}</span><span class="w">
+</span><span class="k" data-group-id="4202927500-1">end</span></code></pre>
 <p>This workflow consists of multiple instances of the same component (<code class="inline">Foo</code>).
 Foo does not take any initialisation arguments (which is why <code class="inline">_</code> is used).
 The first instance of <code class="inline">Foo</code> (<code class="inline">instance</code>) is linked to the second instance of

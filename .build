@@ -4,7 +4,7 @@ fonts/icomoon.eot
 fonts/icomoon.svg
 fonts/icomoon.ttf
 fonts/icomoon.woff
-dist/sidebar_items-8b0cf169b1.js
+dist/sidebar_items-09568e5053.js
 api-reference.html
 search.html
 404.html
@@ -12,6 +12,5 @@ Skitter.Component.html
 Skitter.Component.DSL.html
 Skitter.Workflow.html
 Skitter.Workflow.DSL.html
-Skitter.Workflow.Source.html
 Skitter.DefinitionError.html
 index.html

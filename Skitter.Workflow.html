@@ -7,7 +7,7 @@
     <meta name="generator" content="ExDoc v0.19.1">
     <title>Skitter.Workflow – Skitter v0.1.0-dev</title>
     <link rel="stylesheet" href="dist/app-240d7fc7e5.css" />
-    <script src="dist/sidebar_items-fbb9fd1862.js"></script>
+    <script src="dist/sidebar_items-75f0b364c1.js"></script>
     
   </head>
   <body data-type="modules">
@@ -79,6 +79,39 @@ Skitter.Workflow
             </a>
             Summary
           </h1>
+  <div class="summary-types summary">
+    <h2>
+      <a href="#types">Types</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:destination/0">destination()</a>
+  </div>
+    <div class="summary-synopsis"><p>Address a token can be sent to</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:proto_instance/0">proto_instance()</a>
+  </div>
+    <div class="summary-synopsis"><p>Proto-instance type</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:t/0">t()</a>
+  </div>
+    <div class="summary-synopsis"><p>Workflow data structure</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:workflow_identifier/0">workflow_identifier()</a>
+  </div>
+    <div class="summary-synopsis"><p>Identifier of an instance or source in a workflow</p>
+</div>
+</div>
+  </div>
           
   <div class="summary-functions summary">
     <h2>
@@ -116,6 +149,108 @@ Skitter.Workflow
           
         </section>
 
+        <section id="types" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#types">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Types
+          </h1>
+          <div class="types-list">
+<div class="detail" id="t:destination/0">
+    <div class="detail-header">
+    <a href="#t:destination/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <span class="signature">destination()</span>
+      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/workflow.ex#L21" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>destination() :: {<a href="#t:workflow_identifier/0">workflow_identifier</a>(), <a href="Skitter.Component.html#t:port_name/0">Skitter.Component.port_name</a>()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Address a token can be sent to.</p>
+<p>Specified as the combination of a valid workflow identifier that refers to a
+component instance and the name of a valid port of that component.</p>
+  </section>
+</div>
+<div class="detail" id="t:proto_instance/0">
+    <div class="detail-header">
+    <a href="#t:proto_instance/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <span class="signature">proto_instance()</span>
+      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/workflow.ex#L30" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>proto_instance() ::
+  {<a href="Skitter.Component.html#t:t/0">Skitter.Component.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>(),
+   [{<a href="Skitter.Component.html#t:port_name/0">Skitter.Component.port_name</a>(), [<a href="#t:destination/0">destination</a>()]}]}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Proto-instance type.</p>
+<p>A proto-instance is a tuple which contains the component it represents, its
+init argument (which can be anything), and a list of destinations, arranged
+by out port.</p>
+  </section>
+</div>
+<div class="detail" id="t:t/0">
+    <div class="detail-header">
+    <a href="#t:t/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <span class="signature">t()</span>
+      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/workflow.ex#L41" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>t() :: %Skitter.Workflow{
+  instances: %{required(<a href="#t:workflow_identifier/0">workflow_identifier</a>()) => <a href="#t:proto_instance/0">proto_instance</a>()},
+  sources: %{required(<a href="#t:workflow_identifier/0">workflow_identifier</a>()) => [<a href="#t:destination/0">destination</a>()]}
+}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Workflow data structure.</p>
+<p>A workflow is defined as a combination of named sources and proto-instances.</p>
+  </section>
+</div>
+<div class="detail" id="t:workflow_identifier/0">
+    <div class="detail-header">
+    <a href="#t:workflow_identifier/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <span class="signature">workflow_identifier()</span>
+      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/workflow.ex#L13" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>workflow_identifier() :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Identifier of an instance or source in a workflow.</p>
+  </section>
+</div>
+          </div>
+        </section>
 
 
         <section id="functions" class="details-list">
@@ -133,7 +268,7 @@ Skitter.Workflow
       <span class="sr-only">Link to this function</span>
     </a>
     <span class="signature">get_component(workflow, key)</span>
-      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/workflow.ex#L37" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/workflow.ex#L71" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -157,7 +292,7 @@ Skitter.Workflow
       <span class="sr-only">Link to this function</span>
     </a>
     <span class="signature">get_init(workflow, key)</span>
-      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/workflow.ex#L48" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/workflow.ex#L82" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -179,7 +314,7 @@ Skitter.Workflow
       <span class="sr-only">Link to this function</span>
     </a>
     <span class="signature">get_links(workflow, key)</span>
-      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/workflow.ex#L59" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/workflow.ex#L93" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -201,7 +336,7 @@ Skitter.Workflow
       <span class="sr-only">Link to this macro</span>
     </a>
     <span class="signature">workflow(list)</span>
-      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/workflow.ex#L70" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/workflow.ex#L104" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>

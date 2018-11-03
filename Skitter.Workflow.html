@@ -7,7 +7,7 @@
     <meta name="generator" content="ExDoc v0.19.1">
     <title>Skitter.Workflow – Skitter v0.1.0-dev</title>
     <link rel="stylesheet" href="dist/app-240d7fc7e5.css" />
-    <script src="dist/sidebar_items-614993f460.js"></script>
+    <script src="dist/sidebar_items-7a7801ae3f.js"></script>
     
   </head>
   <body data-type="modules">
@@ -117,13 +117,6 @@ which can be used to define a skitter workflow.</p>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#t:token/0">token()</a>
-  </div>
-    <div class="summary-synopsis"><p>Data record with a destination</p>
-</div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
     <a href="#t:workflow_identifier/0">workflow_identifier()</a>
   </div>
     <div class="summary-synopsis"><p>Identifier of an instance or source in a workflow</p>
@@ -158,30 +151,30 @@ which can be used to define a skitter workflow.</p>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#init_proto_instance/2">init_proto_instance(workflow, key)</a>
+    <a href="#get_source!/2">get_source!(workflow, key)</a>
+  </div>
+    <div class="summary-synopsis"><p>Obtain the destinations of a source based on its name</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_sources/1">get_sources(workflow)</a>
+  </div>
+    <div class="summary-synopsis"><p>List the sources of a component</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#init_proto_instance!/2">init_proto_instance!(workflow, key)</a>
   </div>
     <div class="summary-synopsis"><p>Initialize the proto_instance at <code class="inline">key</code></p>
 </div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#source_data_to_tokens!/2">source_data_to_tokens!(workflow, source_data)</a>
+    <a href="#sources_match?/2">sources_match?(workflow, kw_list)</a>
   </div>
-    <div class="summary-synopsis"><p>Generate tokens out of the initial data for a workflow</p>
-</div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#spits_to_tokens!/3">spits_to_tokens!(workflow, key, spits)</a>
-  </div>
-    <div class="summary-synopsis"><p>Generate tokens from spits like <a href="#spits_to_tokens/2"><code class="inline">spits_to_tokens/2</code></a>, but fetch the links</p>
-</div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#spits_to_tokens/2">spits_to_tokens(links, spits)</a>
-  </div>
-    <div class="summary-synopsis"><p>Create a list of tagged tokens based on the outputs of a component instance</p>
+    <div class="summary-synopsis"><p>Check if a keyword lists matches with the sources of a workflow</p>
 </div>
 </div>
 <div class="summary-row">
@@ -256,7 +249,7 @@ of the component, while the values for this key correspond to all the
       <span class="sr-only">Link to this type</span>
     </a>
     <span class="signature">proto_instance()</span>
-      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/workflow.ex#L47" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/workflow.ex#L43" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -279,7 +272,7 @@ by out port.</p>
       <span class="sr-only">Link to this type</span>
     </a>
     <span class="signature">t()</span>
-      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/workflow.ex#L58" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/workflow.ex#L54" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -294,26 +287,6 @@ by out port.</p>
   <section class="docstring">
 <p>Workflow data structure.</p>
 <p>A workflow is defined as a combination of named sources and proto-instances.</p>
-  </section>
-</div>
-<div class="detail" id="t:token/0">
-    <div class="detail-header">
-    <a href="#t:token/0" class="detail-link" title="Link to this type">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this type</span>
-    </a>
-    <span class="signature">token()</span>
-      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/workflow.ex#L38" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
-       <span class="sr-only">View Source</span>
-     </a>
-        
-      <div class="specs">
-          <pre>token() :: {<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>(), <a href="#t:destination/0">destination</a>()}</pre>
-      </div>
-  </div>
-  <section class="docstring">
-<p>Data record with a destination.</p>
   </section>
 </div>
 <div class="detail" id="t:workflow_identifier/0">
@@ -355,7 +328,7 @@ by out port.</p>
       <span class="sr-only">Link to this function</span>
     </a>
     <span class="signature">get_component!(workflow, key)</span>
-      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/workflow.ex#L96" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/workflow.ex#L150" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -372,9 +345,9 @@ by out port.</p>
   Examples
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">get_component!</span><span class="p" data-group-id="6839307179-1">(</span><span class="n">example_workflow</span><span class="p" data-group-id="6839307179-2">(</span><span class="p" data-group-id="6839307179-2">)</span><span class="p">,</span><span class="w"> </span><span class="ss">:i1</span><span class="p" data-group-id="6839307179-1">)</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">get_component!</span><span class="p" data-group-id="8629573649-1">(</span><span class="n">example_workflow</span><span class="p" data-group-id="8629573649-2">(</span><span class="p" data-group-id="8629573649-2">)</span><span class="p">,</span><span class="w"> </span><span class="ss">:i1</span><span class="p" data-group-id="8629573649-1">)</span><span class="w">
 </span><span class="nc">Identity</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="n">get_component!</span><span class="p" data-group-id="6839307179-3">(</span><span class="n">example_workflow</span><span class="p" data-group-id="6839307179-4">(</span><span class="p" data-group-id="6839307179-4">)</span><span class="p">,</span><span class="w"> </span><span class="ss">:does_not_exist</span><span class="p" data-group-id="6839307179-3">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">get_component!</span><span class="p" data-group-id="8629573649-3">(</span><span class="n">example_workflow</span><span class="p" data-group-id="8629573649-4">(</span><span class="p" data-group-id="8629573649-4">)</span><span class="p">,</span><span class="w"> </span><span class="ss">:does_not_exist</span><span class="p" data-group-id="8629573649-3">)</span><span class="w">
 </span><span class="gt">** (KeyError) Key `:does_not_exist` not found in workflow</span></code></pre>
   </section>
 </div>
@@ -385,7 +358,7 @@ by out port.</p>
       <span class="sr-only">Link to this function</span>
     </a>
     <span class="signature">get_init!(workflow, key)</span>
-      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/workflow.ex#L109" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/workflow.ex#L163" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -401,7 +374,7 @@ by out port.</p>
   Examples
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">get_init!</span><span class="p" data-group-id="9122186436-1">(</span><span class="n">example_workflow</span><span class="p" data-group-id="9122186436-2">(</span><span class="p" data-group-id="9122186436-2">)</span><span class="p">,</span><span class="w"> </span><span class="ss">:i1</span><span class="p" data-group-id="9122186436-1">)</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">get_init!</span><span class="p" data-group-id="7025777611-1">(</span><span class="n">example_workflow</span><span class="p" data-group-id="7025777611-2">(</span><span class="p" data-group-id="7025777611-2">)</span><span class="p">,</span><span class="w"> </span><span class="ss">:i1</span><span class="p" data-group-id="7025777611-1">)</span><span class="w">
 </span><span class="no">nil</span></code></pre>
   </section>
 </div>
@@ -412,7 +385,7 @@ by out port.</p>
       <span class="sr-only">Link to this function</span>
     </a>
     <span class="signature">get_links!(workflow, key)</span>
-      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/workflow.ex#L122" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/workflow.ex#L176" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -428,24 +401,80 @@ by out port.</p>
   Examples
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">get_links!</span><span class="p" data-group-id="8644367127-1">(</span><span class="n">example_workflow</span><span class="p" data-group-id="8644367127-2">(</span><span class="p" data-group-id="8644367127-2">)</span><span class="p">,</span><span class="w"> </span><span class="ss">:i1</span><span class="p" data-group-id="8644367127-1">)</span><span class="w">
-</span><span class="p" data-group-id="8644367127-3">[</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8644367127-4">[</span><span class="ss">i3</span><span class="p">:</span><span class="w"> </span><span class="ss">:value</span><span class="p" data-group-id="8644367127-4">]</span><span class="p" data-group-id="8644367127-3">]</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">get_links!</span><span class="p" data-group-id="8245037021-1">(</span><span class="n">example_workflow</span><span class="p" data-group-id="8245037021-2">(</span><span class="p" data-group-id="8245037021-2">)</span><span class="p">,</span><span class="w"> </span><span class="ss">:i1</span><span class="p" data-group-id="8245037021-1">)</span><span class="w">
+</span><span class="p" data-group-id="8245037021-3">[</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8245037021-4">[</span><span class="ss">i3</span><span class="p">:</span><span class="w"> </span><span class="ss">:value</span><span class="p" data-group-id="8245037021-4">]</span><span class="p" data-group-id="8245037021-3">]</span></code></pre>
   </section>
 </div>
-<div class="detail" id="init_proto_instance/2">
+<div class="detail" id="get_source!/2">
     <div class="detail-header">
-    <a href="#init_proto_instance/2" class="detail-link" title="Link to this function">
+    <a href="#get_source!/2" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <span class="signature">init_proto_instance(workflow, key)</span>
-      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/workflow.ex#L138" class="view-source" rel="help" title="View Source">
+    <span class="signature">get_source!(workflow, key)</span>
+      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/workflow.ex#L76" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
         
       <div class="specs">
-          <pre>init_proto_instance(<a href="#t:t/0">t</a>(), <a href="#t:workflow_identifier/0">workflow_identifier</a>()) ::
+          <pre>get_source!(<a href="#t:t/0">t</a>(), <a href="#t:workflow_identifier/0">workflow_identifier</a>()) :: [<a href="#t:destination/0">destination</a>()] | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">no_return</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Obtain the destinations of a source based on its name.</p>
+<h2 id="get_source!/2-examples" class="section-heading">
+  <a href="#get_source!/2-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">get_source!</span><span class="p" data-group-id="3652935304-1">(</span><span class="n">example_workflow</span><span class="p" data-group-id="3652935304-2">(</span><span class="p" data-group-id="3652935304-2">)</span><span class="p">,</span><span class="w"> </span><span class="ss">:s1</span><span class="p" data-group-id="3652935304-1">)</span><span class="w">
+</span><span class="p" data-group-id="3652935304-3">[</span><span class="ss">i1</span><span class="p">:</span><span class="w"> </span><span class="ss">:value</span><span class="p" data-group-id="3652935304-3">]</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">get_source!</span><span class="p" data-group-id="3652935304-4">(</span><span class="n">example_workflow</span><span class="p" data-group-id="3652935304-5">(</span><span class="p" data-group-id="3652935304-5">)</span><span class="p">,</span><span class="w"> </span><span class="ss">:foo</span><span class="p" data-group-id="3652935304-4">)</span><span class="w">
+</span><span class="gt">** (KeyError) Key `:foo` not found in workflow</span></code></pre>
+  </section>
+</div>
+<div class="detail" id="get_sources/1">
+    <div class="detail-header">
+    <a href="#get_sources/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">get_sources(workflow)</span>
+      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/workflow.ex#L93" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>get_sources(<a href="#t:t/0">t</a>()) :: [<a href="#t:workflow_identifier/0">workflow_identifier</a>()]</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>List the sources of a component.</p>
+<h2 id="get_sources/1-examples" class="section-heading">
+  <a href="#get_sources/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">get_sources</span><span class="p" data-group-id="9624874548-1">(</span><span class="n">example_workflow</span><span class="p" data-group-id="9624874548-2">(</span><span class="p" data-group-id="9624874548-2">)</span><span class="p" data-group-id="9624874548-1">)</span><span class="w">
+</span><span class="p" data-group-id="9624874548-3">[</span><span class="ss">:s1</span><span class="p">,</span><span class="w"> </span><span class="ss">:s2</span><span class="p" data-group-id="9624874548-3">]</span></code></pre>
+  </section>
+</div>
+<div class="detail" id="init_proto_instance!/2">
+    <div class="detail-header">
+    <a href="#init_proto_instance!/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">init_proto_instance!(workflow, key)</span>
+      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/workflow.ex#L192" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+        
+      <div class="specs">
+          <pre>init_proto_instance!(<a href="#t:t/0">t</a>(), <a href="#t:workflow_identifier/0">workflow_identifier</a>()) ::
   {:ok, <a href="Skitter.Component.html#t:instance/0">Skitter.Component.instance</a>()}
   | <a href="Skitter.Component.html#t:runtime_error/0">Skitter.Component.runtime_error</a>()
   | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">no_return</a>()</pre>
@@ -453,112 +482,42 @@ by out port.</p>
   </div>
   <section class="docstring">
 <p>Initialize the proto_instance at <code class="inline">key</code></p>
-<h2 id="init_proto_instance/2-examples" class="section-heading">
-  <a href="#init_proto_instance/2-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+<h2 id="init_proto_instance!/2-examples" class="section-heading">
+  <a href="#init_proto_instance!/2-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Examples
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">init_proto_instance</span><span class="p" data-group-id="1536953710-1">(</span><span class="n">example_workflow</span><span class="p" data-group-id="1536953710-2">(</span><span class="p" data-group-id="1536953710-2">)</span><span class="p">,</span><span class="w"> </span><span class="ss">:i1</span><span class="p" data-group-id="1536953710-1">)</span><span class="w">
-</span><span class="p" data-group-id="1536953710-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1536953710-4">%</span><span class="nc" data-group-id="1536953710-4">Skitter.Component.Instance</span><span class="p" data-group-id="1536953710-4">{</span><span class="ss">component</span><span class="p">:</span><span class="w"> </span><span class="nc">WorkflowTest.Identity</span><span class="p">,</span><span class="w"> </span><span class="ss">state</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="1536953710-5">[</span><span class="p" data-group-id="1536953710-5">]</span><span class="p" data-group-id="1536953710-4">}</span><span class="p" data-group-id="1536953710-3">}</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">init_proto_instance!</span><span class="p" data-group-id="2102800925-1">(</span><span class="n">example_workflow</span><span class="p" data-group-id="2102800925-2">(</span><span class="p" data-group-id="2102800925-2">)</span><span class="p">,</span><span class="w"> </span><span class="ss">:i1</span><span class="p" data-group-id="2102800925-1">)</span><span class="w">
+</span><span class="p" data-group-id="2102800925-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2102800925-4">%</span><span class="nc" data-group-id="2102800925-4">Skitter.Component.Instance</span><span class="p" data-group-id="2102800925-4">{</span><span class="ss">component</span><span class="p">:</span><span class="w"> </span><span class="nc">WorkflowTest.Identity</span><span class="p">,</span><span class="w"> </span><span class="ss">state</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2102800925-5">[</span><span class="p" data-group-id="2102800925-5">]</span><span class="p" data-group-id="2102800925-4">}</span><span class="p" data-group-id="2102800925-3">}</span></code></pre>
   </section>
 </div>
-<div class="detail" id="source_data_to_tokens!/2">
+<div class="detail" id="sources_match?/2">
     <div class="detail-header">
-    <a href="#source_data_to_tokens!/2" class="detail-link" title="Link to this function">
+    <a href="#sources_match?/2" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <span class="signature">source_data_to_tokens!(workflow, source_data)</span>
-      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/workflow.ex#L209" class="view-source" rel="help" title="View Source">
+    <span class="signature">sources_match?(workflow, kw_list)</span>
+      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/workflow.ex#L110" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
-        
-      <div class="specs">
-          <pre>source_data_to_tokens!(<a href="#t:t/0">t</a>(), [{<a href="#t:workflow_identifier/0">workflow_identifier</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}]) :: [<a href="#t:token/0">token</a>()]</pre>
-      </div>
-  </div>
+          </div>
   <section class="docstring">
-<p>Generate tokens out of the initial data for a workflow.</p>
-<p>The initial data is provided as a keyword list, where the keys are source
-names and the values are values to be sent to the sources. There should be a
-value for each source; this is currently not verified.</p>
-<h2 id="source_data_to_tokens!/2-examples" class="section-heading">
-  <a href="#source_data_to_tokens!/2-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+<p>Check if a keyword lists matches with the sources of a workflow.</p>
+<p>This means that the keys of the keyword list and source names should be
+identical. Ordering is not taken into account.</p>
+<h2 id="sources_match?/2-examples" class="section-heading">
+  <a href="#sources_match?/2-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Examples
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">source_data_to_tokens!</span><span class="p" data-group-id="6494226947-1">(</span><span class="n">example_workflow</span><span class="p" data-group-id="6494226947-2">(</span><span class="p" data-group-id="6494226947-2">)</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6494226947-3">[</span><span class="ss">s1</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="ss">s2</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="p" data-group-id="6494226947-3">]</span><span class="p" data-group-id="6494226947-1">)</span><span class="w">
-</span><span class="p" data-group-id="6494226947-4">[</span><span class="p" data-group-id="6494226947-5">{</span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6494226947-6">{</span><span class="ss">:i1</span><span class="p">,</span><span class="w"> </span><span class="ss">:value</span><span class="p" data-group-id="6494226947-6">}</span><span class="p" data-group-id="6494226947-5">}</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6494226947-7">{</span><span class="mi">22</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6494226947-8">{</span><span class="ss">:i2</span><span class="p">,</span><span class="w"> </span><span class="ss">:value</span><span class="p" data-group-id="6494226947-8">}</span><span class="p" data-group-id="6494226947-7">}</span><span class="p" data-group-id="6494226947-4">]</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="n">source_data_to_tokens!</span><span class="p" data-group-id="6494226947-9">(</span><span class="n">example_workflow</span><span class="p" data-group-id="6494226947-10">(</span><span class="p" data-group-id="6494226947-10">)</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6494226947-11">[</span><span class="ss">does_not_exist</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p" data-group-id="6494226947-11">]</span><span class="p" data-group-id="6494226947-9">)</span><span class="w">
-</span><span class="gt">** (KeyError) Key `:does_not_exist` not found in workflow</span></code></pre>
-  </section>
-</div>
-<div class="detail" id="spits_to_tokens!/3">
-    <div class="detail-header">
-    <a href="#spits_to_tokens!/3" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <span class="signature">spits_to_tokens!(workflow, key, spits)</span>
-      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/workflow.ex#L187" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
-       <span class="sr-only">View Source</span>
-     </a>
-        
-      <div class="specs">
-          <pre>spits_to_tokens!(<a href="#t:t/0">t</a>(), <a href="#t:workflow_identifier/0">workflow_identifier</a>(), [
-  {<a href="Skitter.Component.html#t:port_name/0">Skitter.Component.port_name</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}
-]) :: [<a href="#t:token/0">token</a>()]</pre>
-      </div>
-  </div>
-  <section class="docstring">
-<p>Generate tokens from spits like <a href="#spits_to_tokens/2"><code class="inline">spits_to_tokens/2</code></a>, but fetch the links.</p>
-<p>Identical to <a href="#spits_to_tokens/2"><code class="inline">spits_to_tokens/2</code></a>, but fetches the links from a workflow first.</p>
-<h2 id="spits_to_tokens!/3-examples" class="section-heading">
-  <a href="#spits_to_tokens!/3-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
-  Examples
-</h2>
-
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">spits_to_tokens!</span><span class="p" data-group-id="6341293105-1">(</span><span class="n">example_workflow</span><span class="p" data-group-id="6341293105-2">(</span><span class="p" data-group-id="6341293105-2">)</span><span class="p">,</span><span class="w"> </span><span class="ss">:i1</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6341293105-3">[</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p" data-group-id="6341293105-3">]</span><span class="p" data-group-id="6341293105-1">)</span><span class="w">
-</span><span class="p" data-group-id="6341293105-4">[</span><span class="p" data-group-id="6341293105-5">{</span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6341293105-6">{</span><span class="ss">:i3</span><span class="p">,</span><span class="w"> </span><span class="ss">:value</span><span class="p" data-group-id="6341293105-6">}</span><span class="p" data-group-id="6341293105-5">}</span><span class="p" data-group-id="6341293105-4">]</span></code></pre>
-  </section>
-</div>
-<div class="detail" id="spits_to_tokens/2">
-    <div class="detail-header">
-    <a href="#spits_to_tokens/2" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <span class="signature">spits_to_tokens(links, spits)</span>
-      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/workflow.ex#L168" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
-       <span class="sr-only">View Source</span>
-     </a>
-        
-      <div class="specs">
-          <pre>spits_to_tokens(<a href="#t:outgoing_links/0">outgoing_links</a>(), [{<a href="Skitter.Component.html#t:port_name/0">Skitter.Component.port_name</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}]) ::
-  [<a href="#t:token/0">token</a>()]</pre>
-      </div>
-  </div>
-  <section class="docstring">
-<p>Create a list of tagged tokens based on the outputs of a component instance.</p>
-<p>Spits is the data that the component produced while reacting; they are
-represented as a keyword list where a key is an out port while the value is
-the data spit to that output port.</p>
-<p>Tokens are data records that will be sent to other components in the workflow.
-Each token is tagged with its destination.</p>
-<p>This function receives a list of spits, along with the list of outgoing links
-of a component instance. Based on these, it creates a list of tagged tokens.</p>
-<h2 id="spits_to_tokens/2-examples" class="section-heading">
-  <a href="#spits_to_tokens/2-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
-  Examples
-</h2>
-
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">links</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_links!</span><span class="p" data-group-id="7635215939-1">(</span><span class="n">example_workflow</span><span class="p" data-group-id="7635215939-2">(</span><span class="p" data-group-id="7635215939-2">)</span><span class="p">,</span><span class="w"> </span><span class="ss">:i1</span><span class="p" data-group-id="7635215939-1">)</span><span class="w">
-</span><span class="p" data-group-id="7635215939-3">[</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7635215939-4">[</span><span class="ss">i3</span><span class="p">:</span><span class="w"> </span><span class="ss">:value</span><span class="p" data-group-id="7635215939-4">]</span><span class="p" data-group-id="7635215939-3">]</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="n">spits_to_tokens</span><span class="p" data-group-id="7635215939-5">(</span><span class="n">links</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="7635215939-6">[</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p" data-group-id="7635215939-6">]</span><span class="p" data-group-id="7635215939-5">)</span><span class="w">
-</span><span class="p" data-group-id="7635215939-7">[</span><span class="p" data-group-id="7635215939-8">{</span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="7635215939-9">{</span><span class="ss">:i3</span><span class="p">,</span><span class="w"> </span><span class="ss">:value</span><span class="p" data-group-id="7635215939-9">}</span><span class="p" data-group-id="7635215939-8">}</span><span class="p" data-group-id="7635215939-7">]</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">sources_match?</span><span class="p" data-group-id="7108595780-1">(</span><span class="n">example_workflow</span><span class="p" data-group-id="7108595780-2">(</span><span class="p" data-group-id="7108595780-2">)</span><span class="p">,</span><span class="w"> </span><span class="ss">s1</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="ss">s2</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p" data-group-id="7108595780-1">)</span><span class="w">
+</span><span class="no">true</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">sources_match?</span><span class="p" data-group-id="7108595780-3">(</span><span class="n">example_workflow</span><span class="p" data-group-id="7108595780-4">(</span><span class="p" data-group-id="7108595780-4">)</span><span class="p">,</span><span class="w"> </span><span class="ss">s1</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="ss">s1</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p" data-group-id="7108595780-3">)</span><span class="w">
+</span><span class="no">false</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">sources_match?</span><span class="p" data-group-id="7108595780-5">(</span><span class="n">example_workflow</span><span class="p" data-group-id="7108595780-6">(</span><span class="p" data-group-id="7108595780-6">)</span><span class="p">,</span><span class="w"> </span><span class="ss">s1</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="7108595780-5">)</span><span class="w">
+</span><span class="no">false</span></code></pre>
   </section>
 </div>
 <div class="detail" id="workflow/1">
@@ -568,7 +527,7 @@ of a component instance. Based on these, it creates a list of tagged tokens.</p>
       <span class="sr-only">Link to this macro</span>
     </a>
     <span class="signature">workflow(list)</span>
-      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/workflow.ex#L227" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/workflow.ex#L208" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>

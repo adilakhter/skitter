@@ -7,7 +7,7 @@
     <meta name="generator" content="ExDoc v0.19.1">
     <title>skitter.master – Skitter v0.1.0-dev</title>
     <link rel="stylesheet" href="dist/app-240d7fc7e5.css" />
-    <script src="dist/sidebar_items-a703b0654a.js"></script>
+    <script src="dist/sidebar_items-10fc3fb7cb.js"></script>
     
   </head>
   <body data-type="tasks">
@@ -69,6 +69,16 @@ mix skitter.master
       </h1>
 
 
+        <section id="moduledoc">
+<p>Start a Skitter master node for the current project.</p>
+<p>A list of worker nodes can be provided as an argument to this command.
+These nodes should have already been started (using <code class="inline">skitter.worker</code>).</p>
+<p>This task ensures that the started node is distributed. When no name is
+specified, <code class="inline">master</code> is used.
+Furthermore, using this task implicitly passes the <code class="inline">--no-halt</code> option to mix.</p>
+<p>If you wish to pass any arguments to the underlying elixir runtime, this task
+can be started as follows: <code class="inline">elixir --arg1 --arg2 -S skitter.master</code></p>
+        </section>
 
         <section id="summary" class="details-list">
           <h1 class="section-heading">
@@ -83,6 +93,11 @@ mix skitter.master
     <h2>
       <a href="#functions">Functions</a>
     </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#read_nodes/1">read_nodes(args)</a>
+  </div>
+</div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#run/1">run(args)</a>
@@ -105,6 +120,21 @@ a list of command line args</p>
             </a>
             Functions
           </h1>
+<div class="detail" id="read_nodes/1">
+    <div class="detail-header">
+    <a href="#read_nodes/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">read_nodes(args)</span>
+      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/mix/tasks/master.ex#L30" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+          </div>
+  <section class="docstring">
+  </section>
+</div>
 <div class="detail" id="run/1">
     <div class="detail-header">
     <a href="#run/1" class="detail-link" title="Link to this function">
@@ -112,7 +142,7 @@ a list of command line args</p>
       <span class="sr-only">Link to this function</span>
     </a>
     <span class="signature">run(args)</span>
-      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/mix/tasks/master.ex#L11" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/mix/tasks/master.ex#L25" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>

@@ -7,7 +7,7 @@
     <meta name="generator" content="ExDoc v0.19.1">
     <title>Skitter.Runtime.Worker – Skitter v0.1.0-dev</title>
     <link rel="stylesheet" href="dist/app-240d7fc7e5.css" />
-    <script src="dist/sidebar_items-10fc3fb7cb.js"></script>
+    <script src="dist/sidebar_items-f434a7bc34.js"></script>
     
   </head>
   <body data-type="modules">
@@ -100,6 +100,11 @@ block until it returns</p>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
+    <a href="#register_master/2">register_master(node, master)</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
     <a href="#start_link/1">start_link(_)</a>
   </div>
 </div>
@@ -110,7 +115,7 @@ block until it returns</p>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#verify_worker/1">verify_worker(node)</a>
+    <a href="#verify_node/1">verify_node(node)</a>
   </div>
 </div>
   </div>
@@ -151,7 +156,7 @@ block until it returns</p>
       <span class="sr-only">Link to this function</span>
     </a>
     <span class="signature">init(_)</span>
-      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/runtime/worker.ex#L58" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/runtime/worker.ex#L64" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -195,6 +200,21 @@ entering the loop or calling <code class="inline">c:terminate/2</code>.</p>
 <p>Callback implementation for <a href="https://hexdocs.pm/elixir/GenServer.html#c:init/1"><code class="inline">GenServer.init/1</code></a>.</p>
   </section>
 </div>
+<div class="detail" id="register_master/2">
+    <div class="detail-header">
+    <a href="#register_master/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">register_master(node, master)</span>
+      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/runtime/worker.ex#L24" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+          </div>
+  <section class="docstring">
+  </section>
+</div>
 <div class="detail" id="start_link/1">
     <div class="detail-header">
     <a href="#start_link/1" class="detail-link" title="Link to this function">
@@ -202,7 +222,7 @@ entering the loop or calling <code class="inline">c:terminate/2</code>.</p>
       <span class="sr-only">Link to this function</span>
     </a>
     <span class="signature">start_link(_)</span>
-      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/runtime/worker.ex#L14" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/runtime/worker.ex#L16" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -217,7 +237,7 @@ entering the loop or calling <code class="inline">c:terminate/2</code>.</p>
       <span class="sr-only">Link to this function</span>
     </a>
     <span class="signature">verify_local_worker(sender)</span>
-      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/runtime/worker.ex#L50" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/runtime/worker.ex#L56" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -225,14 +245,14 @@ entering the loop or calling <code class="inline">c:terminate/2</code>.</p>
   <section class="docstring">
   </section>
 </div>
-<div class="detail" id="verify_worker/1">
+<div class="detail" id="verify_node/1">
     <div class="detail-header">
-    <a href="#verify_worker/1" class="detail-link" title="Link to this function">
+    <a href="#verify_node/1" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <span class="signature">verify_worker(node)</span>
-      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/runtime/worker.ex#L22" class="view-source" rel="help" title="View Source">
+    <span class="signature">verify_node(node)</span>
+      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/runtime/worker.ex#L28" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>

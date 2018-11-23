@@ -7,7 +7,7 @@
     <meta name="generator" content="ExDoc v0.19.1">
     <title>Skitter.Runtime – Skitter v0.1.0-dev</title>
     <link rel="stylesheet" href="dist/app-240d7fc7e5.css" />
-    <script src="dist/sidebar_items-10fc3fb7cb.js"></script>
+    <script src="dist/sidebar_items-f434a7bc34.js"></script>
     
   </head>
   <body data-type="modules">
@@ -85,6 +85,11 @@ Skitter.Runtime
     </h2>
 <div class="summary-row">
   <div class="summary-signature">
+    <a href="#add_node/1">add_node(node)</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
     <a href="#child_spec/1">child_spec(arg)</a>
   </div>
     <div class="summary-synopsis"><p>Returns a specification to start this module under a supervisor</p>
@@ -97,6 +102,11 @@ Skitter.Runtime
     <div class="summary-synopsis"><p>Invoked when the server is started. <code class="inline">start_link/3</code> or <code class="inline">start/3</code> will
 block until it returns</p>
 </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#remove_node/1">remove_node(node)</a>
+  </div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
@@ -117,6 +127,21 @@ block until it returns</p>
             </a>
             Functions
           </h1>
+<div class="detail" id="add_node/1">
+    <div class="detail-header">
+    <a href="#add_node/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">add_node(node)</span>
+      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/runtime.ex#L19" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+          </div>
+  <section class="docstring">
+  </section>
+</div>
 <div class="detail" id="child_spec/1">
     <div class="detail-header">
     <a href="#child_spec/1" class="detail-link" title="Link to this function">
@@ -141,7 +166,7 @@ block until it returns</p>
       <span class="sr-only">Link to this function</span>
     </a>
     <span class="signature">init(nodes)</span>
-      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/runtime.ex#L22" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/runtime.ex#L31" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -185,6 +210,21 @@ entering the loop or calling <code class="inline">c:terminate/2</code>.</p>
 <p>Callback implementation for <a href="https://hexdocs.pm/elixir/GenServer.html#c:init/1"><code class="inline">GenServer.init/1</code></a>.</p>
   </section>
 </div>
+<div class="detail" id="remove_node/1">
+    <div class="detail-header">
+    <a href="#remove_node/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">remove_node(node)</span>
+      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/runtime.ex#L23" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+          </div>
+  <section class="docstring">
+  </section>
+</div>
 <div class="detail" id="start_link/1">
     <div class="detail-header">
     <a href="#start_link/1" class="detail-link" title="Link to this function">
@@ -192,7 +232,7 @@ entering the loop or calling <code class="inline">c:terminate/2</code>.</p>
       <span class="sr-only">Link to this function</span>
     </a>
     <span class="signature">start_link(nodes)</span>
-      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/runtime.ex#L14" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/runtime.ex#L15" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>

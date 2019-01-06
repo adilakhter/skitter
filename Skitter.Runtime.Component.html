@@ -5,12 +5,12 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.19.1">
-    <title>skitter.master – Skitter v0.1.0-dev</title>
+    <title>Skitter.Runtime.Component – Skitter v0.1.0-dev</title>
     <link rel="stylesheet" href="dist/app-240d7fc7e5.css" />
     <script src="dist/sidebar_items-9e0b30ce30.js"></script>
     
   </head>
-  <body data-type="tasks">
+  <body data-type="modules">
     <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
     <div class="main">
 <button class="sidebar-button sidebar-toggle">
@@ -61,24 +61,14 @@ Skitter      </h1>
 
       <h1>
         <small class="visible-xs">Skitter v0.1.0-dev</small>
-mix skitter.master        
-          <a href="https://github.com/mathsaey/skitter/blob/develop/lib/mix/tasks/master.ex#L7" title="View Source" class="view-source" rel="help">
+Skitter.Runtime.Component        
+          <a href="https://github.com/mathsaey/skitter/blob/develop/lib/runtime/component.ex#L7" title="View Source" class="view-source" rel="help">
             <span class="icon-code" aria-hidden="true"></span>
             <span class="sr-only">View Source</span>
           </a>
       </h1>
 
 
-        <section id="moduledoc">
-<p>Start a Skitter master node for the current project.</p>
-<p>A list of worker nodes can be provided as an argument to this command.
-These nodes should have already been started (using <code class="inline">skitter.worker</code>).</p>
-<p>This task ensures that the started node is distributed. When no name is
-specified, <code class="inline">master</code> is used.
-Furthermore, using this task implicitly passes the <code class="inline">--no-halt</code> option to mix.</p>
-<p>If you wish to pass any arguments to the underlying elixir runtime, this task
-can be started as follows: <code class="inline">elixir --arg1 --arg2 -S mix skitter.master</code></p>
-        </section>
 
 
 

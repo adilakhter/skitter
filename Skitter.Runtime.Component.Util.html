@@ -5,12 +5,12 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.19.1">
-    <title>skitter.master – Skitter v0.1.0-dev</title>
+    <title>Skitter.Runtime.Component.Util – Skitter v0.1.0-dev</title>
     <link rel="stylesheet" href="dist/app-240d7fc7e5.css" />
     <script src="dist/sidebar_items-9e0b30ce30.js"></script>
     
   </head>
-  <body data-type="tasks">
+  <body data-type="modules">
     <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
     <div class="main">
 <button class="sidebar-button sidebar-toggle">
@@ -61,28 +61,63 @@ Skitter      </h1>
 
       <h1>
         <small class="visible-xs">Skitter v0.1.0-dev</small>
-mix skitter.master        
-          <a href="https://github.com/mathsaey/skitter/blob/develop/lib/mix/tasks/master.ex#L7" title="View Source" class="view-source" rel="help">
+Skitter.Runtime.Component.Util        
+          <a href="https://github.com/mathsaey/skitter/blob/develop/lib/runtime/component/util.ex#L7" title="View Source" class="view-source" rel="help">
             <span class="icon-code" aria-hidden="true"></span>
             <span class="sr-only">View Source</span>
           </a>
       </h1>
 
 
-        <section id="moduledoc">
-<p>Start a Skitter master node for the current project.</p>
-<p>A list of worker nodes can be provided as an argument to this command.
-These nodes should have already been started (using <code class="inline">skitter.worker</code>).</p>
-<p>This task ensures that the started node is distributed. When no name is
-specified, <code class="inline">master</code> is used.
-Furthermore, using this task implicitly passes the <code class="inline">--no-halt</code> option to mix.</p>
-<p>If you wish to pass any arguments to the underlying elixir runtime, this task
-can be started as follows: <code class="inline">elixir --arg1 --arg2 -S mix skitter.master</code></p>
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+          
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#spits_to_tokens/2">spits_to_tokens(spits, links)</a>
+  </div>
+</div>
+  </div>
+          
         </section>
 
 
 
-
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Functions
+          </h1>
+<div class="detail" id="spits_to_tokens/2">
+    <div class="detail-header">
+    <a href="#spits_to_tokens/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">spits_to_tokens(spits, links)</span>
+      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/runtime/component/util.ex#L9" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+          </div>
+  <section class="docstring">
+  </section>
+</div>
+        </section>
 
           <footer class="footer">
         <p>

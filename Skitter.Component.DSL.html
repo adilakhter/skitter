@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v0.19.1">
-    <title>Skitter.Component.DSL – Skitter v0.1.0-dev</title>
-    <link rel="stylesheet" href="dist/app-240d7fc7e5.css" />
-    <script src="dist/sidebar_items-66bec4cbbf.js"></script>
+    <meta name="generator" content="ExDoc v0.19.2">
+    <title>Skitter.Component.DSL — Skitter v0.1.0-dev</title>
+    <link rel="stylesheet" href="dist/html-c1666276880c0f8e3769.css" />
+    <script src="dist/sidebar_items-8edac1a082.js"></script>
     
   </head>
   <body data-type="modules">
@@ -87,24 +87,24 @@ implemented when these effects are present, but this is not required.</p>
 <p>A component which stores a running average is provided here as an example:</p>
 <pre><code class="nohighlight makeup elixir"><span class="kn">import</span><span class="w"> </span><span class="nc">Skitter.Component</span><span class="w">
 
-</span><span class="n">component</span><span class="w"> </span><span class="nc">Average</span><span class="p">,</span><span class="w"> </span><span class="ss">in</span><span class="p">:</span><span class="w"> </span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="ss">out</span><span class="p">:</span><span class="w"> </span><span class="n">average</span><span class="w"> </span><span class="k" data-group-id="7747113553-1">do</span><span class="w">
+</span><span class="n">component</span><span class="w"> </span><span class="nc">Average</span><span class="p">,</span><span class="w"> </span><span class="ss">in</span><span class="p">:</span><span class="w"> </span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="ss">out</span><span class="p">:</span><span class="w"> </span><span class="n">average</span><span class="w"> </span><span class="k" data-group-id="1158803074-1">do</span><span class="w">
   </span><span class="s">&quot;Track the average of all received values&quot;</span><span class="w">
 
   </span><span class="n">effect</span><span class="w"> </span><span class="n">state_change</span><span class="w">
   </span><span class="n">fields</span><span class="w"> </span><span class="n">total</span><span class="p">,</span><span class="w"> </span><span class="n">counter</span><span class="w">
 
-  </span><span class="n">init</span><span class="w"> </span><span class="bp">_</span><span class="w"> </span><span class="k" data-group-id="7747113553-2">do</span><span class="w">
+  </span><span class="n">init</span><span class="w"> </span><span class="bp">_</span><span class="w"> </span><span class="k" data-group-id="1158803074-2">do</span><span class="w">
     </span><span class="n">total</span><span class="w"> </span><span class="o">&lt;~</span><span class="w"> </span><span class="mi">0</span><span class="w">
     </span><span class="n">counter</span><span class="w"> </span><span class="o">&lt;~</span><span class="w"> </span><span class="mi">0</span><span class="w">
-  </span><span class="k" data-group-id="7747113553-2">end</span><span class="w">
+  </span><span class="k" data-group-id="1158803074-2">end</span><span class="w">
 
-  </span><span class="n">react</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="k" data-group-id="7747113553-3">do</span><span class="w">
+  </span><span class="n">react</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="k" data-group-id="1158803074-3">do</span><span class="w">
     </span><span class="n">total</span><span class="w"> </span><span class="o">&lt;~</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">value</span><span class="w">
     </span><span class="n">counter</span><span class="w"> </span><span class="o">&lt;~</span><span class="w"> </span><span class="n">counter</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
     </span><span class="n">total</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">counter</span><span class="w"> </span><span class="o">~&gt;</span><span class="w"> </span><span class="n">average</span><span class="w">
-  </span><span class="k" data-group-id="7747113553-3">end</span><span class="w">
-</span><span class="k" data-group-id="7747113553-1">end</span></code></pre>
+  </span><span class="k" data-group-id="1158803074-3">end</span><span class="w">
+</span><span class="k" data-group-id="1158803074-1">end</span></code></pre>
 <h2 id="module-metadata" class="section-heading">
   <a href="#module-metadata" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Metadata
@@ -174,7 +174,7 @@ the modification of state in react. Furthermore, the skitter runtime will
 ensure that there are no concurrent modifications to this state when a
 workflow is executed on a distributed system. Finally, the skitter runtime
 will also guarantee that the state can be recovered if failure occurs.
-Skitter may not always be able to “see” the entire state of a component
+Skitter may not always be able to &quot;see&quot; the entire state of a component
 instance; this can be the case if the component relies on an external process
 to do most of the processing. In this case, a <code class="inline">state_change</code> effect can be
 annotated with the <code class="inline">hidden</code> property. When this is done, skitter will rely on
@@ -216,7 +216,6 @@ the body of <a href="#react/3"><code class="inline">react/3</code></a>.</p>
             </a>
             Summary
           </h1>
-          
   <div class="summary-functions summary">
     <h2>
       <a href="#functions">Functions</a>
@@ -292,10 +291,7 @@ the body of <a href="#react/3"><code class="inline">react/3</code></a>.</p>
 </div>
 </div>
   </div>
-          
         </section>
-
-
 
         <section id="functions" class="details-list">
           <h1 class="section-heading">
@@ -303,15 +299,15 @@ the body of <a href="#react/3"><code class="inline">react/3</code></a>.</p>
               <span class="icon-link" aria-hidden="true"></span>
               <span class="sr-only">Link to this section</span>
             </a>
-            Functions
-          </h1>
-<div class="detail" id="after_failure/1">
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="after_failure/1">
     <div class="detail-header">
     <a href="#after_failure/1" class="detail-link" title="Link to this macro">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this macro</span>
     </a>
-    <span class="signature">after_failure(list)</span>
+    <h1 class="signature">after_failure(list)</span>
       <a href="https://github.com/mathsaey/skitter/blob/develop/lib/component/dsl.ex#L661" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
@@ -333,41 +329,41 @@ occurred before deciding whether or not execution should proceed.</p>
   Example
 </h2>
 
-<p>For instance, let’s look at the following react function, which writes a
+<p>For instance, let&#39;s look at the following react function, which writes a
 value to some database after which it sends it to an output port.</p>
-<pre><code class="nohighlight makeup elixir"><span class="n">react</span><span class="w"> </span><span class="n">val</span><span class="w"> </span><span class="k" data-group-id="0318934352-1">do</span><span class="w">
-  </span><span class="n">write_to_db</span><span class="p" data-group-id="0318934352-2">(</span><span class="n">val</span><span class="p" data-group-id="0318934352-2">)</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="n">react</span><span class="w"> </span><span class="n">val</span><span class="w"> </span><span class="k" data-group-id="9673293402-1">do</span><span class="w">
+  </span><span class="n">write_to_db</span><span class="p" data-group-id="9673293402-2">(</span><span class="n">val</span><span class="p" data-group-id="9673293402-2">)</span><span class="w">
   </span><span class="n">val</span><span class="w"> </span><span class="o">~&gt;</span><span class="w"> </span><span class="n">port</span><span class="w">
-</span><span class="k" data-group-id="0318934352-1">end</span></code></pre>
+</span><span class="k" data-group-id="9673293402-1">end</span></code></pre>
 <p>The skitter runtime would have no way of knowing whether or not the database
 was updated if this component would fail in the middle of a call to <code class="inline">react</code>.
 However, in order to ensure the remainder of the workflow is still activated
 correctly, the value sent to <code class="inline">port</code> is needed.</p>
 <p>To solve this problem, we can use the <code class="inline">after_failure</code> block:</p>
-<pre><code class="nohighlight makeup elixir"><span class="n">react</span><span class="w"> </span><span class="n">val</span><span class="w"> </span><span class="k" data-group-id="0123850306-1">do</span><span class="w">
-  </span><span class="n">after_failure</span><span class="w"> </span><span class="k" data-group-id="0123850306-2">do</span><span class="w">
-    </span><span class="k">if</span><span class="w"> </span><span class="n">write_to_db_occurred?</span><span class="p" data-group-id="0123850306-3">(</span><span class="n">val</span><span class="p" data-group-id="0123850306-3">)</span><span class="w"> </span><span class="k" data-group-id="0123850306-4">do</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="n">react</span><span class="w"> </span><span class="n">val</span><span class="w"> </span><span class="k" data-group-id="4382090766-1">do</span><span class="w">
+  </span><span class="n">after_failure</span><span class="w"> </span><span class="k" data-group-id="4382090766-2">do</span><span class="w">
+    </span><span class="k">if</span><span class="w"> </span><span class="n">write_to_db_occurred?</span><span class="p" data-group-id="4382090766-3">(</span><span class="n">val</span><span class="p" data-group-id="4382090766-3">)</span><span class="w"> </span><span class="k" data-group-id="4382090766-4">do</span><span class="w">
       </span><span class="n">val</span><span class="w"> </span><span class="o">~&gt;</span><span class="w"> </span><span class="n">port</span><span class="w">
       </span><span class="n">skip</span><span class="w">
-    </span><span class="k" data-group-id="0123850306-4">end</span><span class="w">
-  </span><span class="k" data-group-id="0123850306-2">end</span><span class="w">
+    </span><span class="k" data-group-id="4382090766-4">end</span><span class="w">
+  </span><span class="k" data-group-id="4382090766-2">end</span><span class="w">
 
-  </span><span class="n">write_to_db</span><span class="p" data-group-id="0123850306-5">(</span><span class="n">val</span><span class="p" data-group-id="0123850306-5">)</span><span class="w">
+  </span><span class="n">write_to_db</span><span class="p" data-group-id="4382090766-5">(</span><span class="n">val</span><span class="p" data-group-id="4382090766-5">)</span><span class="w">
   </span><span class="n">val</span><span class="w"> </span><span class="o">~&gt;</span><span class="w"> </span><span class="n">port</span><span class="w">
-</span><span class="k" data-group-id="0123850306-1">end</span></code></pre>
+</span><span class="k" data-group-id="4382090766-1">end</span></code></pre>
 <p>The after_failure block will only be executed if a previous call to <code class="inline">react</code>
 failed. In this case, it would check if the database was updated. If this
 is the case, it sends the value to <code class="inline">port</code> and it uses <a href="#skip/2"><code class="inline">skip/2</code></a> to ensure
 the remainder of <code class="inline">react</code> is not carried out.</p>
   </section>
-</div>
-<div class="detail" id="clean_checkpoint/3">
+</section>
+<section class="detail" id="clean_checkpoint/3">
     <div class="detail-header">
     <a href="#clean_checkpoint/3" class="detail-link" title="Link to this macro">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this macro</span>
     </a>
-    <span class="signature">clean_checkpoint(list1, meta, list2)</span>
+    <h1 class="signature">clean_checkpoint(list1, meta, list2)</span>
       <a href="https://github.com/mathsaey/skitter/blob/develop/lib/component/dsl.ex#L1014" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
@@ -380,20 +376,20 @@ the remainder of <code class="inline">react</code> is not carried out.</p>
 <p>Clean up a checkpoint that will no longer be used by the skitter runtime.
 Do not call this macro manually, as it relies on AST transformations to work;
 use the following syntax instead:</p>
-<pre><code class="nohighlight makeup elixir"><span class="n">clean_checkpoint</span><span class="w"> </span><span class="n">arg</span><span class="w"> </span><span class="k" data-group-id="8043773222-1">do</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="n">clean_checkpoint</span><span class="w"> </span><span class="n">arg</span><span class="w"> </span><span class="k" data-group-id="9973045371-1">do</span><span class="w">
   </span><span class="c1"># Clean up here</span><span class="w">
-</span><span class="k" data-group-id="8043773222-1">end</span></code></pre>
+</span><span class="k" data-group-id="9973045371-1">end</span></code></pre>
 <p><a href="#clean_checkpoint/3"><code class="inline">clean_checkpoint/3</code></a> always accepts a single argument, which is the checkpoint
 that should be removed.</p>
   </section>
-</div>
-<div class="detail" id="component/3">
+</section>
+<section class="detail" id="component/3">
     <div class="detail-header">
     <a href="#component/3" class="detail-link" title="Link to this macro">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this macro</span>
     </a>
-    <span class="signature">component(name, ports, list)</span>
+    <h1 class="signature">component(name, ports, list)</span>
       <a href="https://github.com/mathsaey/skitter/blob/develop/lib/component/dsl.ex#L222" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
@@ -403,7 +399,7 @@ that should be removed.</p>
       </div>
   <section class="docstring">
 <p>Create a skitter component.</p>
-<p>This macro serves as the entry point of the component DSL. <em>Don’t call any
+<p>This macro serves as the entry point of the component DSL. <em>Don&#39;t call any
 other macro in this module outside the body of <a href="#component/3"><code class="inline">component/3</code></a></em>; they rely on
 AST transformation to work properly.</p>
 <p>This macro will generate a skitter component, which is implemented as an
@@ -471,29 +467,29 @@ first statement in the component body.</p>
   Example
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="n">component</span><span class="w"> </span><span class="nc">Average</span><span class="p">,</span><span class="w"> </span><span class="ss">in</span><span class="p">:</span><span class="w"> </span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="ss">out</span><span class="p">:</span><span class="w"> </span><span class="n">average</span><span class="w"> </span><span class="k" data-group-id="5462130418-1">do</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="n">component</span><span class="w"> </span><span class="nc">Average</span><span class="p">,</span><span class="w"> </span><span class="ss">in</span><span class="p">:</span><span class="w"> </span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="ss">out</span><span class="p">:</span><span class="w"> </span><span class="n">average</span><span class="w"> </span><span class="k" data-group-id="9493570147-1">do</span><span class="w">
   </span><span class="s">&quot;Track the average of all received values&quot;</span><span class="w">
 
   </span><span class="n">effect</span><span class="w"> </span><span class="n">state_change</span><span class="w">
   </span><span class="n">fields</span><span class="w"> </span><span class="n">total</span><span class="p">,</span><span class="w"> </span><span class="n">counter</span><span class="w">
 
-  </span><span class="n">init</span><span class="w"> </span><span class="bp">_</span><span class="w"> </span><span class="k" data-group-id="5462130418-2">do</span><span class="w">
+  </span><span class="n">init</span><span class="w"> </span><span class="bp">_</span><span class="w"> </span><span class="k" data-group-id="9493570147-2">do</span><span class="w">
     </span><span class="c1"># implementation goes here...</span><span class="w">
-  </span><span class="k" data-group-id="5462130418-2">end</span><span class="w">
+  </span><span class="k" data-group-id="9493570147-2">end</span><span class="w">
 
-  </span><span class="n">react</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="k" data-group-id="5462130418-3">do</span><span class="w">
+  </span><span class="n">react</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="k" data-group-id="9493570147-3">do</span><span class="w">
     </span><span class="c1"># implementation goes here...</span><span class="w">
-  </span><span class="k" data-group-id="5462130418-3">end</span><span class="w">
-</span><span class="k" data-group-id="5462130418-1">end</span></code></pre>
+  </span><span class="k" data-group-id="9493570147-3">end</span><span class="w">
+</span><span class="k" data-group-id="9493570147-1">end</span></code></pre>
   </section>
-</div>
-<div class="detail" id="create_checkpoint/3">
+</section>
+<section class="detail" id="create_checkpoint/3">
     <div class="detail-header">
     <a href="#create_checkpoint/3" class="detail-link" title="Link to this macro">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this macro</span>
     </a>
-    <span class="signature">create_checkpoint(list1, meta, list2)</span>
+    <h1 class="signature">create_checkpoint(list1, meta, list2)</span>
       <a href="https://github.com/mathsaey/skitter/blob/develop/lib/component/dsl.ex#L931" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
@@ -506,20 +502,20 @@ first statement in the component body.</p>
 <p>This macro should be used to create a checkpoint based on a component
 instance. Do not call this macro directly as it relies on AST transformations.
 Use the following syntax instead:</p>
-<pre><code class="nohighlight makeup elixir"><span class="n">checkpoint</span><span class="w"> </span><span class="k" data-group-id="9010519245-1">do</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="n">checkpoint</span><span class="w"> </span><span class="k" data-group-id="3761280977-1">do</span><span class="w">
 </span><span class="c1"># body</span><span class="w">
-</span><span class="k" data-group-id="9010519245-1">end</span></code></pre>
+</span><span class="k" data-group-id="3761280977-1">end</span></code></pre>
 <p>The return value (i.e. the value of the last statement in the body) is
 returned as the checkpoint to the skitter runtime.</p>
   </section>
-</div>
-<div class="detail" id="error/1">
+</section>
+<section class="detail" id="error/1">
     <div class="detail-header">
     <a href="#error/1" class="detail-link" title="Link to this macro">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this macro</span>
     </a>
-    <span class="signature">error(reason)</span>
+    <h1 class="signature">error(reason)</span>
       <a href="https://github.com/mathsaey/skitter/blob/develop/lib/component/dsl.ex#L1052" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
@@ -534,14 +530,14 @@ the use of this macro will crash the entire workflow. Any spits or state
 updates that may have occurred prior to the invocation of this macro will be
 lost.</p>
   </section>
-</div>
-<div class="detail" id="init/3">
+</section>
+<section class="detail" id="init/3">
     <div class="detail-header">
     <a href="#init/3" class="detail-link" title="Link to this macro">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this macro</span>
     </a>
-    <span class="signature">init(list1, meta, list2)</span>
+    <h1 class="signature">init(list1, meta, list2)</span>
       <a href="https://github.com/mathsaey/skitter/blob/develop/lib/component/dsl.ex#L849" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
@@ -554,21 +550,21 @@ lost.</p>
 <p>Set up the initial state of the component based on a single argument provided
 by the workflow. Do not call this macro manually, as it relies on AST
 transformations to work. Instead, use the following syntax:</p>
-<pre><code class="nohighlight makeup elixir"><span class="n">init</span><span class="w"> </span><span class="n">arg</span><span class="w"> </span><span class="k" data-group-id="6850302585-1">do</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="n">init</span><span class="w"> </span><span class="n">arg</span><span class="w"> </span><span class="k" data-group-id="1577680717-1">do</span><span class="w">
   </span><span class="c1"># Body goes here</span><span class="w">
-</span><span class="k" data-group-id="6850302585-1">end</span></code></pre>
+</span><span class="k" data-group-id="1577680717-1">end</span></code></pre>
 <p>Init always accepts a single argument, pattern matching can be used to
 deconstruct complex arguments which may be provided. Inside init,
 <code class="inline">field &lt;~ value</code> may be used to set initial values for the state fields.</p>
   </section>
-</div>
-<div class="detail" id="react/3">
+</section>
+<section class="detail" id="react/3">
     <div class="detail-header">
     <a href="#react/3" class="detail-link" title="Link to this macro">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this macro</span>
     </a>
-    <span class="signature">react(args, meta, list)</span>
+    <h1 class="signature">react(args, meta, list)</span>
       <a href="https://github.com/mathsaey/skitter/blob/develop/lib/component/dsl.ex#L572" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
@@ -581,9 +577,9 @@ deconstruct complex arguments which may be provided. Inside init,
 <p>Implement the behaviour of the component when it receives data from the in
 ports. Do not call this macro manually as it relies on AST transformations
 to work, instead use the macro with the following syntax:</p>
-<pre><code class="nohighlight makeup elixir"><span class="n">react</span><span class="w"> </span><span class="n">arg_1</span><span class="p">,</span><span class="w"> </span><span class="n">arg_2</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p">,</span><span class="w"> </span><span class="n">arg_n</span><span class="w"> </span><span class="k" data-group-id="7212717715-1">do</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="n">react</span><span class="w"> </span><span class="n">arg_1</span><span class="p">,</span><span class="w"> </span><span class="n">arg_2</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p">,</span><span class="w"> </span><span class="n">arg_n</span><span class="w"> </span><span class="k" data-group-id="6700132704-1">do</span><span class="w">
   </span><span class="c1"># Body goes here</span><span class="w">
-  </span><span class="k" data-group-id="7212717715-1">end</span></code></pre>
+  </span><span class="k" data-group-id="6700132704-1">end</span></code></pre>
 <p>The amount of arguments in the arguments list of react should correspond to
 the amount of in ports of the component. When the component instance needs
 to react, every argument will be bound to the value provided to its
@@ -592,7 +588,7 @@ data to any out port; <code class="inline">&lt;~</code> can be used to update th
 instance <em>if and only if</em> the component has the <code class="inline">state_change</code> effect.
 <a href="#after_failure/1"><code class="inline">after_failure/1</code></a> can be used inside <a href="#react/3"><code class="inline">react/3</code></a> <em>if and only if</em> the component
 has the <code class="inline">external_effect</code> effect.</p>
-<p>The return value of <a href="#react/3"><code class="inline">react/3</code></a> is silently ignored. However, any “spits” or
+<p>The return value of <a href="#react/3"><code class="inline">react/3</code></a> is silently ignored. However, any &quot;spits&quot; or
 state updates performed during the execution of <a href="#react/3"><code class="inline">react/3</code></a> will be provided to
 the skitter runtime.</p>
 <h2 id="react/3-spits" class="section-heading">
@@ -603,7 +599,7 @@ the skitter runtime.</p>
 <p>While a component instance is reacting, it may <em>spit</em> a value to an out port
 with the following syntax: <code class="inline">value ~&gt; port</code>. The given value will be sent to
 any in_port that is connected to the out port in question. The values will
-only be sent after the “current” react is finished. Thus, if <a href="#error/1"><code class="inline">error/1</code></a> is
+only be sent after the &quot;current&quot; react is finished. Thus, if <a href="#error/1"><code class="inline">error/1</code></a> is
 called after <code class="inline">~&gt;</code>, the value will never be sent to the connected ports.</p>
 <h2 id="react/3-state-updates" class="section-heading">
   <a href="#react/3-state-updates" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
@@ -615,16 +611,16 @@ called after <code class="inline">~&gt;</code>, the value will never be sent to 
 <code class="inline">field &lt;~ value</code>. The component instance will immediately be updated to
 reflect these changes. This implies that later uses of <code class="inline">field</code> will contain
 the new state of the modified field. In spite of this, the skitter runtime
-will only see these changes once the “current” react is finished.</p>
+will only see these changes once the &quot;current&quot; react is finished.</p>
   </section>
-</div>
-<div class="detail" id="restore_checkpoint/3">
+</section>
+<section class="detail" id="restore_checkpoint/3">
     <div class="detail-header">
     <a href="#restore_checkpoint/3" class="detail-link" title="Link to this macro">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this macro</span>
     </a>
-    <span class="signature">restore_checkpoint(list1, meta, list2)</span>
+    <h1 class="signature">restore_checkpoint(list1, meta, list2)</span>
       <a href="https://github.com/mathsaey/skitter/blob/develop/lib/component/dsl.ex#L972" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
@@ -637,22 +633,22 @@ will only see these changes once the “current” react is finished.</p>
 <p>Similar to <a href="#init/3"><code class="inline">init/3</code></a>; set up the initial state of the component based on a
 checkpoint argument. Do not call this macro manually, as it relies on AST
 transformations to work. Instead, use the following syntax:</p>
-<pre><code class="nohighlight makeup elixir"><span class="n">restore_checkpoint</span><span class="w"> </span><span class="n">arg</span><span class="w"> </span><span class="k" data-group-id="7142666439-1">do</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="n">restore_checkpoint</span><span class="w"> </span><span class="n">arg</span><span class="w"> </span><span class="k" data-group-id="8443933182-1">do</span><span class="w">
   </span><span class="c1"># Recreate state here</span><span class="w">
-</span><span class="k" data-group-id="7142666439-1">end</span></code></pre>
+</span><span class="k" data-group-id="8443933182-1">end</span></code></pre>
 <p>restore_checkpoint always accepts a single argument, which is a checkpoint as
 returned by <a href="#create_checkpoint/3"><code class="inline">create_checkpoint/3</code></a>. The body of <a href="#restore_checkpoint/3"><code class="inline">restore_checkpoint/3</code></a> is
 responsible for reconstructing the component state (using the
 <code class="inline">field &lt;~ value</code> syntax) to set correct values for the state fields.</p>
   </section>
-</div>
-<div class="detail" id="skip/2">
+</section>
+<section class="detail" id="skip/2">
     <div class="detail-header">
     <a href="#skip/2" class="detail-link" title="Link to this macro">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this macro</span>
     </a>
-    <span class="signature">skip(state, output)</span>
+    <h1 class="signature">skip(state, output)</span>
       <a href="https://github.com/mathsaey/skitter/blob/develop/lib/component/dsl.ex#L678" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
@@ -672,14 +668,14 @@ in the original call to react.</p>
 <p>Do not provide arguments when using this macro (i.e. just use <code class="inline">skip</code>), the
 <code class="inline">state</code> and <code class="inline">output</code> arguments will automatically be injected by <a href="#react/3"><code class="inline">react/3</code></a>.</p>
   </section>
-</div>
-<div class="detail" id="terminate/3">
+</section>
+<section class="detail" id="terminate/3">
     <div class="detail-header">
     <a href="#terminate/3" class="detail-link" title="Link to this macro">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this macro</span>
     </a>
-    <span class="signature">terminate(list1, meta, list2)</span>
+    <h1 class="signature">terminate(list1, meta, list2)</span>
       <a href="https://github.com/mathsaey/skitter/blob/develop/lib/component/dsl.ex#L888" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
@@ -692,18 +688,18 @@ in the original call to react.</p>
 <p>This macro can be used to clean up any resources before a component instance
 is shut down. Do not call this macro manually as it relies on AST
 transformations to work. Use the following syntax:</p>
-<pre><code class="nohighlight makeup elixir"><span class="n">terminate</span><span class="w"> </span><span class="k" data-group-id="2655739131-1">do</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="n">terminate</span><span class="w"> </span><span class="k" data-group-id="9622580781-1">do</span><span class="w">
   </span><span class="c1"># body</span><span class="w">
-</span><span class="k" data-group-id="2655739131-1">end</span></code></pre>
+</span><span class="k" data-group-id="9622580781-1">end</span></code></pre>
   </section>
-</div>
+</section>
+          </div>
         </section>
-
           <footer class="footer">
         <p>
           <span class="line">
             Built using
-            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.19.1),
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.19.2),
           </span>
           <span class="line">
             designed by
@@ -715,7 +711,7 @@ transformations to work. Use the following syntax:</p>
   </div>
 </section>
 </div>
-  <script src="dist/app-a0c90688fa.js"></script>
+  <script src="dist/html-c1666276880c0f8e3769.js"></script>
   
   </body>
 </html>

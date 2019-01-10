@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v0.19.1">
-    <title>Skitter.Workflow.DSL – Skitter v0.1.0-dev</title>
-    <link rel="stylesheet" href="dist/app-240d7fc7e5.css" />
-    <script src="dist/sidebar_items-66bec4cbbf.js"></script>
+    <meta name="generator" content="ExDoc v0.19.2">
+    <title>Skitter.Workflow.DSL — Skitter v0.1.0-dev</title>
+    <link rel="stylesheet" href="dist/html-c1666276880c0f8e3769.css" />
+    <script src="dist/sidebar_items-8edac1a082.js"></script>
     
   </head>
   <body data-type="modules">
@@ -78,19 +78,19 @@ module.</p>
 <em>sources</em>. Proto-instances define the components that will process the data
 flowing through a workflow, while sources determine how data that enters the
 workflow is sent to the proto-instances.</p>
-<p>As an example, let’s look at a workflow which uses the components <code class="inline">Foo</code> and
+<p>As an example, let&#39;s look at a workflow which uses the components <code class="inline">Foo</code> and
 <code class="inline">Bar</code>. <code class="inline">Foo</code> has in ports <code class="inline">a</code> and <code class="inline">b</code>, and out ports <code class="inline">x</code> and <code class="inline">y</code>; <code class="inline">Bar</code> only
 has a single in port: <code class="inline">val</code>.</p>
 <pre><code class="nohighlight makeup elixir"><span class="kn">import</span><span class="w"> </span><span class="nc">Skitter.Workflow</span><span class="w">
 
-</span><span class="n">workflow</span><span class="w"> </span><span class="k" data-group-id="7187766085-1">do</span><span class="w">
-  </span><span class="n">source</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">~&gt;</span><span class="w"> </span><span class="p" data-group-id="7187766085-2">{</span><span class="n">f1</span><span class="o">.</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">f1</span><span class="o">.</span><span class="n">b</span><span class="p" data-group-id="7187766085-2">}</span><span class="w">
+</span><span class="n">workflow</span><span class="w"> </span><span class="k" data-group-id="7238835821-1">do</span><span class="w">
+  </span><span class="n">source</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">~&gt;</span><span class="w"> </span><span class="p" data-group-id="7238835821-2">{</span><span class="n">f1</span><span class="o">.</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">f1</span><span class="o">.</span><span class="n">b</span><span class="p" data-group-id="7238835821-2">}</span><span class="w">
 
-  </span><span class="n">f1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="7187766085-3">{</span><span class="nc">Foo</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="7187766085-4">{</span><span class="ss">:some_atom</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p" data-group-id="7187766085-4">}</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">~&gt;</span><span class="w"> </span><span class="n">f2</span><span class="o">.</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">~&gt;</span><span class="w"> </span><span class="n">f2</span><span class="o">.</span><span class="n">b</span><span class="p" data-group-id="7187766085-3">}</span><span class="w">
-  </span><span class="n">f2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="7187766085-5">{</span><span class="nc">Foo</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="7187766085-6">{</span><span class="ss">:some_atom</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p" data-group-id="7187766085-6">}</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">~&gt;</span><span class="w"> </span><span class="n">bar</span><span class="o">.</span><span class="n">val</span><span class="p" data-group-id="7187766085-5">}</span><span class="w">
+  </span><span class="n">f1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="7238835821-3">{</span><span class="nc">Foo</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="7238835821-4">{</span><span class="ss">:some_atom</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p" data-group-id="7238835821-4">}</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">~&gt;</span><span class="w"> </span><span class="n">f2</span><span class="o">.</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">~&gt;</span><span class="w"> </span><span class="n">f2</span><span class="o">.</span><span class="n">b</span><span class="p" data-group-id="7238835821-3">}</span><span class="w">
+  </span><span class="n">f2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="7238835821-5">{</span><span class="nc">Foo</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="7238835821-6">{</span><span class="ss">:some_atom</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p" data-group-id="7238835821-6">}</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">~&gt;</span><span class="w"> </span><span class="n">bar</span><span class="o">.</span><span class="n">val</span><span class="p" data-group-id="7238835821-5">}</span><span class="w">
 
-  </span><span class="n">bar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="7187766085-7">{</span><span class="nc">Bar</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p" data-group-id="7187766085-7">}</span><span class="w">
-</span><span class="k" data-group-id="7187766085-1">end</span></code></pre>
+  </span><span class="n">bar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="7238835821-7">{</span><span class="nc">Bar</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p" data-group-id="7238835821-7">}</span><span class="w">
+</span><span class="k" data-group-id="7238835821-1">end</span></code></pre>
 <p>This workflow consists of two proto-instances of the same component: <code class="inline">Foo</code>,
 a proto-instance of the component <code class="inline">Bar</code> and a single source <code class="inline">s</code> which links to
 <code class="inline">Foo</code>.</p>
@@ -101,7 +101,7 @@ a proto-instance of the component <code class="inline">Bar</code> and a single s
 
 <p>Sources connect a workflow to the external world and are defined with the
 following syntax:</p>
-<pre><code class="nohighlight makeup elixir"><span class="n">source</span><span class="w"> </span><span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span><span class="w"> </span><span class="o">~&gt;</span><span class="w"> </span><span class="p" data-group-id="7090472314-1">{</span><span class="o">&lt;</span><span class="n">instance</span><span class="w"> </span><span class="n">identifier</span><span class="o">&gt;</span><span class="o">.</span><span class="o">&lt;</span><span class="n">port</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="o">&lt;</span><span class="n">instance</span><span class="w"> </span><span class="n">identifier</span><span class="o">&gt;</span><span class="o">.</span><span class="o">&lt;</span><span class="n">port</span><span class="o">&gt;</span><span class="p" data-group-id="7090472314-1">}</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="n">source</span><span class="w"> </span><span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span><span class="w"> </span><span class="o">~&gt;</span><span class="w"> </span><span class="p" data-group-id="1894131387-1">{</span><span class="o">&lt;</span><span class="n">instance</span><span class="w"> </span><span class="n">identifier</span><span class="o">&gt;</span><span class="o">.</span><span class="o">&lt;</span><span class="n">port</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="o">&lt;</span><span class="n">instance</span><span class="w"> </span><span class="n">identifier</span><span class="o">&gt;</span><span class="o">.</span><span class="o">&lt;</span><span class="n">port</span><span class="o">&gt;</span><span class="p" data-group-id="1894131387-1">}</span><span class="w">
 </span></code></pre>
 <p>Thus, a source definition consists of two parts: a name and a list of
 destinations. A destination is specified as the combination of a
@@ -118,12 +118,12 @@ braces may be omitted: <code class="inline">source s ~&gt; foo.bar</code>.</p>
 <p>A proto-instance is a tuple which contains all the data that is needed to
 initialize a proper component instance. A proto-instance is defined with the
 following syntax:</p>
-<pre><code class="nohighlight makeup elixir"><span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="0770667584-1">{</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="9256448010-1">{</span><span class="w">
   </span><span class="o">&lt;</span><span class="nc">Component</span><span class="o">&gt;</span><span class="p">,</span><span class="w">
   </span><span class="o">&lt;</span><span class="n">init</span><span class="w"> </span><span class="n">argument</span><span class="o">&gt;</span><span class="p">,</span><span class="w">
   </span><span class="o">&lt;</span><span class="n">out_port</span><span class="o">&gt;</span><span class="w"> </span><span class="o">~&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">instance</span><span class="w"> </span><span class="n">identifier</span><span class="o">&gt;</span><span class="o">.</span><span class="o">&lt;</span><span class="n">port</span><span class="o">&gt;</span><span class="p">,</span><span class="w">
   </span><span class="o">&lt;</span><span class="n">out_port</span><span class="o">&gt;</span><span class="w"> </span><span class="o">~&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">instance</span><span class="w"> </span><span class="n">identifier</span><span class="o">&gt;</span><span class="o">.</span><span class="o">&lt;</span><span class="n">port</span><span class="o">&gt;</span><span class="w">
-</span><span class="p" data-group-id="0770667584-1">}</span></code></pre>
+</span><span class="p" data-group-id="9256448010-1">}</span></code></pre>
 <p>A proto-instance is defined by a Skitter component, its initialization
 argument and by its links:</p>
 <ul>
@@ -151,7 +151,6 @@ in port on this proto-instance.
             </a>
             Summary
           </h1>
-          
   <div class="summary-functions summary">
     <h2>
       <a href="#functions">Functions</a>
@@ -164,10 +163,7 @@ in port on this proto-instance.
 </div>
 </div>
   </div>
-          
         </section>
-
-
 
         <section id="functions" class="details-list">
           <h1 class="section-heading">
@@ -175,15 +171,15 @@ in port on this proto-instance.
               <span class="icon-link" aria-hidden="true"></span>
               <span class="sr-only">Link to this section</span>
             </a>
-            Functions
-          </h1>
-<div class="detail" id="workflow/1">
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="workflow/1">
     <div class="detail-header">
     <a href="#workflow/1" class="detail-link" title="Link to this macro">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this macro</span>
     </a>
-    <span class="signature">workflow(list)</span>
+    <h1 class="signature">workflow(list)</span>
       <a href="https://github.com/mathsaey/skitter/blob/develop/lib/workflow/dsl.ex#L101" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
@@ -196,14 +192,14 @@ in port on this proto-instance.
 <p>This macro serves as the entry point of the <a href="Skitter.Workflow.DSL.html#content"><code class="inline">Skitter.Workflow.DSL</code></a> DSL.
 Please refer to the module documentation for additional details.</p>
   </section>
-</div>
+</section>
+          </div>
         </section>
-
           <footer class="footer">
         <p>
           <span class="line">
             Built using
-            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.19.1),
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.19.2),
           </span>
           <span class="line">
             designed by
@@ -215,7 +211,7 @@ Please refer to the module documentation for additional details.</p>
   </div>
 </section>
 </div>
-  <script src="dist/app-a0c90688fa.js"></script>
+  <script src="dist/html-c1666276880c0f8e3769.js"></script>
   
   </body>
 </html>

@@ -7,7 +7,7 @@
     <meta name="generator" content="ExDoc v0.19.2">
     <title>Skitter.Workflow — Skitter v0.1.0-dev</title>
     <link rel="stylesheet" href="dist/html-c1666276880c0f8e3769.css" />
-    <script src="dist/sidebar_items-8edac1a082.js"></script>
+    <script src="dist/sidebar_items-9a1f7a8e38.js"></script>
     
   </head>
   <body data-type="modules">
@@ -130,23 +130,16 @@ which can be used to define a skitter workflow.</p>
     </h2>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#get_component!/2">get_component!(workflow, key)</a>
+    <a href="#get_instance!/2">get_instance!(workflow, key)</a>
   </div>
-    <div class="summary-synopsis"><p>Retrieve the component of a proto-instance based on its identifier</p>
+    <div class="summary-synopsis"><p>Fetch a proto_instance from a workflow based on its identifier</p>
 </div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#get_init!/2">get_init!(workflow, key)</a>
+    <a href="#get_instances/1">get_instances(workflow)</a>
   </div>
-    <div class="summary-synopsis"><p>Retrieve the init argument of a proto-instance based on its identifier</p>
-</div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#get_links!/2">get_links!(workflow, key)</a>
-  </div>
-    <div class="summary-synopsis"><p>Retrieve the links of a proto-instance based on its identifier</p>
+    <div class="summary-synopsis"><p>List the instances of a component</p>
 </div>
 </div>
 <div class="summary-row">
@@ -160,14 +153,7 @@ which can be used to define a skitter workflow.</p>
   <div class="summary-signature">
     <a href="#get_sources/1">get_sources(workflow)</a>
   </div>
-    <div class="summary-synopsis"><p>List the sources of a component</p>
-</div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#init_proto_instance!/2">init_proto_instance!(workflow, key)</a>
-  </div>
-    <div class="summary-synopsis"><p>Initialize the proto_instance at <code class="inline">key</code></p>
+    <div class="summary-synopsis"><p>List the sources of a workflow</p>
 </div>
 </div>
 <div class="summary-row">
@@ -317,88 +303,64 @@ by out port.</p>
             </a>
 Functions          </h1>
           <div class="functions-list">
-<section class="detail" id="get_component!/2">
+<section class="detail" id="get_instance!/2">
     <div class="detail-header">
-    <a href="#get_component!/2" class="detail-link" title="Link to this function">
+    <a href="#get_instance!/2" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature">get_component!(workflow, key)</span>
-      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/workflow.ex#L150" class="view-source" rel="help" title="View Source">
+    <h1 class="signature">get_instance!(workflow, key)</span>
+      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/workflow.ex#L139" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
         
       <div class="specs">
-          <pre>get_component!(<a href="#t:t/0">t</a>(), <a href="#t:workflow_identifier/0">workflow_identifier</a>()) ::
-  <a href="Skitter.Component.html#t:t/0">Skitter.Component.t</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">no_return</a>()</pre>
+          <pre>get_instance!(<a href="#t:t/0">t</a>(), <a href="#t:workflow_identifier/0">workflow_identifier</a>()) :: <a href="#t:proto_instance/0">proto_instance</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">no_return</a>()</pre>
       </div>
   </div>
   <section class="docstring">
-<p>Retrieve the component of a proto-instance based on its identifier.</p>
-<h2 id="get_component!/2-examples" class="section-heading">
-  <a href="#get_component!/2-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+<p>Fetch a proto_instance from a workflow based on its identifier.</p>
+<h2 id="get_instance!/2-examples" class="section-heading">
+  <a href="#get_instance!/2-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Examples
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">get_component!</span><span class="p" data-group-id="9393585970-1">(</span><span class="n">example_workflow</span><span class="p" data-group-id="9393585970-2">(</span><span class="p" data-group-id="9393585970-2">)</span><span class="p">,</span><span class="w"> </span><span class="ss">:i1</span><span class="p" data-group-id="9393585970-1">)</span><span class="w">
-</span><span class="nc">Identity</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="n">get_component!</span><span class="p" data-group-id="9393585970-3">(</span><span class="n">example_workflow</span><span class="p" data-group-id="9393585970-4">(</span><span class="p" data-group-id="9393585970-4">)</span><span class="p">,</span><span class="w"> </span><span class="ss">:does_not_exist</span><span class="p" data-group-id="9393585970-3">)</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">get_instance!</span><span class="p" data-group-id="4894544984-1">(</span><span class="n">example_workflow</span><span class="p" data-group-id="4894544984-2">(</span><span class="p" data-group-id="4894544984-2">)</span><span class="p">,</span><span class="w"> </span><span class="ss">:i1</span><span class="p" data-group-id="4894544984-1">)</span><span class="w">
+</span><span class="p" data-group-id="4894544984-3">{</span><span class="nc">Identity</span><span class="p">,</span><span class="w"> </span><span class="no">nil</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4894544984-4">[</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4894544984-5">[</span><span class="ss">i3</span><span class="p">:</span><span class="w"> </span><span class="ss">:value</span><span class="p" data-group-id="4894544984-5">]</span><span class="p" data-group-id="4894544984-4">]</span><span class="p" data-group-id="4894544984-3">}</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">get_instance!</span><span class="p" data-group-id="4894544984-6">(</span><span class="n">example_workflow</span><span class="p" data-group-id="4894544984-7">(</span><span class="p" data-group-id="4894544984-7">)</span><span class="p">,</span><span class="w"> </span><span class="ss">:does_not_exist</span><span class="p" data-group-id="4894544984-6">)</span><span class="w">
 </span><span class="gt">** (KeyError) Key `:does_not_exist` not found in workflow</span></code></pre>
   </section>
 </section>
-<section class="detail" id="get_init!/2">
+<section class="detail" id="get_instances/1">
     <div class="detail-header">
-    <a href="#get_init!/2" class="detail-link" title="Link to this function">
+    <a href="#get_instances/1" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature">get_init!(workflow, key)</span>
-      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/workflow.ex#L163" class="view-source" rel="help" title="View Source">
+    <h1 class="signature">get_instances(workflow)</span>
+      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/workflow.ex#L159" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
         
       <div class="specs">
-          <pre>get_init!(<a href="#t:t/0">t</a>(), <a href="#t:workflow_identifier/0">workflow_identifier</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">no_return</a>()</pre>
+          <pre>get_instances(<a href="#t:t/0">t</a>()) :: [{<a href="#t:workflow_identifier/0">workflow_identifier</a>(), <a href="#t:proto_instance/0">proto_instance</a>()}]</pre>
       </div>
   </div>
   <section class="docstring">
-<p>Retrieve the init argument of a proto-instance based on its identifier.</p>
-<h2 id="get_init!/2-examples" class="section-heading">
-  <a href="#get_init!/2-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+<p>List the instances of a component.</p>
+<h2 id="get_instances/1-examples" class="section-heading">
+  <a href="#get_instances/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Examples
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">get_init!</span><span class="p" data-group-id="5115554547-1">(</span><span class="n">example_workflow</span><span class="p" data-group-id="5115554547-2">(</span><span class="p" data-group-id="5115554547-2">)</span><span class="p">,</span><span class="w"> </span><span class="ss">:i1</span><span class="p" data-group-id="5115554547-1">)</span><span class="w">
-</span><span class="no">nil</span></code></pre>
-  </section>
-</section>
-<section class="detail" id="get_links!/2">
-    <div class="detail-header">
-    <a href="#get_links!/2" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <h1 class="signature">get_links!(workflow, key)</span>
-      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/workflow.ex#L176" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
-       <span class="sr-only">View Source</span>
-     </a>
-        
-      <div class="specs">
-          <pre>get_links!(<a href="#t:t/0">t</a>(), <a href="#t:workflow_identifier/0">workflow_identifier</a>()) :: <a href="#t:outgoing_links/0">outgoing_links</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">no_return</a>()</pre>
-      </div>
-  </div>
-  <section class="docstring">
-<p>Retrieve the links of a proto-instance based on its identifier.</p>
-<h2 id="get_links!/2-examples" class="section-heading">
-  <a href="#get_links!/2-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
-  Examples
-</h2>
-
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">get_links!</span><span class="p" data-group-id="0464007326-1">(</span><span class="n">example_workflow</span><span class="p" data-group-id="0464007326-2">(</span><span class="p" data-group-id="0464007326-2">)</span><span class="p">,</span><span class="w"> </span><span class="ss">:i1</span><span class="p" data-group-id="0464007326-1">)</span><span class="w">
-</span><span class="p" data-group-id="0464007326-3">[</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0464007326-4">[</span><span class="ss">i3</span><span class="p">:</span><span class="w"> </span><span class="ss">:value</span><span class="p" data-group-id="0464007326-4">]</span><span class="p" data-group-id="0464007326-3">]</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">get_instances</span><span class="p" data-group-id="4999655854-1">(</span><span class="n">example_workflow</span><span class="p" data-group-id="4999655854-2">(</span><span class="p" data-group-id="4999655854-2">)</span><span class="p" data-group-id="4999655854-1">)</span><span class="w">
+</span><span class="p" data-group-id="4999655854-3">[</span><span class="w">
+  </span><span class="ss">i1</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4999655854-4">{</span><span class="nc">Identity</span><span class="p">,</span><span class="w"> </span><span class="no">nil</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4999655854-5">[</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4999655854-6">[</span><span class="ss">i3</span><span class="p">:</span><span class="w"> </span><span class="ss">:value</span><span class="p" data-group-id="4999655854-6">]</span><span class="p" data-group-id="4999655854-5">]</span><span class="p" data-group-id="4999655854-4">}</span><span class="p">,</span><span class="w">
+  </span><span class="ss">i2</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4999655854-7">{</span><span class="nc">Identity</span><span class="p">,</span><span class="w"> </span><span class="no">nil</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4999655854-8">[</span><span class="p" data-group-id="4999655854-8">]</span><span class="p" data-group-id="4999655854-7">}</span><span class="p">,</span><span class="w">
+  </span><span class="ss">i3</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4999655854-9">{</span><span class="nc">Identity</span><span class="p">,</span><span class="w"> </span><span class="no">nil</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4999655854-10">[</span><span class="p" data-group-id="4999655854-10">]</span><span class="p" data-group-id="4999655854-9">}</span><span class="w">
+</span><span class="p" data-group-id="4999655854-3">]</span></code></pre>
   </section>
 </section>
 <section class="detail" id="get_source!/2">
@@ -424,9 +386,9 @@ Functions          </h1>
   Examples
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">get_source!</span><span class="p" data-group-id="6484299138-1">(</span><span class="n">example_workflow</span><span class="p" data-group-id="6484299138-2">(</span><span class="p" data-group-id="6484299138-2">)</span><span class="p">,</span><span class="w"> </span><span class="ss">:s1</span><span class="p" data-group-id="6484299138-1">)</span><span class="w">
-</span><span class="p" data-group-id="6484299138-3">[</span><span class="ss">i1</span><span class="p">:</span><span class="w"> </span><span class="ss">:value</span><span class="p" data-group-id="6484299138-3">]</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="n">get_source!</span><span class="p" data-group-id="6484299138-4">(</span><span class="n">example_workflow</span><span class="p" data-group-id="6484299138-5">(</span><span class="p" data-group-id="6484299138-5">)</span><span class="p">,</span><span class="w"> </span><span class="ss">:foo</span><span class="p" data-group-id="6484299138-4">)</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">get_source!</span><span class="p" data-group-id="9947461860-1">(</span><span class="n">example_workflow</span><span class="p" data-group-id="9947461860-2">(</span><span class="p" data-group-id="9947461860-2">)</span><span class="p">,</span><span class="w"> </span><span class="ss">:s1</span><span class="p" data-group-id="9947461860-1">)</span><span class="w">
+</span><span class="p" data-group-id="9947461860-3">[</span><span class="ss">i1</span><span class="p">:</span><span class="w"> </span><span class="ss">:value</span><span class="p" data-group-id="9947461860-3">]</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">get_source!</span><span class="p" data-group-id="9947461860-4">(</span><span class="n">example_workflow</span><span class="p" data-group-id="9947461860-5">(</span><span class="p" data-group-id="9947461860-5">)</span><span class="p">,</span><span class="w"> </span><span class="ss">:foo</span><span class="p" data-group-id="9947461860-4">)</span><span class="w">
 </span><span class="gt">** (KeyError) Key `:foo` not found in workflow</span></code></pre>
   </section>
 </section>
@@ -447,44 +409,14 @@ Functions          </h1>
       </div>
   </div>
   <section class="docstring">
-<p>List the sources of a component.</p>
+<p>List the sources of a workflow.</p>
 <h2 id="get_sources/1-examples" class="section-heading">
   <a href="#get_sources/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Examples
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">get_sources</span><span class="p" data-group-id="4552521127-1">(</span><span class="n">example_workflow</span><span class="p" data-group-id="4552521127-2">(</span><span class="p" data-group-id="4552521127-2">)</span><span class="p" data-group-id="4552521127-1">)</span><span class="w">
-</span><span class="p" data-group-id="4552521127-3">[</span><span class="ss">:s1</span><span class="p">,</span><span class="w"> </span><span class="ss">:s2</span><span class="p" data-group-id="4552521127-3">]</span></code></pre>
-  </section>
-</section>
-<section class="detail" id="init_proto_instance!/2">
-    <div class="detail-header">
-    <a href="#init_proto_instance!/2" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <h1 class="signature">init_proto_instance!(workflow, key)</span>
-      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/workflow.ex#L192" class="view-source" rel="help" title="View Source">
-       <span class="icon-code" aria-hidden="true"></span>
-       <span class="sr-only">View Source</span>
-     </a>
-        
-      <div class="specs">
-          <pre>init_proto_instance!(<a href="#t:t/0">t</a>(), <a href="#t:workflow_identifier/0">workflow_identifier</a>()) ::
-  {:ok, <a href="Skitter.Component.html#t:instance/0">Skitter.Component.instance</a>()}
-  | <a href="Skitter.Component.html#t:runtime_error/0">Skitter.Component.runtime_error</a>()
-  | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">no_return</a>()</pre>
-      </div>
-  </div>
-  <section class="docstring">
-<p>Initialize the proto_instance at <code class="inline">key</code></p>
-<h2 id="init_proto_instance!/2-examples" class="section-heading">
-  <a href="#init_proto_instance!/2-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
-  Examples
-</h2>
-
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">init_proto_instance!</span><span class="p" data-group-id="7831368799-1">(</span><span class="n">example_workflow</span><span class="p" data-group-id="7831368799-2">(</span><span class="p" data-group-id="7831368799-2">)</span><span class="p">,</span><span class="w"> </span><span class="ss">:i1</span><span class="p" data-group-id="7831368799-1">)</span><span class="w">
-</span><span class="p" data-group-id="7831368799-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="7831368799-4">%</span><span class="nc" data-group-id="7831368799-4">Skitter.Component.Instance</span><span class="p" data-group-id="7831368799-4">{</span><span class="ss">component</span><span class="p">:</span><span class="w"> </span><span class="nc">WorkflowTest.Identity</span><span class="p">,</span><span class="w"> </span><span class="ss">state</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7831368799-5">[</span><span class="p" data-group-id="7831368799-5">]</span><span class="p" data-group-id="7831368799-4">}</span><span class="p" data-group-id="7831368799-3">}</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">get_sources</span><span class="p" data-group-id="4191075405-1">(</span><span class="n">example_workflow</span><span class="p" data-group-id="4191075405-2">(</span><span class="p" data-group-id="4191075405-2">)</span><span class="p" data-group-id="4191075405-1">)</span><span class="w">
+</span><span class="p" data-group-id="4191075405-3">[</span><span class="ss">:s1</span><span class="p">,</span><span class="w"> </span><span class="ss">:s2</span><span class="p" data-group-id="4191075405-3">]</span></code></pre>
   </section>
 </section>
 <section class="detail" id="sources_match?/2">
@@ -508,11 +440,11 @@ identical. Ordering is not taken into account.</p>
   Examples
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">sources_match?</span><span class="p" data-group-id="7053159222-1">(</span><span class="n">example_workflow</span><span class="p" data-group-id="7053159222-2">(</span><span class="p" data-group-id="7053159222-2">)</span><span class="p">,</span><span class="w"> </span><span class="ss">s1</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="ss">s2</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p" data-group-id="7053159222-1">)</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">sources_match?</span><span class="p" data-group-id="2830528654-1">(</span><span class="n">example_workflow</span><span class="p" data-group-id="2830528654-2">(</span><span class="p" data-group-id="2830528654-2">)</span><span class="p">,</span><span class="w"> </span><span class="ss">s1</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="ss">s2</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p" data-group-id="2830528654-1">)</span><span class="w">
 </span><span class="no">true</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="n">sources_match?</span><span class="p" data-group-id="7053159222-3">(</span><span class="n">example_workflow</span><span class="p" data-group-id="7053159222-4">(</span><span class="p" data-group-id="7053159222-4">)</span><span class="p">,</span><span class="w"> </span><span class="ss">s1</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="ss">s1</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p" data-group-id="7053159222-3">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">sources_match?</span><span class="p" data-group-id="2830528654-3">(</span><span class="n">example_workflow</span><span class="p" data-group-id="2830528654-4">(</span><span class="p" data-group-id="2830528654-4">)</span><span class="p">,</span><span class="w"> </span><span class="ss">s1</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="ss">s1</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p" data-group-id="2830528654-3">)</span><span class="w">
 </span><span class="no">false</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="n">sources_match?</span><span class="p" data-group-id="7053159222-5">(</span><span class="n">example_workflow</span><span class="p" data-group-id="7053159222-6">(</span><span class="p" data-group-id="7053159222-6">)</span><span class="p">,</span><span class="w"> </span><span class="ss">s1</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="7053159222-5">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">sources_match?</span><span class="p" data-group-id="2830528654-5">(</span><span class="n">example_workflow</span><span class="p" data-group-id="2830528654-6">(</span><span class="p" data-group-id="2830528654-6">)</span><span class="p">,</span><span class="w"> </span><span class="ss">s1</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="2830528654-5">)</span><span class="w">
 </span><span class="no">false</span></code></pre>
   </section>
 </section>
@@ -523,7 +455,7 @@ identical. Ordering is not taken into account.</p>
       <span class="sr-only">Link to this macro</span>
     </a>
     <h1 class="signature">workflow(list)</span>
-      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/workflow.ex#L208" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/workflow.ex#L174" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>

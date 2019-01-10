@@ -168,13 +168,13 @@ arguments they accept.</p>
 in the docs of this module assume the following components have been defined.
 More information about these definitions can be found in the
 <a href="Skitter.Component.DSL.html"><code class="inline">Skitter.Component.DSL</code></a> docs.</p>
-<pre><code class="nohighlight makeup elixir"><span class="n">component</span><span class="w"> </span><span class="nc">Identity</span><span class="p">,</span><span class="w"> </span><span class="ss">in</span><span class="p">:</span><span class="w"> </span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="ss">out</span><span class="p">:</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="k" data-group-id="7288728092-1">do</span><span class="w">
-  </span><span class="n">react</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="k" data-group-id="7288728092-2">do</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="n">component</span><span class="w"> </span><span class="nc">Identity</span><span class="p">,</span><span class="w"> </span><span class="ss">in</span><span class="p">:</span><span class="w"> </span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="ss">out</span><span class="p">:</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="k" data-group-id="2452379287-1">do</span><span class="w">
+  </span><span class="n">react</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="k" data-group-id="2452379287-2">do</span><span class="w">
     </span><span class="n">value</span><span class="w"> </span><span class="o">~&gt;</span><span class="w"> </span><span class="n">value</span><span class="w">
-  </span><span class="k" data-group-id="7288728092-2">end</span><span class="w">
-</span><span class="k" data-group-id="7288728092-1">end</span><span class="w">
+  </span><span class="k" data-group-id="2452379287-2">end</span><span class="w">
+</span><span class="k" data-group-id="2452379287-1">end</span><span class="w">
 
-</span><span class="n">component</span><span class="w"> </span><span class="nc">Features</span><span class="p">,</span><span class="w"> </span><span class="ss">in</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7288728092-3">[</span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p" data-group-id="7288728092-3">]</span><span class="w"> </span><span class="k" data-group-id="7288728092-4">do</span><span class="w">
+</span><span class="n">component</span><span class="w"> </span><span class="nc">Features</span><span class="p">,</span><span class="w"> </span><span class="ss">in</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2452379287-3">[</span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p" data-group-id="2452379287-3">]</span><span class="w"> </span><span class="k" data-group-id="2452379287-4">do</span><span class="w">
   </span><span class="s">&quot;Doesn&#39; t do anything useful, but allows us to show all component aspects.&quot;</span><span class="w">
 
   </span><span class="n">effect</span><span class="w"> </span><span class="n">state_change</span><span class="w"> </span><span class="n">hidden</span><span class="w">
@@ -182,26 +182,26 @@ More information about these definitions can be found in the
 
   </span><span class="n">fields</span><span class="w"> </span><span class="n">f</span><span class="w">
 
-  </span><span class="n">init</span><span class="w"> </span><span class="p" data-group-id="7288728092-5">{</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p" data-group-id="7288728092-5">}</span><span class="w"> </span><span class="k" data-group-id="7288728092-6">do</span><span class="w">
+  </span><span class="n">init</span><span class="w"> </span><span class="p" data-group-id="2452379287-5">{</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p" data-group-id="2452379287-5">}</span><span class="w"> </span><span class="k" data-group-id="2452379287-6">do</span><span class="w">
     </span><span class="n">f</span><span class="w"> </span><span class="o">&lt;~</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="w">
-  </span><span class="k" data-group-id="7288728092-6">end</span><span class="w">
+  </span><span class="k" data-group-id="2452379287-6">end</span><span class="w">
 
-  </span><span class="n">react</span><span class="w"> </span><span class="c">_foo</span><span class="p">,</span><span class="w"> </span><span class="c">_bar</span><span class="w"> </span><span class="k" data-group-id="7288728092-7">do</span><span class="w">
-  </span><span class="k" data-group-id="7288728092-7">end</span><span class="w">
+  </span><span class="n">react</span><span class="w"> </span><span class="c">_foo</span><span class="p">,</span><span class="w"> </span><span class="c">_bar</span><span class="w"> </span><span class="k" data-group-id="2452379287-7">do</span><span class="w">
+  </span><span class="k" data-group-id="2452379287-7">end</span><span class="w">
 
-  </span><span class="n">create_checkpoint</span><span class="w"> </span><span class="k" data-group-id="7288728092-8">do</span><span class="w">
+  </span><span class="n">create_checkpoint</span><span class="w"> </span><span class="k" data-group-id="2452379287-8">do</span><span class="w">
     </span><span class="n">f</span><span class="w">
-  </span><span class="k" data-group-id="7288728092-8">end</span><span class="w">
+  </span><span class="k" data-group-id="2452379287-8">end</span><span class="w">
 
-  </span><span class="n">restore_checkpoint</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="k" data-group-id="7288728092-9">do</span><span class="w">
+  </span><span class="n">restore_checkpoint</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="k" data-group-id="2452379287-9">do</span><span class="w">
     </span><span class="n">f</span><span class="w"> </span><span class="o">&lt;~</span><span class="w"> </span><span class="n">v</span><span class="w">
-  </span><span class="k" data-group-id="7288728092-9">end</span><span class="w">
-</span><span class="k" data-group-id="7288728092-4">end</span></code></pre>
+  </span><span class="k" data-group-id="2452379287-9">end</span><span class="w">
+</span><span class="k" data-group-id="2452379287-4">end</span></code></pre>
 <p>Besides this, an example instance is provided by a function:</p>
-<pre><code class="nohighlight makeup elixir"><span class="kd">def</span><span class="w"> </span><span class="nf">example_instance</span><span class="p" data-group-id="1579140823-1">(</span><span class="p" data-group-id="1579140823-1">)</span><span class="w"> </span><span class="k" data-group-id="1579140823-2">do</span><span class="w">
-  </span><span class="p" data-group-id="1579140823-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">inst</span><span class="p" data-group-id="1579140823-3">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">init</span><span class="p" data-group-id="1579140823-4">(</span><span class="nc">Identity</span><span class="p">,</span><span class="w"> </span><span class="no">nil</span><span class="p" data-group-id="1579140823-4">)</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="kd">def</span><span class="w"> </span><span class="nf">example_instance</span><span class="p" data-group-id="1228432388-1">(</span><span class="p" data-group-id="1228432388-1">)</span><span class="w"> </span><span class="k" data-group-id="1228432388-2">do</span><span class="w">
+  </span><span class="p" data-group-id="1228432388-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">inst</span><span class="p" data-group-id="1228432388-3">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">init</span><span class="p" data-group-id="1228432388-4">(</span><span class="nc">Identity</span><span class="p">,</span><span class="w"> </span><span class="no">nil</span><span class="p" data-group-id="1228432388-4">)</span><span class="w">
   </span><span class="n">inst</span><span class="w">
-</span><span class="k" data-group-id="1579140823-2">end</span></code></pre>
+</span><span class="k" data-group-id="1228432388-2">end</span></code></pre>
         </section>
 
         <section id="summary" class="details-list">
@@ -626,11 +626,11 @@ See <a href="#in_ports/1"><code class="inline">in_ports/1</code></a> for more in
   Examples
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">arity</span><span class="p" data-group-id="6988340179-1">(</span><span class="nc">Identity</span><span class="p" data-group-id="6988340179-1">)</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">arity</span><span class="p" data-group-id="0086026639-1">(</span><span class="nc">Identity</span><span class="p" data-group-id="0086026639-1">)</span><span class="w">
 </span><span class="mi">1</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="n">arity</span><span class="p" data-group-id="6988340179-2">(</span><span class="n">example_instance</span><span class="p" data-group-id="6988340179-3">(</span><span class="p" data-group-id="6988340179-3">)</span><span class="p" data-group-id="6988340179-2">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">arity</span><span class="p" data-group-id="0086026639-2">(</span><span class="n">example_instance</span><span class="p" data-group-id="0086026639-3">(</span><span class="p" data-group-id="0086026639-3">)</span><span class="p" data-group-id="0086026639-2">)</span><span class="w">
 </span><span class="mi">1</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="n">arity</span><span class="p" data-group-id="6988340179-4">(</span><span class="nc">Features</span><span class="p" data-group-id="6988340179-4">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">arity</span><span class="p" data-group-id="0086026639-4">(</span><span class="nc">Features</span><span class="p" data-group-id="0086026639-4">)</span><span class="w">
 </span><span class="mi">2</span></code></pre>
   </section>
 </section>
@@ -660,10 +660,10 @@ See <a href="#in_ports/1"><code class="inline">in_ports/1</code></a> for more in
   Examples
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="p" data-group-id="0517736297-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">inst</span><span class="p" data-group-id="0517736297-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">restore_checkpoint</span><span class="p" data-group-id="0517736297-2">(</span><span class="nc">Features</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p" data-group-id="0517736297-2">)</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="n">clean_checkpoint</span><span class="p" data-group-id="0517736297-3">(</span><span class="n">inst</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p" data-group-id="0517736297-3">)</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="p" data-group-id="9097363003-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">inst</span><span class="p" data-group-id="9097363003-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">restore_checkpoint</span><span class="p" data-group-id="9097363003-2">(</span><span class="nc">Features</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p" data-group-id="9097363003-2">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">clean_checkpoint</span><span class="p" data-group-id="9097363003-3">(</span><span class="n">inst</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p" data-group-id="9097363003-3">)</span><span class="w">
 </span><span class="ss">:ok</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="n">clean_checkpoint</span><span class="p" data-group-id="0517736297-4">(</span><span class="nc">Features</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p" data-group-id="0517736297-4">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">clean_checkpoint</span><span class="p" data-group-id="9097363003-4">(</span><span class="nc">Features</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p" data-group-id="9097363003-4">)</span><span class="w">
 </span><span class="gt">** (FunctionClauseError) no function clause matching in Skitter.Component.clean_checkpoint/2</span></code></pre>
   </section>
 </section>
@@ -714,10 +714,10 @@ component instance if the component fails later.</p>
   Examples
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="p" data-group-id="0492488318-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">inst</span><span class="p" data-group-id="0492488318-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">init</span><span class="p" data-group-id="0492488318-2">(</span><span class="nc">Features</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0492488318-3">{</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p" data-group-id="0492488318-3">}</span><span class="p" data-group-id="0492488318-2">)</span><span class="w">
-</span><span class="p" data-group-id="0492488318-4">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0492488318-5">%</span><span class="nc" data-group-id="0492488318-5">Instance</span><span class="p" data-group-id="0492488318-5">{</span><span class="ss">component</span><span class="p">:</span><span class="w"> </span><span class="nc">Features</span><span class="p">,</span><span class="w"> </span><span class="ss">state</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0492488318-6">[</span><span class="ss">f</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p" data-group-id="0492488318-6">]</span><span class="p" data-group-id="0492488318-5">}</span><span class="p" data-group-id="0492488318-4">}</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="n">create_checkpoint</span><span class="p" data-group-id="0492488318-7">(</span><span class="n">inst</span><span class="p" data-group-id="0492488318-7">)</span><span class="w">
-</span><span class="p" data-group-id="0492488318-8">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p" data-group-id="0492488318-8">}</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="p" data-group-id="7121855673-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">inst</span><span class="p" data-group-id="7121855673-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">init</span><span class="p" data-group-id="7121855673-2">(</span><span class="nc">Features</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="7121855673-3">{</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p" data-group-id="7121855673-3">}</span><span class="p" data-group-id="7121855673-2">)</span><span class="w">
+</span><span class="p" data-group-id="7121855673-4">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="7121855673-5">%</span><span class="nc" data-group-id="7121855673-5">Instance</span><span class="p" data-group-id="7121855673-5">{</span><span class="ss">component</span><span class="p">:</span><span class="w"> </span><span class="nc">Features</span><span class="p">,</span><span class="w"> </span><span class="ss">state</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7121855673-6">[</span><span class="ss">f</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p" data-group-id="7121855673-6">]</span><span class="p" data-group-id="7121855673-5">}</span><span class="p" data-group-id="7121855673-4">}</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">create_checkpoint</span><span class="p" data-group-id="7121855673-7">(</span><span class="n">inst</span><span class="p" data-group-id="7121855673-7">)</span><span class="w">
+</span><span class="p" data-group-id="7121855673-8">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p" data-group-id="7121855673-8">}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="description/1">
@@ -744,11 +744,11 @@ component instance if the component fails later.</p>
   Examples
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">description</span><span class="p" data-group-id="7521748011-1">(</span><span class="nc">Identity</span><span class="p" data-group-id="7521748011-1">)</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">description</span><span class="p" data-group-id="1870226326-1">(</span><span class="nc">Identity</span><span class="p" data-group-id="1870226326-1">)</span><span class="w">
 </span><span class="s">&quot;&quot;</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="n">description</span><span class="p" data-group-id="7521748011-2">(</span><span class="n">example_instance</span><span class="p" data-group-id="7521748011-3">(</span><span class="p" data-group-id="7521748011-3">)</span><span class="p" data-group-id="7521748011-2">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">description</span><span class="p" data-group-id="1870226326-2">(</span><span class="n">example_instance</span><span class="p" data-group-id="1870226326-3">(</span><span class="p" data-group-id="1870226326-3">)</span><span class="p" data-group-id="1870226326-2">)</span><span class="w">
 </span><span class="s">&quot;&quot;</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="n">description</span><span class="p" data-group-id="7521748011-4">(</span><span class="nc">Features</span><span class="p" data-group-id="7521748011-4">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">description</span><span class="p" data-group-id="1870226326-4">(</span><span class="nc">Features</span><span class="p" data-group-id="1870226326-4">)</span><span class="w">
 </span><span class="s">&quot;Doesn&#39;t do anything useful, but allows us to show all component aspects.&quot;</span></code></pre>
   </section>
 </section>
@@ -784,12 +784,12 @@ etc.</p>
   Examples
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">effects</span><span class="p" data-group-id="1147261746-1">(</span><span class="nc">Identity</span><span class="p" data-group-id="1147261746-1">)</span><span class="w">
-</span><span class="p" data-group-id="1147261746-2">[</span><span class="p" data-group-id="1147261746-2">]</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="n">effects</span><span class="p" data-group-id="1147261746-3">(</span><span class="n">example_instance</span><span class="p" data-group-id="1147261746-4">(</span><span class="p" data-group-id="1147261746-4">)</span><span class="p" data-group-id="1147261746-3">)</span><span class="w">
-</span><span class="p" data-group-id="1147261746-5">[</span><span class="p" data-group-id="1147261746-5">]</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="n">effects</span><span class="p" data-group-id="1147261746-6">(</span><span class="nc">Features</span><span class="p" data-group-id="1147261746-6">)</span><span class="w">
-</span><span class="p" data-group-id="1147261746-7">[</span><span class="ss">external_effect</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="1147261746-8">[</span><span class="p" data-group-id="1147261746-8">]</span><span class="p">,</span><span class="w"> </span><span class="ss">state_change</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="1147261746-9">[</span><span class="ss">:hidden</span><span class="p" data-group-id="1147261746-9">]</span><span class="p" data-group-id="1147261746-7">]</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">effects</span><span class="p" data-group-id="0234712283-1">(</span><span class="nc">Identity</span><span class="p" data-group-id="0234712283-1">)</span><span class="w">
+</span><span class="p" data-group-id="0234712283-2">[</span><span class="p" data-group-id="0234712283-2">]</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">effects</span><span class="p" data-group-id="0234712283-3">(</span><span class="n">example_instance</span><span class="p" data-group-id="0234712283-4">(</span><span class="p" data-group-id="0234712283-4">)</span><span class="p" data-group-id="0234712283-3">)</span><span class="w">
+</span><span class="p" data-group-id="0234712283-5">[</span><span class="p" data-group-id="0234712283-5">]</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">effects</span><span class="p" data-group-id="0234712283-6">(</span><span class="nc">Features</span><span class="p" data-group-id="0234712283-6">)</span><span class="w">
+</span><span class="p" data-group-id="0234712283-7">[</span><span class="ss">external_effect</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0234712283-8">[</span><span class="p" data-group-id="0234712283-8">]</span><span class="p">,</span><span class="w"> </span><span class="ss">state_change</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0234712283-9">[</span><span class="ss">:hidden</span><span class="p" data-group-id="0234712283-9">]</span><span class="p" data-group-id="0234712283-7">]</span></code></pre>
   </section>
 </section>
 <section class="detail" id="external_effect?/1">
@@ -822,11 +822,11 @@ call to react (or react_after_failure) may have had.</p>
   Examples
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">external_effect?</span><span class="p" data-group-id="3819228887-1">(</span><span class="nc">Identity</span><span class="p" data-group-id="3819228887-1">)</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">external_effect?</span><span class="p" data-group-id="2939048582-1">(</span><span class="nc">Identity</span><span class="p" data-group-id="2939048582-1">)</span><span class="w">
 </span><span class="no">false</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="n">external_effect?</span><span class="p" data-group-id="3819228887-2">(</span><span class="n">example_instance</span><span class="p" data-group-id="3819228887-3">(</span><span class="p" data-group-id="3819228887-3">)</span><span class="p" data-group-id="3819228887-2">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">external_effect?</span><span class="p" data-group-id="2939048582-2">(</span><span class="n">example_instance</span><span class="p" data-group-id="2939048582-3">(</span><span class="p" data-group-id="2939048582-3">)</span><span class="p" data-group-id="2939048582-2">)</span><span class="w">
 </span><span class="no">false</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="n">external_effect?</span><span class="p" data-group-id="3819228887-4">(</span><span class="nc">Features</span><span class="p" data-group-id="3819228887-4">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">external_effect?</span><span class="p" data-group-id="2939048582-4">(</span><span class="nc">Features</span><span class="p" data-group-id="2939048582-4">)</span><span class="w">
 </span><span class="no">true</span></code></pre>
   </section>
 </section>
@@ -860,11 +860,11 @@ components are required to implement the <code class="inline">create_checkpoint<
   Examples
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">hidden_state_change?</span><span class="p" data-group-id="7343039937-1">(</span><span class="nc">Identity</span><span class="p" data-group-id="7343039937-1">)</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">hidden_state_change?</span><span class="p" data-group-id="0629689143-1">(</span><span class="nc">Identity</span><span class="p" data-group-id="0629689143-1">)</span><span class="w">
 </span><span class="no">false</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="n">hidden_state_change?</span><span class="p" data-group-id="7343039937-2">(</span><span class="n">example_instance</span><span class="p" data-group-id="7343039937-3">(</span><span class="p" data-group-id="7343039937-3">)</span><span class="p" data-group-id="7343039937-2">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">hidden_state_change?</span><span class="p" data-group-id="0629689143-2">(</span><span class="n">example_instance</span><span class="p" data-group-id="0629689143-3">(</span><span class="p" data-group-id="0629689143-3">)</span><span class="p" data-group-id="0629689143-2">)</span><span class="w">
 </span><span class="no">false</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="n">hidden_state_change?</span><span class="p" data-group-id="7343039937-4">(</span><span class="nc">Features</span><span class="p" data-group-id="7343039937-4">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">hidden_state_change?</span><span class="p" data-group-id="0629689143-4">(</span><span class="nc">Features</span><span class="p" data-group-id="0629689143-4">)</span><span class="w">
 </span><span class="no">true</span></code></pre>
   </section>
 </section>
@@ -896,12 +896,12 @@ provided as an argument to the <code class="inline">react</code> function of a c
   Examples
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">in_ports</span><span class="p" data-group-id="6197409584-1">(</span><span class="nc">Identity</span><span class="p" data-group-id="6197409584-1">)</span><span class="w">
-</span><span class="p" data-group-id="6197409584-2">[</span><span class="ss">:value</span><span class="p" data-group-id="6197409584-2">]</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="n">in_ports</span><span class="p" data-group-id="6197409584-3">(</span><span class="n">example_instance</span><span class="p" data-group-id="6197409584-4">(</span><span class="p" data-group-id="6197409584-4">)</span><span class="p" data-group-id="6197409584-3">)</span><span class="w">
-</span><span class="p" data-group-id="6197409584-5">[</span><span class="ss">:value</span><span class="p" data-group-id="6197409584-5">]</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="n">in_ports</span><span class="p" data-group-id="6197409584-6">(</span><span class="nc">Features</span><span class="p" data-group-id="6197409584-6">)</span><span class="w">
-</span><span class="p" data-group-id="6197409584-7">[</span><span class="ss">:foo</span><span class="p">,</span><span class="w"> </span><span class="ss">:bar</span><span class="p" data-group-id="6197409584-7">]</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">in_ports</span><span class="p" data-group-id="0077789395-1">(</span><span class="nc">Identity</span><span class="p" data-group-id="0077789395-1">)</span><span class="w">
+</span><span class="p" data-group-id="0077789395-2">[</span><span class="ss">:value</span><span class="p" data-group-id="0077789395-2">]</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">in_ports</span><span class="p" data-group-id="0077789395-3">(</span><span class="n">example_instance</span><span class="p" data-group-id="0077789395-4">(</span><span class="p" data-group-id="0077789395-4">)</span><span class="p" data-group-id="0077789395-3">)</span><span class="w">
+</span><span class="p" data-group-id="0077789395-5">[</span><span class="ss">:value</span><span class="p" data-group-id="0077789395-5">]</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">in_ports</span><span class="p" data-group-id="0077789395-6">(</span><span class="nc">Features</span><span class="p" data-group-id="0077789395-6">)</span><span class="w">
+</span><span class="p" data-group-id="0077789395-7">[</span><span class="ss">:foo</span><span class="p">,</span><span class="w"> </span><span class="ss">:bar</span><span class="p" data-group-id="0077789395-7">]</span></code></pre>
   </section>
 </section>
 <section class="detail" id="init/2">
@@ -930,8 +930,8 @@ arguments. The <code class="inline">args</code> value provided to this function 
   Examples
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">init</span><span class="p" data-group-id="8040940832-1">(</span><span class="nc">Identity</span><span class="p">,</span><span class="w"> </span><span class="no">nil</span><span class="p" data-group-id="8040940832-1">)</span><span class="w">
-</span><span class="p" data-group-id="8040940832-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8040940832-3">%</span><span class="nc" data-group-id="8040940832-3">Instance</span><span class="p" data-group-id="8040940832-3">{</span><span class="ss">component</span><span class="p">:</span><span class="w"> </span><span class="nc">Identity</span><span class="p">,</span><span class="w"> </span><span class="ss">state</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8040940832-4">[</span><span class="p" data-group-id="8040940832-4">]</span><span class="p" data-group-id="8040940832-3">}</span><span class="p" data-group-id="8040940832-2">}</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">init</span><span class="p" data-group-id="9005867994-1">(</span><span class="nc">Identity</span><span class="p">,</span><span class="w"> </span><span class="no">nil</span><span class="p" data-group-id="9005867994-1">)</span><span class="w">
+</span><span class="p" data-group-id="9005867994-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="9005867994-3">%</span><span class="nc" data-group-id="9005867994-3">Instance</span><span class="p" data-group-id="9005867994-3">{</span><span class="ss">component</span><span class="p">:</span><span class="w"> </span><span class="nc">Identity</span><span class="p">,</span><span class="w"> </span><span class="ss">state</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="9005867994-4">[</span><span class="p" data-group-id="9005867994-4">]</span><span class="p" data-group-id="9005867994-3">}</span><span class="p" data-group-id="9005867994-2">}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="is_component?/1">
@@ -957,11 +957,11 @@ arguments. The <code class="inline">args</code> value provided to this function 
   Examples
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">is_component?</span><span class="p" data-group-id="0870460988-1">(</span><span class="mi">5</span><span class="p" data-group-id="0870460988-1">)</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">is_component?</span><span class="p" data-group-id="4125566432-1">(</span><span class="mi">5</span><span class="p" data-group-id="4125566432-1">)</span><span class="w">
 </span><span class="no">false</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="n">is_component?</span><span class="p" data-group-id="0870460988-2">(</span><span class="nc">Enum</span><span class="p" data-group-id="0870460988-2">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">is_component?</span><span class="p" data-group-id="4125566432-2">(</span><span class="nc">Enum</span><span class="p" data-group-id="4125566432-2">)</span><span class="w">
 </span><span class="no">false</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="n">is_component?</span><span class="p" data-group-id="0870460988-3">(</span><span class="nc">Identity</span><span class="p" data-group-id="0870460988-3">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">is_component?</span><span class="p" data-group-id="4125566432-3">(</span><span class="nc">Identity</span><span class="p" data-group-id="4125566432-3">)</span><span class="w">
 </span><span class="no">true</span></code></pre>
   </section>
 </section>
@@ -988,9 +988,9 @@ arguments. The <code class="inline">args</code> value provided to this function 
   Examples
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">is_instance?</span><span class="p" data-group-id="9156174942-1">(</span><span class="ss">:foo</span><span class="p" data-group-id="9156174942-1">)</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">is_instance?</span><span class="p" data-group-id="2691797770-1">(</span><span class="ss">:foo</span><span class="p" data-group-id="2691797770-1">)</span><span class="w">
 </span><span class="no">false</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="n">is_instance?</span><span class="p" data-group-id="9156174942-2">(</span><span class="n">example_instance</span><span class="p" data-group-id="9156174942-3">(</span><span class="p" data-group-id="9156174942-3">)</span><span class="p" data-group-id="9156174942-2">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">is_instance?</span><span class="p" data-group-id="2691797770-2">(</span><span class="n">example_instance</span><span class="p" data-group-id="2691797770-3">(</span><span class="p" data-group-id="2691797770-3">)</span><span class="p" data-group-id="2691797770-2">)</span><span class="w">
 </span><span class="no">true</span></code></pre>
   </section>
 </section>
@@ -1017,9 +1017,9 @@ arguments. The <code class="inline">args</code> value provided to this function 
   Examples
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">name</span><span class="p" data-group-id="8525127475-1">(</span><span class="nc">Identity</span><span class="p" data-group-id="8525127475-1">)</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">name</span><span class="p" data-group-id="3944854301-1">(</span><span class="nc">Identity</span><span class="p" data-group-id="3944854301-1">)</span><span class="w">
 </span><span class="s">&quot;Identity&quot;</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="n">name</span><span class="p" data-group-id="8525127475-2">(</span><span class="n">example_instance</span><span class="p" data-group-id="8525127475-3">(</span><span class="p" data-group-id="8525127475-3">)</span><span class="p" data-group-id="8525127475-2">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">name</span><span class="p" data-group-id="3944854301-2">(</span><span class="n">example_instance</span><span class="p" data-group-id="3944854301-3">(</span><span class="p" data-group-id="3944854301-3">)</span><span class="p" data-group-id="3944854301-2">)</span><span class="w">
 </span><span class="s">&quot;Identity&quot;</span></code></pre>
   </section>
 </section>
@@ -1050,12 +1050,12 @@ runtime will send this data to any ports connected to this out port.</p>
   Examples
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">out_ports</span><span class="p" data-group-id="7942162605-1">(</span><span class="nc">Identity</span><span class="p" data-group-id="7942162605-1">)</span><span class="w">
-</span><span class="p" data-group-id="7942162605-2">[</span><span class="ss">:value</span><span class="p" data-group-id="7942162605-2">]</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="n">out_ports</span><span class="p" data-group-id="7942162605-3">(</span><span class="n">example_instance</span><span class="p" data-group-id="7942162605-4">(</span><span class="p" data-group-id="7942162605-4">)</span><span class="p" data-group-id="7942162605-3">)</span><span class="w">
-</span><span class="p" data-group-id="7942162605-5">[</span><span class="ss">:value</span><span class="p" data-group-id="7942162605-5">]</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="n">out_ports</span><span class="p" data-group-id="7942162605-6">(</span><span class="nc">Features</span><span class="p" data-group-id="7942162605-6">)</span><span class="w">
-</span><span class="p" data-group-id="7942162605-7">[</span><span class="p" data-group-id="7942162605-7">]</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">out_ports</span><span class="p" data-group-id="1213177635-1">(</span><span class="nc">Identity</span><span class="p" data-group-id="1213177635-1">)</span><span class="w">
+</span><span class="p" data-group-id="1213177635-2">[</span><span class="ss">:value</span><span class="p" data-group-id="1213177635-2">]</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">out_ports</span><span class="p" data-group-id="1213177635-3">(</span><span class="n">example_instance</span><span class="p" data-group-id="1213177635-4">(</span><span class="p" data-group-id="1213177635-4">)</span><span class="p" data-group-id="1213177635-3">)</span><span class="w">
+</span><span class="p" data-group-id="1213177635-5">[</span><span class="ss">:value</span><span class="p" data-group-id="1213177635-5">]</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">out_ports</span><span class="p" data-group-id="1213177635-6">(</span><span class="nc">Features</span><span class="p" data-group-id="1213177635-6">)</span><span class="w">
+</span><span class="p" data-group-id="1213177635-7">[</span><span class="p" data-group-id="1213177635-7">]</span></code></pre>
   </section>
 </section>
 <section class="detail" id="react/2">
@@ -1085,8 +1085,8 @@ inside a list which will be automatically deconstructed by the react function.</
   Examples
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">react</span><span class="p" data-group-id="9298636247-1">(</span><span class="n">example_instance</span><span class="p" data-group-id="9298636247-2">(</span><span class="p" data-group-id="9298636247-2">)</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="9298636247-3">[</span><span class="mi">20</span><span class="p" data-group-id="9298636247-3">]</span><span class="p" data-group-id="9298636247-1">)</span><span class="w">
-</span><span class="p" data-group-id="9298636247-4">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="9298636247-5">%</span><span class="nc" data-group-id="9298636247-5">Instance</span><span class="p" data-group-id="9298636247-5">{</span><span class="ss">component</span><span class="p">:</span><span class="w"> </span><span class="nc">Identity</span><span class="p">,</span><span class="w"> </span><span class="ss">state</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="9298636247-6">[</span><span class="p" data-group-id="9298636247-6">]</span><span class="p" data-group-id="9298636247-5">}</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="9298636247-7">[</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p" data-group-id="9298636247-7">]</span><span class="p" data-group-id="9298636247-4">}</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">react</span><span class="p" data-group-id="1307394776-1">(</span><span class="n">example_instance</span><span class="p" data-group-id="1307394776-2">(</span><span class="p" data-group-id="1307394776-2">)</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1307394776-3">[</span><span class="mi">20</span><span class="p" data-group-id="1307394776-3">]</span><span class="p" data-group-id="1307394776-1">)</span><span class="w">
+</span><span class="p" data-group-id="1307394776-4">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1307394776-5">%</span><span class="nc" data-group-id="1307394776-5">Instance</span><span class="p" data-group-id="1307394776-5">{</span><span class="ss">component</span><span class="p">:</span><span class="w"> </span><span class="nc">Identity</span><span class="p">,</span><span class="w"> </span><span class="ss">state</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="1307394776-6">[</span><span class="p" data-group-id="1307394776-6">]</span><span class="p" data-group-id="1307394776-5">}</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1307394776-7">[</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p" data-group-id="1307394776-7">]</span><span class="p" data-group-id="1307394776-4">}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="react_after_failure/2">
@@ -1116,8 +1116,8 @@ code defined in an after failure block inside the component instance.</p>
   Examples
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">react_after_failure</span><span class="p" data-group-id="6512785625-1">(</span><span class="n">example_instance</span><span class="p" data-group-id="6512785625-2">(</span><span class="p" data-group-id="6512785625-2">)</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6512785625-3">[</span><span class="mi">20</span><span class="p" data-group-id="6512785625-3">]</span><span class="p" data-group-id="6512785625-1">)</span><span class="w">
-</span><span class="p" data-group-id="6512785625-4">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6512785625-5">%</span><span class="nc" data-group-id="6512785625-5">Instance</span><span class="p" data-group-id="6512785625-5">{</span><span class="ss">component</span><span class="p">:</span><span class="w"> </span><span class="nc">Identity</span><span class="p">,</span><span class="w"> </span><span class="ss">state</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6512785625-6">[</span><span class="p" data-group-id="6512785625-6">]</span><span class="p" data-group-id="6512785625-5">}</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6512785625-7">[</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p" data-group-id="6512785625-7">]</span><span class="p" data-group-id="6512785625-4">}</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">react_after_failure</span><span class="p" data-group-id="2363400849-1">(</span><span class="n">example_instance</span><span class="p" data-group-id="2363400849-2">(</span><span class="p" data-group-id="2363400849-2">)</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2363400849-3">[</span><span class="mi">20</span><span class="p" data-group-id="2363400849-3">]</span><span class="p" data-group-id="2363400849-1">)</span><span class="w">
+</span><span class="p" data-group-id="2363400849-4">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2363400849-5">%</span><span class="nc" data-group-id="2363400849-5">Instance</span><span class="p" data-group-id="2363400849-5">{</span><span class="ss">component</span><span class="p">:</span><span class="w"> </span><span class="nc">Identity</span><span class="p">,</span><span class="w"> </span><span class="ss">state</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2363400849-6">[</span><span class="p" data-group-id="2363400849-6">]</span><span class="p" data-group-id="2363400849-5">}</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2363400849-7">[</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p" data-group-id="2363400849-7">]</span><span class="p" data-group-id="2363400849-4">}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="restore_checkpoint/2">
@@ -1146,8 +1146,8 @@ instance based on a checkpoint.</p>
   Examples
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">restore_checkpoint</span><span class="p" data-group-id="7728779004-1">(</span><span class="nc">Features</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p" data-group-id="7728779004-1">)</span><span class="w">
-</span><span class="p" data-group-id="7728779004-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="7728779004-3">%</span><span class="nc" data-group-id="7728779004-3">Skitter.Component.Instance</span><span class="p" data-group-id="7728779004-3">{</span><span class="ss">component</span><span class="p">:</span><span class="w"> </span><span class="nc">Features</span><span class="p">,</span><span class="w"> </span><span class="ss">state</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7728779004-4">[</span><span class="ss">f</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p" data-group-id="7728779004-4">]</span><span class="p" data-group-id="7728779004-3">}</span><span class="p" data-group-id="7728779004-2">}</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">restore_checkpoint</span><span class="p" data-group-id="2936845418-1">(</span><span class="nc">Features</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p" data-group-id="2936845418-1">)</span><span class="w">
+</span><span class="p" data-group-id="2936845418-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2936845418-3">%</span><span class="nc" data-group-id="2936845418-3">Skitter.Component.Instance</span><span class="p" data-group-id="2936845418-3">{</span><span class="ss">component</span><span class="p">:</span><span class="w"> </span><span class="nc">Features</span><span class="p">,</span><span class="w"> </span><span class="ss">state</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2936845418-4">[</span><span class="ss">f</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p" data-group-id="2936845418-4">]</span><span class="p" data-group-id="2936845418-3">}</span><span class="p" data-group-id="2936845418-2">}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="state_change?/1">
@@ -1176,11 +1176,11 @@ state which may be modified.</p>
   Examples
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">state_change?</span><span class="p" data-group-id="8864941888-1">(</span><span class="nc">Identity</span><span class="p" data-group-id="8864941888-1">)</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">state_change?</span><span class="p" data-group-id="9383216111-1">(</span><span class="nc">Identity</span><span class="p" data-group-id="9383216111-1">)</span><span class="w">
 </span><span class="no">false</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="n">state_change?</span><span class="p" data-group-id="8864941888-2">(</span><span class="n">example_instance</span><span class="p" data-group-id="8864941888-3">(</span><span class="p" data-group-id="8864941888-3">)</span><span class="p" data-group-id="8864941888-2">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">state_change?</span><span class="p" data-group-id="9383216111-2">(</span><span class="n">example_instance</span><span class="p" data-group-id="9383216111-3">(</span><span class="p" data-group-id="9383216111-3">)</span><span class="p" data-group-id="9383216111-2">)</span><span class="w">
 </span><span class="no">false</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="n">state_change?</span><span class="p" data-group-id="8864941888-4">(</span><span class="nc">Features</span><span class="p" data-group-id="8864941888-4">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">state_change?</span><span class="p" data-group-id="9383216111-4">(</span><span class="nc">Features</span><span class="p" data-group-id="9383216111-4">)</span><span class="w">
 </span><span class="no">true</span></code></pre>
   </section>
 </section>
@@ -1210,9 +1210,9 @@ clean up any resources it may have opened.</p>
   Examples
 </h2>
 
-<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">terminate</span><span class="p" data-group-id="7283535083-1">(</span><span class="n">example_instance</span><span class="p" data-group-id="7283535083-2">(</span><span class="p" data-group-id="7283535083-2">)</span><span class="p" data-group-id="7283535083-1">)</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">terminate</span><span class="p" data-group-id="8001359454-1">(</span><span class="n">example_instance</span><span class="p" data-group-id="8001359454-2">(</span><span class="p" data-group-id="8001359454-2">)</span><span class="p" data-group-id="8001359454-1">)</span><span class="w">
 </span><span class="ss">:ok</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="n">terminate</span><span class="p" data-group-id="7283535083-3">(</span><span class="nc">Identity</span><span class="p" data-group-id="7283535083-3">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">terminate</span><span class="p" data-group-id="8001359454-3">(</span><span class="nc">Identity</span><span class="p" data-group-id="8001359454-3">)</span><span class="w">
 </span><span class="gt">** (FunctionClauseError) no function clause matching in Skitter.Component.terminate/1</span></code></pre>
   </section>
 </section>

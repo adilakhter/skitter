@@ -7,7 +7,7 @@
     <meta name="generator" content="ExDoc v0.19.2">
     <title>skitter.master — Skitter v0.1.0-dev</title>
     <link rel="stylesheet" href="dist/html-c1666276880c0f8e3769.css" />
-    <script src="dist/sidebar_items-5dc0d4a20a.js"></script>
+    <script src="dist/sidebar_items-3bd9b08404.js"></script>
     
   </head>
   <body data-type="tasks">
@@ -72,14 +72,12 @@ mix skitter.master
         <section id="moduledoc">
 <p>Start a Skitter master node for the current project.</p>
 <p>A list of worker nodes can be provided as an argument to this command.
-These nodes should have already been started (using <code class="inline">skitter.worker</code>).</p>
-<p>This task ensures that the started node is distributed. When no name is
-specified, <code class="inline">master</code> is used.
-Furthermore, using this task implicitly passes the <code class="inline">--no-halt</code> option to mix.</p>
-<p>If you wish to pass any arguments to the underlying elixir runtime, this task
-can be started as follows: <code class="inline">elixir --arg1 --arg2 -S mix skitter.master</code></p>
+These nodes should have already been started (using <code class="inline">skitter.worker</code>).
+Using this task implicitly passes the <code class="inline">--no-halt</code> option to mix.</p>
 <p>The <code class="inline">--eval</code> (or <code class="inline">-e</code>) switch can be used to evaluate an expression, similar
 to <a href="https://hexdocs.pm/mix/Mix.Tasks.Run.html"><code class="inline">mix run</code></a>.</p>
+<p>If you wish to pass any arguments to the underlying elixir runtime, this task
+can be started as follows: <code class="inline">elixir --arg1 --arg2 -S mix skitter.master</code></p>
         </section>
 
 

@@ -4,11 +4,12 @@ dist/html/fonts/icomoon.eot
 dist/html/fonts/icomoon.svg
 dist/html/fonts/icomoon.ttf
 dist/html/fonts/icomoon.woff
-dist/sidebar_items-5dc0d4a20a.js
+dist/sidebar_items-3bd9b08404.js
 api-reference.html
 assets/logo.png
 search.html
 404.html
+Skitter.Configuration.html
 Skitter.Runtime.html
 Skitter.Component.DSL.html
 Skitter.Workflow.DSL.html

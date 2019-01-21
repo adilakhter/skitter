@@ -84,6 +84,8 @@ Skitter.Configuration
 </li>
 <li><code class="inline">automatic_distribution</code>
 </li>
+<li><code class="inline">profile</code>
+</li>
 </ul>
 <h2 id="module-mode" class="section-heading">
   <a href="#module-mode" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
@@ -127,6 +129,15 @@ node with a name determined by its mode when it is running in <code class="inlin
 is already distributed (e.g. when the <code class="inline">--sname</code> or <code class="inline">--name</code> switch is provided
 to <code class="inline">elixir</code>). If you wish to start a skitter node which is not distributed,
 you can set <code class="inline">automatic_distribution</code> to <code class="inline">false</code>.</p>
+<h2 id="module-profiling" class="section-heading">
+  <a href="#module-profiling" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Profiling
+</h2>
+
+<p>When provided, the profile options specifies an amount of time (in seconds)
+the current skitter node should profile its execution using <code class="inline">:fprof</code>. Output
+of fprof will be stored in <code class="inline">&lt;nodename&gt;.profile</code>. To disable profiling, do not
+provide a value for this option (the default) or set it to <code class="inline">false</code>.</p>
         </section>
 
         <section id="summary" class="details-list">
@@ -175,7 +186,7 @@ Functions          </h1>
       <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature">get_env(key, default \\ nil)</span>
-      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/configuration.ex#L71" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/configuration.ex#L79" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -191,7 +202,7 @@ Functions          </h1>
       <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature">put_env(key, value)</span>
-      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/configuration.ex#L64" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/configuration.ex#L72" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>

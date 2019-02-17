@@ -7,7 +7,7 @@
     <meta name="generator" content="ExDoc v0.19.2">
     <title>Skitter.Configuration — Skitter v0.1.0-dev</title>
     <link rel="stylesheet" href="dist/html-c1666276880c0f8e3769.css" />
-    <script src="dist/sidebar_items-3bd9b08404.js"></script>
+    <script src="dist/sidebar_items-f47ef33fd0.js"></script>
     
   </head>
   <body data-type="modules">
@@ -70,74 +70,18 @@ Skitter.Configuration
 
 
         <section id="moduledoc">
-<p>Skitter application environment documentation and convenience functions.</p>
-<h2 id="module-configuration" class="section-heading">
-  <a href="#module-configuration" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
-  Configuration
-</h2>
-
-<p>Skitter accepts the following configuration parameters:</p>
-<ul>
-<li><code class="inline">mode</code>
-</li>
-<li><code class="inline">nodes</code>
-</li>
-<li><code class="inline">automatic_distribution</code>
-</li>
-<li><code class="inline">profile</code>
-</li>
-</ul>
-<h2 id="module-mode" class="section-heading">
-  <a href="#module-mode" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
-  Mode
-</h2>
-
-<p>The <code class="inline">mode</code> configuration determines the mode a skitter node will start in.
-The supported modes are <code class="inline">master</code>, <code class="inline">worker</code>, and <code class="inline">local</code>.</p>
-<p>A skitter master node is responsible for delegating work to the various
-workers nodes in a skitter cluster. A master node cannot perform any work
-when no worker nodes are available.</p>
-<p>Worker nodes are responsible for the actual execution of a workflow, they
-receive work from a master node.</p>
-<p>Finally, the local mode enables users to experiment with skitter workflows
-without the hassle of setting up the master and worker nodes. It is primarily
-intended for development.</p>
-<p>You should not set the skitter mode manually, instead, rely on
-<a href="Mix.Tasks.Skitter.Master.html"><code class="inline">Mix.Tasks.Skitter.Master</code></a> and <a href="Mix.Tasks.Skitter.Worker.html"><code class="inline">Mix.Tasks.Skitter.Worker</code></a> to start nodes in
-the correct mode for you. When no mode is provided, skitter will automatically
-start in local mode.</p>
-<h2 id="module-nodes" class="section-heading">
-  <a href="#module-nodes" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
-  Nodes
-</h2>
-
-<p>The <code class="inline">nodes</code> configuration is only used by a skitter node which is running as a
-master. This option should contain a list of hostnames of a set of worker
-nodes. While starting the skitter application, the master node will attempt to
-connect to the provided worker nodes. Thus, the worker nodes should be online
-before a master node is started with a list of nodes.</p>
-<p>Nodes can also be added at runtime through the use of
-<a href="Skitter.Runtime.html#add_node/1"><code class="inline">Skitter.Runtime.add_node/1</code></a>.</p>
-<h2 id="module-automatic-distribution" class="section-heading">
-  <a href="#module-automatic-distribution" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
-  Automatic distribution
-</h2>
-
-<p>By default, skitter will automatically set itself up as a distributed erlang
-node with a name determined by its mode when it is running in <code class="inline">:master</code> or
-<code class="inline">:worker</code> mode. This setup is skipped if the erlang vm skitter is running on
-is already distributed (e.g. when the <code class="inline">--sname</code> or <code class="inline">--name</code> switch is provided
-to <code class="inline">elixir</code>). If you wish to start a skitter node which is not distributed,
-you can set <code class="inline">automatic_distribution</code> to <code class="inline">false</code>.</p>
-<h2 id="module-profiling" class="section-heading">
-  <a href="#module-profiling" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
-  Profiling
-</h2>
-
-<p>When provided, the profile options specifies an amount of time (in seconds)
-the current skitter node should profile its execution using <code class="inline">:fprof</code>. Output
-of fprof will be stored in <code class="inline">&lt;nodename&gt;.profile</code>. To disable profiling, do not
-provide a value for this option (the default) or set it to <code class="inline">false</code>.</p>
+<p>Module to set and retrieve skitter configuration parameters.</p>
+<p>This module forms a thin wrapper around the application environment.
+Therefore, the settings documented in this module can be manipulated
+through <a href="https://hexdocs.pm/mix/Mix.Config.html"><code class="inline">Mix.Config</code></a>.</p>
+<p>This module provides the <a href="#put_env/2"><code class="inline">put_env/2</code></a> function, which can be used to set
+update the skitter application environment. This function should only be
+called by scripts such as <a href="Mix.Tasks.Skitter.Master.html"><code class="inline">Mix.Tasks.Skitter.Master</code></a>. This function is
+also used by the testing infrastructure to tweak some settings for easier
+testing.</p>
+<p>Besides this, every other function in this module provides an interface to
+read the value of a particular configuration setting. Each of these functions
+is named after the configuration parameter it manages.</p>
         </section>
 
         <section id="summary" class="details-list">
@@ -154,9 +98,37 @@ provide a value for this option (the default) or set it to <code class="inline">
     </h2>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#get_env/2">get_env(key, default \\ nil)</a>
+    <a href="#automatic_connect/0">automatic_connect()</a>
   </div>
-    <div class="summary-synopsis"><p>Get a value from the skitter application environment</p>
+    <div class="summary-synopsis"><p>Specify if skitter should automatically use connected nodes as workers</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#automatic_distribution/0">automatic_distribution()</a>
+  </div>
+    <div class="summary-synopsis"><p>Specify if skitter should automatically enable distribution</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#master_node/0">master_node()</a>
+  </div>
+    <div class="summary-synopsis"><p>Which master to connect to, only used in <code class="inline">worker</code> mode</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#mode/0">mode()</a>
+  </div>
+    <div class="summary-synopsis"><p>Determines which mode a skitter node starts in</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#profile/0">profile()</a>
+  </div>
+    <div class="summary-synopsis"><p>Specify if profiling should be enabled, and for how long</p>
 </div>
 </div>
 <div class="summary-row">
@@ -164,6 +136,13 @@ provide a value for this option (the default) or set it to <code class="inline">
     <a href="#put_env/2">put_env(key, value)</a>
   </div>
     <div class="summary-synopsis"><p>Add a value to skitters application environment</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#worker_nodes/0">worker_nodes()</a>
+  </div>
+    <div class="summary-synopsis"><p>Which worker nodes to automatically connect to, only used in <code class="inline">master</code> mode</p>
 </div>
 </div>
   </div>
@@ -177,22 +156,118 @@ provide a value for this option (the default) or set it to <code class="inline">
             </a>
 Functions          </h1>
           <div class="functions-list">
-<section class="detail" id="get_env/2">
-  
-    <span id="get_env/1"></span>
-  <div class="detail-header">
-    <a href="#get_env/2" class="detail-link" title="Link to this function">
+<section class="detail" id="automatic_connect/0">
+    <div class="detail-header">
+    <a href="#automatic_connect/0" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature">get_env(key, default \\ nil)</span>
-      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/configuration.ex#L79" class="view-source" rel="help" title="View Source">
+    <h1 class="signature">automatic_connect()</span>
+      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/configuration.ex#L121" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
           </div>
   <section class="docstring">
-<p>Get a value from the skitter application environment.</p>
+<p>Specify if skitter should automatically use connected nodes as workers.</p>
+<p>When this option is set to true (the default), skitter will automatically
+attempt to treat each node it is connected to (i.e. <code class="inline">Node.list()</code>) as a
+skitter worker node.</p>
+<p>When this option is set to false, skitter will only treat a connected node as
+a worker when <a href="Skitter.Runtime.html#add_node/1"><code class="inline">Skitter.Runtime.add_node/1</code></a> is called.</p>
+<p>This setting is mainly intended to enable unit tests to simulate node failure.
+Leave it at its default value if you&#39;re not sure what this does.</p>
+  </section>
+</section>
+<section class="detail" id="automatic_distribution/0">
+    <div class="detail-header">
+    <a href="#automatic_distribution/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">automatic_distribution()</span>
+      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/configuration.ex#L106" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+          </div>
+  <section class="docstring">
+<p>Specify if skitter should automatically enable distribution.</p>
+<p>By default, skitter will automatically set itself up as a distributed erlang
+node with a name determined by its mode when it is running in <code class="inline">:master</code> or
+<code class="inline">:worker</code> mode. This setup is skipped if the erlang vm skitter is running on
+is already distributed (e.g. when the <code class="inline">--sname</code> or <code class="inline">--name</code> switch is provided
+to <code class="inline">elixir</code>). If you wish to start a skitter node which is not distributed,
+you can set <code class="inline">automatic_distribution</code> to <code class="inline">false</code>.</p>
+  </section>
+</section>
+<section class="detail" id="master_node/0">
+    <div class="detail-header">
+    <a href="#master_node/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">master_node()</span>
+      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/configuration.ex#L84" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+          </div>
+  <section class="docstring">
+<p>Which master to connect to, only used in <code class="inline">worker</code> mode.</p>
+<p>Defaults to false.</p>
+<p>This settings causes a worker to connect to a master node specified as the
+value of this option. If the node cannot connect to the master, no error
+is raised. However, if the master is reachable, and if it enabled the
+<a href="#automatic_connect/0"><code class="inline">automatic_connect/0</code></a> setting, it will automatically add the current node
+as a worker.</p>
+<p>This setting is primarily intended to allow workers to reconnect to their
+master after failure.</p>
+  </section>
+</section>
+<section class="detail" id="mode/0">
+    <div class="detail-header">
+    <a href="#mode/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">mode()</span>
+      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/configuration.ex#L52" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+          </div>
+  <section class="docstring">
+<p>Determines which mode a skitter node starts in.</p>
+<p>The supported modes are <code class="inline">master</code>, <code class="inline">worker</code>, and <code class="inline">local</code> (the default).</p>
+<p>A skitter master node is responsible for delegating work to the various
+workers nodes in a skitter cluster. A master node cannot perform any work
+when no worker nodes are available.</p>
+<p>Worker nodes are responsible for the actual execution of a workflow, they
+receive work from a master node.</p>
+<p>Finally, the local mode enables users to experiment with skitter workflows
+without the hassle of setting up the master and worker nodes. It is primarily
+intended for development.</p>
+  </section>
+</section>
+<section class="detail" id="profile/0">
+    <div class="detail-header">
+    <a href="#profile/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">profile()</span>
+      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/configuration.ex#L94" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+          </div>
+  <section class="docstring">
+<p>Specify if profiling should be enabled, and for how long.</p>
+<p>This option specifies an amount of time (in seconds) the current skitter node
+should profile its execution using <code class="inline">:fprof</code>. The output of fprof will be
+stored in the current working directory with the name <code class="inline">&lt;nodename&gt;.profile</code>.
+When this option is false, profiling is disabled (the default).</p>
   </section>
 </section>
 <section class="detail" id="put_env/2">
@@ -202,13 +277,39 @@ Functions          </h1>
       <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature">put_env(key, value)</span>
-      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/configuration.ex#L72" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/configuration.ex#L32" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
           </div>
   <section class="docstring">
 <p>Add a value to skitters application environment.</p>
+<p>This function should only be used in application start up scripts and test
+setup code.</p>
+  </section>
+</section>
+<section class="detail" id="worker_nodes/0">
+    <div class="detail-header">
+    <a href="#worker_nodes/0" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">worker_nodes()</span>
+      <a href="https://github.com/mathsaey/skitter/blob/develop/lib/configuration.ex#L68" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+          </div>
+  <section class="docstring">
+<p>Which worker nodes to automatically connect to, only used in <code class="inline">master</code> mode.</p>
+<p>Defaults to the empty list.</p>
+<p>The <code class="inline">nodes</code> configuration is only used by a skitter node which is running as a
+master. This option should contain a list of hostnames of a set of worker
+nodes. While starting the skitter application, the master node will attempt to
+connect to the provided worker nodes. Thus, the worker nodes should be online
+before a master node is started with a list of nodes.</p>
+<p>Nodes can also be added at runtime through the use of
+<a href="Skitter.Runtime.html#add_node/1"><code class="inline">Skitter.Runtime.add_node/1</code></a>.</p>
   </section>
 </section>
           </div>
